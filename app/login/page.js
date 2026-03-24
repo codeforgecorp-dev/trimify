@@ -12,13 +12,13 @@ export const metadata = {
     "Trimify login page"
   ],
   alternates: {
-    canonical: "https://trimify.xyz/login"
+    canonical: "https://www.trimify.xyz/login"
   },
   openGraph: {
     title: "Login to Trimify - Free URL Shortener with Advanced Analytics and Password Protection ",
     description:
       "Log in to your Trimify account to access your dashboard and to create custom short links.If you have not created your account till now then first go and create your account.",
-    url: "https://trimify.xyz/login",
+    url: "https://www.trimify.xyz/login",
     siteName: "Trimify - The Ultimate URL Shortener ",
     images: [
       {
@@ -48,18 +48,18 @@ const getLoginStructuredData = () => ({
   publisher: {
     "@type": "Organization",
     name: "Trimify",
-    url: "https://trimify.xyz",
+    url: "https://www.trimify.xyz",
   },
   inLanguage: "en",
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": "https://trimify.xyz/login",
+    "@id": "https://www.trimify.xyz/login",
   },
   potentialAction: {
     "@type": "LoginAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://trimify.xyz/login",
+      urlTemplate: "https://www.trimify.xyz/login",
     },
     name: "Log in to Trimify",
   },
