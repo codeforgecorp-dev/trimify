@@ -15,9 +15,9 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("https://trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
   alternates: {
-    canonical: "https://trimify.xyz/blog/05",
+    canonical: "https://www.trimify.xyz/blog/05",
   },
   openGraph: {
     title: "Use Case of URL Shorteners | Trimify-Blog",
