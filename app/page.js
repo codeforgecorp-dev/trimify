@@ -80,7 +80,8 @@ const structuredData = {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
-        },
+        }
+    }.     
     {
       "@type": "Service",
       "@id": "https://www.trimify.xyz/#service",
