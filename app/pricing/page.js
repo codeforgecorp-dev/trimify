@@ -14,19 +14,19 @@ export const metadata = {
     "link tracking",
   ],
   alternates: {
-    canonical: "https://trimify.xyz/pricing",
+    canonical: "https://www.trimify.xyz/pricing",
     languages: {
-      "en": "https://trimify.xyz/",
-      "en-US": "https://trimify.xyz/",
-      "en-GB": "https://trimify.xyz/",
-      "x-default": "https://trimify.xyz/",
+      "en": "https://www.trimify.xyz/",
+      "en-US": "https://www.trimify.xyz/",
+      "en-GB": "https://www.trimify.xyz/",
+      "x-default": "https://www.trimify.xyz/",
     },
   },
   openGraph: {
     title: "Trimify Pricing - Free & Premium URL Shortener Plans",
     description:
       "Compare Trimify plans: Free Basic plan with dashboard access and Premium plan with advanced features like UTM tracking, link expiry, password protection, and analytics.",
-    url: "https://trimify.xyz/pricing",
+    url: "https://www.trimify.xyz/pricing",
     siteName: "Trimify - The Ultimate URL Shortener",
     images: [
       {
@@ -64,14 +64,14 @@ const page = () => {
         name: "Basic Plan",
         price: "0",
         priceCurrency: "USD",
-        url: "https://trimify.xyz/pricing"
+        url: "https://www.trimify.xyz/pricing"
       },
       {
         "@type": "Offer",
         name: "Premium Plan",
         price: "15",
         priceCurrency: "USD",
-        url: "https://trimify.xyz/pricing",
+        url: "https://www.trimify.xyz/pricing",
         priceValidUntil: "2026-03-31"
       }
     ]
