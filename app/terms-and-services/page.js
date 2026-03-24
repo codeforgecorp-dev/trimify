@@ -4,22 +4,15 @@ export const metadata = {
     title: "Terms & Services | Trimify",
     description:
         "Read Trimify's Terms & Services. Understand the rules, user obligations, and policies for using Trimify services safely and responsibly.",
-    keywords: [
-        "easy url shortener",
-        "terms and services",
-        "links with analytics`",
-        "user agreement",
-        "Link Shortener that can be use Easily",
-        "Trimify policies",
-    ],
+    // Removed keywords array to improve SEO cleanliness for 2026 standards
     alternates: {
-        canonical: "https://trimify.xyz/terms-and-services",
+        canonical: "https://www.trimify.xyz/terms-and-services",
     },
     openGraph: {
         title: "Terms & Services | Trimify",
         description:
             "Official Terms & Services of Trimify. Learn about user obligations, rules, and policies for using Trimify services.",
-        url: "https://trimify.xyz/terms-and-services",
+        url: "https://www.trimify.xyz/terms-and-services", // FIXED: Added www.
         siteName: "Trimify",
         type: "website",
     },
@@ -28,39 +21,39 @@ export const metadata = {
         title: "Terms & Services | Trimify",
         description:
             "Official Terms & Services of Trimify. Learn about user obligations, rules, and policies for using Trimify services.",
-        site: "@trimify",       // optional
-        creator: "@trimify",    // optional
+        site: "@trimify",
+        creator: "@trimify",
         images: ["/og-image.png"],
     },
-
     robots: {
         index: true,
         follow: true,
     },
 };
 
-
 const page = () => {
-
     const getStructuredData = () => ({
         "@context": "https://schema.org",
         "@type": "WebPage",
         name: "Terms & Services",
         description:
             "Official Terms & Services of Trimify. Learn about user obligations, rules, and policies for using Trimify services.",
-        url: "https://trimify.xyz/terms-and-services",
+        url: "https://www.trimify.xyz/terms-and-services", // FIXED: Added www.
         publisher: {
             "@type": "Organization",
-            name: "Trimify",
-            url: "https://trimify.xyz",
+            "name": "Trimify",
+            "url": "https://www.trimify.xyz", // FIXED: Added www.
         },
         inLanguage: "en",
     });
+
     return (
-        <> <Script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getStructuredData()) }}
-      />
+        <> 
+        <Script
+            id="terms-structured-data" // Added id for Next.js best practices
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(getStructuredData()) }}
+        />
         <div className="min-h-screen bg-gray-50 text-gray-900 p-6 md:p-12">
             <div className="max-w-5xl mx-auto bg-white shadow-md rounded-xl p-8 md:p-12">
                 <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">Terms & Services</h1>
@@ -194,10 +187,10 @@ const page = () => {
                 <p className="font-medium">
                     Email:{" "}
                     <a
-                        href="mailto:support@trimify.xyz"
+                        href="mailto:trimify4u@gmail.com"
                         className="text-blue-600 underline"
                     >
-                        support@trimify.xyz
+                        trimify4u@gmail.com
                     </a>
                 </p>
             </div>
