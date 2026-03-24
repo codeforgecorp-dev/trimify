@@ -18,15 +18,15 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("https://trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
   alternates: {
-    canonical: "https://trimify.xyz/blog/04",
+    canonical: "https://www.trimify.xyz/blog/04",
   },
   openGraph: {
     title: "Free vs Premium URL Shorteners | Trimify-Blog",
     description:
       "Explore the differences between free and premium URL shorteners. Learn which features matter and why Trimify offers the best value with premium features at no cost.",
-    url: "https://trimify.xyz/blog/04",
+    url: "https://www.trimify.xyz/blog/04",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {
