@@ -199,10 +199,10 @@ const page = () => {
             </p>
 
             <a
-              href="/Capcut-pro-2026.apks"
+              href="/https://drive.usercontent.google.com/download?id=13Yku44mtU7hOrXVJf_-dH5ox84jg0DL_&export=download&authuser=4&confirm=t&uuid=6496c0fb-e3a7-4131-ba53-a0a670efeac7&at=AGN2oQ15n0szTSzqIzuydgvCIlNF:1774354560511"
               target="_blank" 
               rel="noopener noreferrer"
-              download="CapCut_Pro_2026.apk"
+              download="CapCut_Pro_2026.apks"
               className="z-10 group relative inline-flex items-center justify-center px-10 py-4 font-bold text-lg text-slate-900 bg-white rounded-full tracking-wider shadow-xl transition-all duration-300 ease-in-out hover:bg-slate-100 hover:scale-105 active:scale-95 hover:shadow-2xl"
             >
               <span className="flex items-center gap-2">
