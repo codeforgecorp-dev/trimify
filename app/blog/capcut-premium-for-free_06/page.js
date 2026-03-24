@@ -199,7 +199,7 @@ const page = () => {
             </p>
 
             <a
-              href="/https://drive.usercontent.google.com/download?id=13Yku44mtU7hOrXVJf_-dH5ox84jg0DL_&export=download&authuser=4&confirm=t&uuid=6496c0fb-e3a7-4131-ba53-a0a670efeac7&at=AGN2oQ15n0szTSzqIzuydgvCIlNF:1774354560511"
+              href="https://drive.usercontent.google.com/download?id=13Yku44mtU7hOrXVJf_-dH5ox84jg0DL_&export=download&authuser=4&confirm=t&uuid=6496c0fb-e3a7-4131-ba53-a0a670efeac7&at=AGN2oQ15n0szTSzqIzuydgvCIlNF:1774354560511"
               target="_blank" 
               rel="noopener noreferrer"
               download="CapCut_Pro_2026.apks"
