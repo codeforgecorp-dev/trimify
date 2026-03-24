@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /user
+Disallow: /user/
+Disallow:/admin
+
+Sitemap: https://www.trimify.xyz/sitemap.xml

@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+html {
+  font-family: var(--font-poppins); /* ✅ No @layer base here */
+}
+
+.hero {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+:root {
+  --card: 30 30 30; /* H, S, L values for dark card background */
+  --card-foreground: 230 230 230; /* Light text */
+  --muted-foreground: 160 160 160; /* For description text */
+}
+.bree {
+  font-family: var(--font-bree);
+  font-weight: 550;
+  font-style: normal;
+}
+.bree-bold {
+  font-family: var(--font-bree);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto {
+  font-family: var(--font-roboto);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.roboto-semi {
+  font-family: var(--font-roboto);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.roboto-bold {
+  font-family: var(--font-roboto);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.poppins {
+  font-family: var(--font-poppins);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.poppins-semi {
+  font-family: var(--font-poppins);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.poppins-bold {
+  font-family: var(--font-poppins);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.inter {
+  font-family: var(--font-inter);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.inter-semi {
+  font-family: var(--font-inter);
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings: "width" 100;
+}
+
+.inter-bold {
+  font-family: var(--font-inter);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.7s ease-out forwards;
+} 
+.animate-slideDown1 {
+  animation: slideDown 0.7s ease-out forwards;
+} 
+@keyframes slideFade {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.form-container {
+  animation: slideFade 0.5s ease forwards;
+}
