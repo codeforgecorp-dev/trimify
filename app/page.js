@@ -28,7 +28,7 @@ keywords: [
   },
   metadataBase: new URL("https://trimify.xyz"),
   alternates: {
-    canonical: "http://trimify.xyz",
+    canonical: "https://trimify.xyz",
     languages: {
       "en": "https://trimify.xyz/",
       "en-US": "https://trimify.xyz/",
@@ -70,23 +70,17 @@ const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebSite",
-      "@id": "https://trimify.xyz/#website",
-      "url": "https://trimify.xyz/",
-      "name": "Trimify",
-      "description": "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
-      "publisher": {
-        "@type": "Organization",
+        "@type": "SoftwareApplication", // Changed from "Service" for better 2026 SEO
+        "@id": "https://trimify.xyz/#software",
         "name": "Trimify",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://trimify.xyz/og-image.png",
-          "width": 1200,
-          "height": 630
-        }
-      },
-      "inLanguage": "en-US"
-    },
+        "operatingSystem": "All",
+        "applicationCategory": "BusinessApplication",
+        "description": "Professional URL shortener with UTM tracking and analytics.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
     {
       "@type": "Service",
       "@id": "https://trimify.xyz/#service",
