@@ -16,15 +16,15 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("http://trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
   alternates: {
-    canonical: "https://trimify.xyz/blog/01",
+    canonical: "https://www.trimify.xyz/blog/01",
   },
   openGraph: {
     title: "Top 5 URL Shorteners 2025 | Trimify-Blog",
     description:
       "Discover the top 5 URL shorteners of 2025 with detailed feature breakdowns, pricing, customization options, and analytics tools to help you pick the best one.",
-    url: "https://trimify.xyz/blog/01",
+    url: "https://www.trimify.xyz/blog/01",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {
