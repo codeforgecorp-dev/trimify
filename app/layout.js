@@ -64,6 +64,11 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-6N1QFL1KLS');
           `}
         </Script>
+
+         <Script src="https://pl28978509.profitablecpmratenetwork.com/20/2e/c8/202ec891c00ef24338c1ecfb82971537.js" strategy="afterInteractive" // loads after page is interactive
+        onLoad={() => {
+          console.log('Script loaded successfully!');
+        }}/>  
       </head>
       <body>
         {/* Move Script here */}
@@ -84,10 +89,7 @@ export default function RootLayout({ children }) {
           console.log('Script loaded successfully!');
         }}
       />
-       <Script src="https://pl28978509.profitablecpmratenetwork.com/20/2e/c8/202ec891c00ef24338c1ecfb82971537.js" strategy="afterInteractive" // loads after page is interactive
-        onLoad={() => {
-          console.log('Script loaded successfully!');
-        }}/>
+      
 
           
       </body>
