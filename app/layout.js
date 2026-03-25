@@ -77,6 +77,19 @@ export default function RootLayout({ children }) {
         <SpeedInsights/>
         <Analytics/>
         <SessionWrapper>{children}</SessionWrapper>
+         <Script
+        src="https://pl26832714.profitablecpmratenetwork.com/33/d0/dd/33d0dd3fa614e573dd5b6af63f5b7a14.js"
+        strategy="afterInteractive" // loads after page is interactive
+        onLoad={() => {
+          console.log('Script loaded successfully!');
+        }}
+      />
+       <Script src="https://pl28978509.profitablecpmratenetwork.com/20/2e/c8/202ec891c00ef24338c1ecfb82971537.js" strategy="afterInteractive" // loads after page is interactive
+        onLoad={() => {
+          console.log('Script loaded successfully!');
+        }}/>
+
+          
       </body>
     </html>
   );
