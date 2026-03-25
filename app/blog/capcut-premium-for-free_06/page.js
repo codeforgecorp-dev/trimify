@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import FeedbackSection from "@/app/components/FeedbackSection";
-
+import Script from 'next/script';
 export const metadata = {
   keywords: [
     "CapCut Pro free download",
@@ -53,6 +53,13 @@ const page = () => {
 
   return (
     <>
+     <Script
+        src="https://pl26832714.profitablecpmratenetwork.com/33/d0/dd/33d0dd3fa614e573dd5b6af63f5b7a14.js"
+        strategy="afterInteractive" // loads after page is interactive
+        onLoad={() => {
+          console.log('Script loaded successfully!');
+        }}
+      />
       <div className="md:flex md:justify-end md:m-8 md:float-right gap-4">
         {/* Main Article Section */}
         <article className="article md:w-[60%] flex flex-col gap-6 bg-white shadow-sm border border-gray-100 rounded-xl p-6 mt-8 md:mt-0 text-gray-800 leading-relaxed tracking-wide">
