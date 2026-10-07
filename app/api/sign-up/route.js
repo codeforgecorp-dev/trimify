@@ -125,7 +125,7 @@ if (existingEmail) {
       Role: "user",
       Country: country,
       City: city,
-      isPremium: checkPremium ? true : false
+      isPremium: true
     });
 
     if (!newdata) {
