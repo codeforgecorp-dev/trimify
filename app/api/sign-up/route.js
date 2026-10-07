@@ -45,7 +45,7 @@ export async function POST(req) {
   await transporter.sendMail(mailOptions);
 }
   
-
+console.log("Fetching IP")
 // ---- Get client IP ----
 const headersList = await headers(); // ✅ must await
 const apiKey="441aeb1a519e46628e5b3fdbb18579c4"
@@ -60,7 +60,7 @@ if (!ip || ip === "::1" || ip === "127.0.0.1") {
   ip = ""; // production should rely on real forwarded header
 }
 
-
+console.log("Ip Fetched",ip)
 // Hash IP if you still want
 const hashedIP = ip ? bcrypt.hashSync(ip, 10) : "";
 
@@ -69,7 +69,7 @@ const userAgent = headersList.get("user-agent") || "";
 const parser = new UAParser(userAgent);
 const deviceType = parser.getDevice().type || "Desktop";
 const browser = parser.getBrowser().name || "Unknown";
-
+console.log("Location Fetching")
 // ---- Get location ----
 let city = "Unknown city";
 let flag = "";
@@ -91,7 +91,7 @@ if (ip) {
     console.error("Location fetch error:", err);
   }
 }
-
+console.log("Ip Fetched",LocationRes)
 await connectDB();
 try {let data = await req.json();
 const existingUser = await Data.findOne({ Username: data.Username });
