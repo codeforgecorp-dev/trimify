@@ -91,7 +91,12 @@ if (ip) {
     console.error("Location fetch error:", err);
   }
 }
-console.log("Ip Fetched",locationRes)
+console.log("Ip Fetched")
+try{
+  await connectDB()
+}catch(err){
+  console.log(err)
+}
 await connectDB();
 try {let data = await req.json();
 const existingUser = await Data.findOne({ Username: data.Username });
