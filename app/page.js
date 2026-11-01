@@ -3,7 +3,7 @@ import HeroSection from "./components/HeroSection";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Free URL Shortener with Custom aliases, UTM Building & Analytics | Trimify",
+  title: "Link shortener with Custom aliases & Analytics | Trimify",
   description:
     "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
   keywords: [
