@@ -48,13 +48,12 @@ export default function RootLayout({ children }) {
        <meta name="p:domain_verify" content="51adef505cfa5c693c3802397e72d16d"/> 
        <link rel="icon" href="/favicon.png" type="image/png" />
       
-      
-      // <!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYDGEXZ9ZD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  gtag('js', new Date()); 
 
   gtag('config', 'G-JYDGEXZ9ZD');
 </script>
