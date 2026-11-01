@@ -47,11 +47,19 @@ export default function RootLayout({ children }) {
       <head>
        <meta name="p:domain_verify" content="51adef505cfa5c693c3802397e72d16d"/> 
        <link rel="icon" href="/favicon.png" type="image/png" />
-       <meta name="yandex-verification" content="856eed846c4fcea9" />
-       <meta name="google-adsense-account" content="ca-pub-6762794271004506" />   
- 
-        
+      
+      
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JYDGEXZ9ZD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-JYDGEXZ9ZD');
+</script>
+        
+    
         
       </head>
       <body>
