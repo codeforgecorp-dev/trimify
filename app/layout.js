@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
        <link rel="icon" href="/favicon.png" type="image/png" />
       
       
-      <!-- Google tag (gtag.js) -->
+      // <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYDGEXZ9ZD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
