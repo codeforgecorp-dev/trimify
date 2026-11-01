@@ -19,15 +19,15 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  metadataBase: new URL("https://www.trimify.xyz"),
+  metadataBase: new URL("https://www.trimy.me"),
   alternates: {
-    canonical: "https://www.trimify.xyz/blog/capcut-premium-for-free_06",
+    canonical: "https://www.trimy.me/blog/capcut-premium-for-free_06",
   },
   openGraph: {
     title: "Download CapCut Pro 2026 for Free | Ultimate Video Editing Guide",
     description:
       "Explore the ultimate guide to CapCut Pro 2026. Discover its groundbreaking AI features, professional tools, and get the free download link for PC and Mobile.",
-    url: "https://www.trimify.xyz/blog/capcut-premium-for-free_06",
+    url: "https://www.trimy.me/blog/capcut-premium-for-free_06",
     siteName: "Trimify - The Ultimate URL Shortener & Blog",
     images: [
       {

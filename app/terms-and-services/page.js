@@ -6,13 +6,13 @@ export const metadata = {
         "Read Trimify's Terms & Services. Understand the rules, user obligations, and policies for using Trimify services safely and responsibly.",
     // Removed keywords array to improve SEO cleanliness for 2026 standards
     alternates: {
-        canonical: "https://www.trimify.xyz/terms-and-services",
+        canonical: "https://www.trimy.me/terms-and-services",
     },
     openGraph: {
         title: "Terms & Services | Trimify",
         description:
             "Official Terms & Services of Trimify. Learn about user obligations, rules, and policies for using Trimify services.",
-        url: "https://www.trimify.xyz/terms-and-services", // FIXED: Added www.
+        url: "https://www.trimy.me/terms-and-services", // FIXED: Added www.
         siteName: "Trimify",
         type: "website",
     },
@@ -38,11 +38,11 @@ const page = () => {
         name: "Terms & Services",
         description:
             "Official Terms & Services of Trimify. Learn about user obligations, rules, and policies for using Trimify services.",
-        url: "https://www.trimify.xyz/terms-and-services", // FIXED: Added www.
+        url: "https://www.trimy.me/terms-and-services", // FIXED: Added www.
         publisher: {
             "@type": "Organization",
             "name": "Trimify",
-            "url": "https://www.trimify.xyz", // FIXED: Added www.
+            "url": "https://www.trimy.me", // FIXED: Added www.
         },
         inLanguage: "en",
     });

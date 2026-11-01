@@ -25,21 +25,21 @@ export const metadata = {
   icons: {
     icon: "/favicon.png",
   },
-  metadataBase: new URL("https://www.trimify.xyz"),
+  metadataBase: new URL("https://www.trimy.me"),
   alternates: {
-    canonical: "https://www.trimify.xyz",
+    canonical: "https://www.trimy.me",
     languages: {
-      "en": "https://www.trimify.xyz/",
-      "en-US": "https://www.trimify.xyz/",
-      "en-GB": "https://www.trimify.xyz/",
-      "x-default": "https://www.trimify.xyz/",
+      "en": "https://www.trimy.me/",
+      "en-US": "https://www.trimy.me/",
+      "en-GB": "https://www.trimy.me/",
+      "x-default": "https://www.trimy.me/",
     },
   },
   openGraph: {
     title: "Free URL Shortener with Custom aliases, UTM Building & Analytics | Trimify",
     description:
       "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
-    url: "https://www.trimify.xyz",
+    url: "https://www.trimy.me",
     siteName: "Trimify - Free URL Shortener",
     images: [
       {
@@ -69,7 +69,7 @@ export default function Home() {
     "@graph": [
       {
         "@type": "SoftwareApplication",
-        "@id": "https://www.trimify.xyz/#software",
+        "@id": "https://www.trimy.me/#software",
         "name": "Trimify",
         "operatingSystem": "All",
         "applicationCategory": "BusinessApplication",
@@ -82,50 +82,50 @@ export default function Home() {
       }, // Fixed: Added missing closing brace and comma
       {
         "@type": "Service",
-        "@id": "https://www.trimify.xyz/#service",
+        "@id": "https://www.trimy.me/#service",
         "name": "Free URL Shortener with Custom aliases, UTM Building & Analytics | Trimify",
         "provider": {
           "@type": "Organization",
           "name": "Trimify",
-          "url": "https://www.trimify.xyz/"
+          "url": "https://www.trimy.me/"
         },
         "description": "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
         "serviceType": "URL Shortening",
-        "url": "https://www.trimify.xyz/"
+        "url": "https://www.trimy.me/"
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.trimify.xyz/#breadcrumblist",
+        "@id": "https://www.trimy.me/#breadcrumblist",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.trimify.xyz/"
+            "item": "https://www.trimy.me/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Sign Up to Trimify",
-            "item": "https://www.trimify.xyz/sign-up-to-trimify"
+            "item": "https://www.trimy.me/sign-up-to-trimify"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Pricing",
-            "item": "https://www.trimify.xyz/pricing"
+            "item": "https://www.trimy.me/pricing"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "Blogs",
-            "item": "https://www.trimify.xyz/blog"
+            "item": "https://www.trimy.me/blog"
           },
           {
             "@type": "ListItem",
             "position": 5,
             "name": "Privacy Policy",
-            "item": "https://www.trimify.xyz/privacy-policy"
+            "item": "https://www.trimy.me/privacy-policy"
           }
         ]
       }

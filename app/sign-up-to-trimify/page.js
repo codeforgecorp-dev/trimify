@@ -11,13 +11,13 @@ export const metadata = {
     "qr code"
   ],
   alternates: {
-    canonical: "https://trimify.xyz/sign-up-to-trimify"
+    canonical: "https://trimy.me/sign-up-to-trimify"
   },
   openGraph: {
     title: "Sign up to Trimify - Gain access of building UTM, Making Links Password Protected.",
     description:
       "Create your Trimify account to shorten and manage links with analytics.Also get a seperate dashboard for url management.Create password protected links add utm tracking to links",
-    url: "https://trimify.xyz/sign-up-to-trimify",
+    url: "https://trimy.me/sign-up-to-trimify",
     siteName: "Trimify",
     images: [
       {
@@ -44,22 +44,22 @@ const page = () => {
     name: "Sign up to Trimify - The Ultimate URL Shortener",
     description:
       "Create your Trimify account to shorten and manage links with analytics. Also get a separate dashboard for URL management.",
-    url: "https://trimify.xyz/sign-up-to-trimify",
+    url: "https://trimy.me/sign-up-to-trimify",
     publisher: {
       "@type": "Organization",
       name: "Trimify",
-      url: "https://trimify.xyz",
+      url: "https://trimy.me",
     },
     inLanguage: "en",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://trimify.xyz/sign-up-to-trimify",
+      "@id": "https://trimy.me/sign-up-to-trimify",
     },
     potentialAction: {
       "@type": "RegisterAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://trimify.xyz/sign-up-to-trimify",
+        urlTemplate: "https://trimy.me/sign-up-to-trimify",
       },
       name: "Create Trimify Account",
     },

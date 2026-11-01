@@ -16,15 +16,15 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimy.me"), // Replace with your domain later
   alternates: {
-    canonical: "https://www.trimify.xyz/blog/01",
+    canonical: "https://www.trimy.me/blog/01",
   },
   openGraph: {
     title: "Top 5 URL Shorteners 2025 | Trimify-Blog",
     description:
       "Discover the top 5 URL shorteners of 2025 with detailed feature breakdowns, pricing, customization options, and analytics tools to help you pick the best one.",
-    url: "https://www.trimify.xyz/blog/01",
+    url: "https://www.trimy.me/blog/01",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {
@@ -272,7 +272,7 @@ const page = () => {
                       </span>{" "}
                       becomes:{" "}
                       <span className="text-red-300">
-                        https://trimify.xyz/Abxy
+                        https://trimy.me/Abxy
                       </span>
                     </p>
                   </p>
@@ -298,7 +298,7 @@ const page = () => {
                     <p>
                       <strong>For Example: </strong>
                       <span className="text-red-300">
-                        https://trimify.xyz/yourcustomname
+                        https://trimy.me/yourcustomname
                       </span>{" "}
                       looks more trustworthy and professional than generic short
                       links.

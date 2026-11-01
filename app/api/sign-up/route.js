@@ -20,7 +20,7 @@ export async function POST(req) {
   });
 
   const mailOptions = {
-    from: '"Trimify 💛" <no-reply@trimify.xyz>',
+    from: '"Trimify 💛" <no-reply@trimy.me>',
     to: toEmail,
     subject: `Welcome to Trimify, ${firstName}! 🚀`,
     html: `
@@ -32,7 +32,7 @@ export async function POST(req) {
         <p style="color:#555; font-size:16px;">
           To get started, visit your dashboard and start shortening your links:
         </p>
-        <a href="https://trimify.xyz/user/${toEmail}" style="display:inline-block; background:#FACC15; color:#000; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; margin-top:10px;">
+        <a href="https://trimy.me/user/${toEmail}" style="display:inline-block; background:#FACC15; color:#000; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; margin-top:10px;">
           Go to Dashboard
         </a>
         <p style="color:#999; font-size:12px; margin-top:20px;">

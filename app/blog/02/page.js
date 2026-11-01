@@ -19,15 +19,15 @@ keywords: [
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimy.me"), // Replace with your domain later
   alternates: {
-    canonical: "https://www.trimify.xyz/blog/02",
+    canonical: "https://www.trimy.me/blog/02",
   },
   openGraph: {
     title: "How to Use URL Shorteners: A Complete Guide | Trimify-Blog",
 description: "Learn how to use URL shorteners to create clean, shareable links. Step-by-step guide on shortening, customizing, and tracking URLs using popular tools like Trimify.",
 
-    url: "https://www.trimify.xyz/blog/02",
+    url: "https://www.trimy.me/blog/02",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {

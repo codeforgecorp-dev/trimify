@@ -18,15 +18,15 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimy.me"), // Replace with your domain later
   alternates: {
-    canonical: "https://www.trimify.xyz/blog/04",
+    canonical: "https://www.trimy.me/blog/04",
   },
   openGraph: {
     title: "Free vs Premium URL Shorteners | Trimify-Blog",
     description:
       "Explore the differences between free and premium URL shorteners. Learn which features matter and why Trimify offers the best value with premium features at no cost.",
-    url: "https://www.trimify.xyz/blog/04",
+    url: "https://www.trimy.me/blog/04",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {
@@ -91,7 +91,7 @@ const page = () => {
               </li>
               <li>
                 <span className="font-bold">Shortened URL:</span>{" "}
-                https://trimify.xyz/mkt2025
+                https://trimy.me/mkt2025
               </li>
             </ul>
 
@@ -130,7 +130,7 @@ const page = () => {
               ✅ Advanced Features:
             </h3>
             <ul className="list-disc list-inside mb-4 font-semibold">
-              <li>Custom aliases (e.g., trimify.xyz/your-brand)</li>
+              <li>Custom aliases (e.g., trimy.me/your-brand)</li>
               <li>Branded domains support</li>
               <li>Detailed analytics: geo, devices, referrers, etc.</li>
               <li>Team collaboration and roles</li>
@@ -244,7 +244,7 @@ const page = () => {
                   </span>{" "}
                   Generate random short links instantly (no login required).
                   Want control? Sign up once to unlock the ability to create
-                  custom URLs (e.g., <code>trimify.xyz/my-brand</code>).
+                  custom URLs (e.g., <code>trimy.me/my-brand</code>).
                 </li>
                 <li>
                   <span className="font-bold">
@@ -303,10 +303,10 @@ const page = () => {
               <p className="text-lg font-bold">
                 👉 Get started today at{" "}
                 <a
-                  href="https://trimify.xyz"
+                  href="https://trimy.me"
                   className="underline text-blue-700"
                 >
-                  Trimify.xyz
+                  trimy.me
                 </a>{" "}
                 and unlock your link’s full potential — for free.
               </p>
@@ -324,7 +324,7 @@ const page = () => {
 
             <p className="mb-4 font-semibold">
               💡 <strong>Tip:</strong> Start with a free plan (like{" "}
-              <a href="https://trimify.xyz" className="underline">
+              <a href="https://trimy.me" className="underline">
                 Trimify
               </a>
               ) and upgrade later as your needs grow.

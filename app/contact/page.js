@@ -11,7 +11,7 @@ export const metadata = {
     "contact link shortener"
   ],
     alternates:{
-    canonicals:"https://trimify.xyz/contact"
+    canonicals:"https://trimy.me/contact"
   },
    openGraph: {
    title: "Contact - Trimify",

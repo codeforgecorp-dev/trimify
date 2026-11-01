@@ -32,7 +32,7 @@ export const PricingSection = () => {
     },
     {
       name: "Premium",
-      price: "$15 Lifetime",
+      price: "$0 Lifetime",
       originalPrice: "$30",
       description: "Best for creators & marketers",
       features: [
@@ -44,7 +44,7 @@ export const PricingSection = () => {
         { label: "QR Code Generation", icon: QrCode },
         { label: "Priority Support", icon: ShieldCheck },
       ],
-      button: "Upgrade to Premium",
+      button: "Sign up Now",
       highlight: true,
     }
 
@@ -58,7 +58,7 @@ export const PricingSection = () => {
           Simple & Transparent Pricing
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Choose a plan that fits your needs. Upgrade anytime as you grow.
+          Choose a plan that fits your needs. Sign Up for Premium.
         </p>
       </div>
 
@@ -78,7 +78,7 @@ export const PricingSection = () => {
             {/* Badge */}
             {plan.highlight && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm rounded-full flex items-center gap-1 animate-pulse">
-                🔥 50% OFF – Limited Time
+                🔥 100% Free – Lifetime Offer
               </div>
             )}
 
@@ -98,7 +98,7 @@ export const PricingSection = () => {
                 </div>
                 {plan.highlight && (
                   <p className="text-xs text-gray-400 mt-1">
-                    Lifetime deal • 50% off for limited time
+                    Premium Plan for Free ($0)
                   </p>
                 )}
               </div>
@@ -128,7 +128,7 @@ export const PricingSection = () => {
                     : "bg-gray-800 text-gray-200 hover:bg-gray-700 cursor-pointer mt-8"
                   }
                 `}
-              ><Link href={plan.highlight ? "/pricing" : "/sign-up-to-trimify"}>
+              ><Link href={plan.highlight ? "/sign-up-to-trimify" : "/sign-up-to-trimify"}>
                   {plan.button}</Link>
               </button>
             </CardContent>

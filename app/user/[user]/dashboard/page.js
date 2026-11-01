@@ -914,7 +914,7 @@ export default function Page() {
         try {
           domain = new URL(items.LongUrl).hostname.replace("www.", "").trim();
         } catch (err) {
-          domain = "trimify.xyz"; // fallback domain if invalid URL
+          domain = "trimy.me"; // fallback domain if invalid URL
         }
         return (
           <>

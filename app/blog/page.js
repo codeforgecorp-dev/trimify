@@ -16,9 +16,9 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("http://www.trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("http://www.trimy.me"), // Replace with your domain later
   alternates: {
-    canonical: "https://www.trimify.xyz/blog",
+    canonical: "https://www.trimy.me/blog",
   },
   openGraph: {
     title: "Famous and Helpful BLOGS | Trimify-Blog",

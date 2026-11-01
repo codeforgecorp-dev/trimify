@@ -19,15 +19,15 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico", // favicon
   },
-  metadataBase: new URL("https://www.trimify.xyz"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimy.me"), // Replace with your domain later
   alternates: {
-    canonical: "https://www.trimify.xyz/blog/03",
+    canonical: "https://www.trimy.me/blog/03",
   },
   openGraph: {
     title: "Why Use Short Links? Benefits of URL Shortening | Trimify-Blog",
     description:
       "Discover the advantages of using short links for marketing, social media, and better user experience. Learn why URL shortening is essential in today’s digital world.",
-    url: "https://www.trimify.xyz/blog/03",
+    url: "https://www.trimy.me/blog/03",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {

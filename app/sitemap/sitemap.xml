@@ -1,79 +1,100 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
-<url>
-<loc>https://www.trimify.xyz/</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>1.00</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/blog</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/blog/capcut-premium-for-free_06</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>  
-<url>
-<loc>https://www.trimify.xyz/about</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/contact</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/sign-up-to-trimify</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/login</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/reset_password</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/privacy-policy</loc>
-<lastmod>2025-12-22T12:00:00+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/refund-policy</loc>
-<lastmod>2025-12-22T12:00:00+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/terms-and-services</loc>
-<lastmod>2025-12-22T12:00:00+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<!--  Blog posts  -->
-<url>
-<loc>https://www.trimify.xyz/blog/01</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/blog/02</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/blog/03</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://www.trimify.xyz/blog/04</loc>
-<lastmod>2025-06-01T22:47:13+00:00</lastmod>
-<priority>0.64</priority>
-</url>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://www.trimy.me/</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/blog</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/blog/capcut-premium-for-free_06</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/about</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/contact</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/sign-up-to-trimify</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/login</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/reset_password</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/privacy-policy</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/refund-policy</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/terms-and-services</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- Blog Posts -->
+    <url>
+        <loc>https://www.trimy.me/blog/01</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/blog/02</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/blog/03</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+
+    <url>
+        <loc>https://www.trimy.me/blog/04</loc>
+        <lastmod>2026-11-01T00:00:00+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+
 </urlset>
+```
