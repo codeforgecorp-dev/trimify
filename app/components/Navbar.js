@@ -19,7 +19,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex justify-center items-center gap-4 text-lg font-medium">
-          {["Home","Pricing","Blog", "Contact"].map((item, index) => (
+          {["Home","Blog", "Contact"].map((item, index) => (
             <li key={index}>
               <Link
                 href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
@@ -54,7 +54,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <ul className="flex flex-col md:hidden px-4 pb-4 gap-3 bg-neutral-950 text-gray-100 text-base">
-          {["Home","Pricing","Blog", "Contact"].map((item, index) => (
+          {["Home","Blog","Contact"].map((item, index) => (
             <Link
               key={index}
               href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
