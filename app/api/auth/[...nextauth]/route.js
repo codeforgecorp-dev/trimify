@@ -79,7 +79,7 @@ export const authOptions = {
             Country: Country,
             City: City,
             Role: "user",
-            isPremium: false,
+            isPremium: true,
           });
         }
 
