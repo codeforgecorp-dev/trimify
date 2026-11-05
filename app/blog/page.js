@@ -59,31 +59,7 @@ const page = () => {
             Articles Related to URL Shortening
           </h2>
             <div className="flex flex-row flex-wrap  justify-center md:items-center  gap-4 mt-8 mx-auto ">
-            <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px] max-w-[350px]">
-              <Image
-                alt="Top 5 Best URL Shorteners 2025"
-                src="/Capcut-pro.png"
-                className="w-[350px] h-[220px] rounded-[6px]"
-                width={270}
-                height={180}
-              />
-              <h2 className="roboto-bold text-xl pl-2  ">
-                01.{" "}
-                <Link
-                  title="Redirect to article 01"
-                  className="hover:text-blue-500 transition-all ease-in-out duration-300 hover:underline "
-                  href="/blog/capcut-premium-for-free_06"
-                >
-                  Capcut Pro Download For Free
-                </Link>
-              </h2>
-              <p className="roboto-semibold  pl-2 w-[320px]">
-                After reading the article at the end you will find a download button ...
-              </p>
-              <p className="pl-2 mb-1">
-                <b>Published By:</b>Trimify Owner
-              </p>
-            </article>
+           
             <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px]">
               <Image
                 alt="Top 5 Best URL Shorteners 2025"
