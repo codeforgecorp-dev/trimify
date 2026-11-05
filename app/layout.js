@@ -1,53 +1,75 @@
 import SessionWrapper from "./components/SessionProvider";
 import Script from "next/script";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { Roboto, Bree_Serif,  Poppins, Inter } from "next/font/google";
+import { Roboto, Bree_Serif, Poppins, Inter, Space_Grotesk, Bungee } from "next/font/google";
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-roboto",
 });
+
+const bree = Bree_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-bree",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const bungee = Bungee({
+  subsets: ["latin"],
+  variable: "--font-bungee",
+  weight: ["400"],
+  display: "swap",
+});
+
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#FACC15", // ✅ Correct place
+  themeColor: "#FACC15",
 };
+
 export const metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
-    apple: "/og-image.png"
-  }
+    apple: "/og-image.png",
+  },
 };
-const bree = Bree_Serif({
-  subsets: ["latin"],
-  weight: ["400"], // ✅ دونوں include کریں
-  display: "swap",
-  variable: "--font-bree",
-});
-const poppins = Poppins({
-  subsets: ['latin'],
-  variable: '--font-poppins', // Optional CSS variable name
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], // Full variable range
-  display: 'swap',
-});
-const inter = Inter({
-   subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${roboto.variable} ${bree.variable} ${poppins.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${roboto.variable} ${bree.variable} ${poppins.variable} ${inter.variable} ${spaceGrotesk.variable} ${bungee.variable}`}
+    >
       <head>
-       <meta name="p:domain_verify" content="51adef505cfa5c693c3802397e72d16d"/> 
-       <link rel="icon" href="/favicon.png" type="image/png" />
-      
+        <meta name="p:domain_verify" content="51adef505cfa5c693c3802397e72d16d" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
 
         <Script
           async
@@ -62,21 +84,11 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-JYDGEXZ9ZD');
           `}
         </Script>
-
-        
-    
-        
       </head>
-      <body>
-        {/* Move Script here */}
-     
-       
-        <SpeedInsights/>
-        <Analytics/>
+      <body className="bg-[#FFFDF0] text-black selection:bg-[#FACC15] selection:text-black min-h-screen flex flex-col antialiased">
+        <SpeedInsights />
+        <Analytics />
         <SessionWrapper>{children}</SessionWrapper>
-        
-
-          
       </body>
     </html>
   );
