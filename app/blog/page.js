@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Sparkles, BookOpen, ArrowUpRight, Flame } from "lucide-react";
+
 export const metadata = {
   keywords: [
     "URL shorteners",
@@ -12,21 +14,21 @@ export const metadata = {
     "use cases",
   ],
   title: "Famous and Helpful BLOGS | Trimify-Blog",
-  description: "Explore top articles related to URL shortening and more with Trimify.",
+  description: "Explore top articles related to URL shortening and link optimization with Trimify.",
   icons: {
-    icon: "/favicon.ico", // favicon
+    icon: "/favicon.ico",
   },
-  metadataBase: new URL("http://www.trimy.me"), // Replace with your domain later
+  metadataBase: new URL("https://www.trimy.me"),
   alternates: {
     canonical: "https://www.trimy.me/blog",
   },
   openGraph: {
     title: "Famous and Helpful BLOGS | Trimify-Blog",
-    description: "Explore top articles related to URL shortening and more with Trimify.",
-    siteName: "Trimify - The Ultimate and Free URL Shortener",
+    description: "Explore top articles related to URL shortening and link optimization with Trimify.",
+    siteName: "Trimify - The Ultimate URL Shortener",
     images: [
       {
-        url: "/og-image.png", // Recommended: 1200x630 og-image instead of favicon
+        url: "/og-image.png",
         width: 800,
         height: 600,
         alt: "Trimify logo",
@@ -38,161 +40,138 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Famous and Helpful BLOGS | Trimify-Blog",
-    description:
-      "Explore top articles related to URL shortening and more with Trimify.",
+    description: "Explore top articles related to URL shortening and link optimization with Trimify.",
     images: ["/og-image.png"],
   },
 };
-const page = () => {
+
+const articles = [
+  {
+    num: "01",
+    title: "Capcut Pro Download For Free",
+    snippet: "Comprehensive guide to unlocking creative editing tools and resources for your video workflows.",
+    href: "/blog/capcut-premium-for-free_06",
+    image: "/Capcut-pro.png",
+    author: "Trimify Owner",
+    tag: "TUTORIAL",
+    tagColor: "bg-[#FACC15] text-black",
+  },
+  {
+    num: "02",
+    title: "Top 5 Best URL Shorteners 2025",
+    snippet: "In this breakdown, compare top URL Shorteners with their pros, cons, and performance metrics.",
+    href: "/blog/01",
+    image: "/T5BUS.png",
+    author: "Trimify Owner",
+    tag: "COMPARISON",
+    tagColor: "bg-[#EF4444] text-white",
+  },
+  {
+    num: "03",
+    title: "How to Use URL Shorteners?",
+    snippet: "Step-by-step masterclass on how to shorten, brand, and track links across campaigns.",
+    href: "/blog/02",
+    image: "/HTUUS.png",
+    author: "Trimify Owner",
+    tag: "GUIDE",
+    tagColor: "bg-[#F97316] text-white",
+  },
+  {
+    num: "04",
+    title: "Why Use Short Links?",
+    snippet: "Short links add clean aesthetic to social media bios, boost CTR, and protect tracking integrity.",
+    href: "/blog/03",
+    image: "/WTUSL.png",
+    author: "Trimify Owner",
+    tag: "INSIGHTS",
+    tagColor: "bg-[#FACC15] text-black",
+  },
+  {
+    num: "05",
+    title: "Free vs Premium URL Shorteners",
+    snippet: "Which one is right for your workflow? Discover the key differences in analytics and limits.",
+    href: "/blog/04",
+    image: "/FVPUS.png",
+    author: "Trimify Owner",
+    tag: "ANALYSIS",
+    tagColor: "bg-[#EF4444] text-white",
+  },
+];
+
+const BlogPage = () => {
   return (
-    <>
-      <div className="min-h-[80.8vh] ">
-        <div className="hero relative  w-full  p-4 m-0 z-10">
-          <h1 className="bree-bold text-4xl text-center  text-white ">
-            {" "}
-            Famous and Helpful BLOGS{" "}
-          </h1>
-       
-        </div>
-        <div className=" bg-gray-100   h-full   m-4  p-4  rounded-[8px] ">
-          <h2 className="roboto-bold text-3xl underline text-center">
-            Articles Related to URL Shortening
-          </h2>
-            <div className="flex flex-row flex-wrap  justify-center md:items-center  gap-4 mt-8 mx-auto ">
-            <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px] max-w-[350px]">
-              <Image
-                alt="Top 5 Best URL Shorteners 2025"
-                src="/Capcut-pro.png"
-                className="w-[350px] h-[220px] rounded-[6px]"
-                width={270}
-                height={180}
-              />
-              <h2 className="roboto-bold text-xl pl-2  ">
-                01.{" "}
-                <Link
-                  title="Redirect to article 01"
-                  className="hover:text-blue-500 transition-all ease-in-out duration-300 hover:underline "
-                  href="/blog/capcut-premium-for-free_06"
-                >
-                  Capcut Pro Download For Free
-                </Link>
-              </h2>
-              <p className="roboto-semibold  pl-2 w-[320px]">
-                After reading the article at the end you will find a download button ...
-              </p>
-              <p className="pl-2 mb-1">
-                <b>Published By:</b>Trimify Owner
-              </p>
-            </article>
-            <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px]">
-              <Image
-                alt="Top 5 Best URL Shorteners 2025"
-                src="/T5BUS.png"
-                className="w-[350px] h-[220px] rounded-[6px]"
-                width={270}
-                height={100}
-              />
-              <h2 className="roboto-bold text-xl pl-2  ">
-                02.{" "}
-                <Link
-                  title="Redirect to article 01"
-                  className="hover:text-blue-500 transition-all ease-in-out duration-300 hover:underline"
-                  href="/blog/01"
-                >
-                  Top 5 Best URL Shorteners 2025
-                </Link>
-              </h2>
-              <p className="roboto-semibold  pl-2 w-[320px]">
-                In this article top 5 best URL Shorteners with there pros and cons are...
-              </p>
-              <p className="pl-2 mb-1">
-                <b>Published By:</b>Trimify Owner
-              </p>
-            </article>
-            <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px]">
-              <Image
-                alt="How to use URL Shorteners"
-                src="/HTUUS.png"
-                className="w-[350px] h-[220px] rounded-[6px]"
-                width={270}
-                height={180}
-              />
-              <h2 className="roboto-bold text-xl pl-2  ">
-                03.{" "}
-                <Link
-                  title="Redirect to article 2"
-                  className="hover:text-blue-500 transition-all ease-in-out duration-300 hover:underline"
-                  href="/blog/02"
-                >
-                  How to Use URL Shorteners ?
-                </Link>
-              </h2>
-              <p className="roboto-semibold  pl-2 w-[320px]">
-                This article will guide usage of top 5 best URL Shorteners and also...
-              </p>
-              <p className="pl-2 mb-1">
-                <b>Published By:</b>Trimify Owner
-              </p>
-            </article>
-            <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px]">
-              <Image
-                alt="Why to use short Links"
-                src="/WTUSL.png"
-                className="w-[350px] h-[220px] rounded-[6px]"
-                width={270}
-                height={180}
-              />
-              <h2 className="roboto-bold text-xl pl-2 ">
-                04.{" "}
-                <Link
-                  title="Redirect to article"
-                  className="hover:text-blue-500 transition-all ease-in-out duration-300 hover:underline"
-                  href="/blog/03"
-                >
-                  Why Use Short Links ?
-                </Link>
-              </h2>
-              <p className="roboto-semibold  pl-2 w-[320px]">
-                Short Link adds beauty to social media profiles and also enhances...
-
-                    
-              </p>
-              <p className="pl-2 mb-1">
-                <b>Published By:</b>Trimify Owner
-              </p>
-            </article>
-            <article className="flex flex-col gap-2 mt-2 bg-white rounded-[5px]">
-              <Image
-                alt="Free vs premium URL Shortener"
-                src="/FVPUS.png"
-                className="w-[350px] h-[220px] rounded-[6px]"
-                width={270}
-                height={180}
-              />
-              <h2 className="roboto-bold text-xl pl-2 ">
-                05.{" "}
-                <Link
-                  className="hover:text-blue-500 transition-all ease-in-out duration-300 hover:underline"
-                  href="/blog/04"
-                  title="Redirect to article 04"
-                >
-                  Free vs Premium URL Shorteners
-                </Link>
-              </h2>
-              <p className="roboto-semibold  pl-2 w-[320px]">
-                Which one is right for you ? Lets try to know about.{" "}
-              </p>
-              <p className="pl-2 mb-1">
-                <b>Published By:</b>Trimify Owner
-              </p>
-            </article>
-
+    <main className="min-h-[calc(100vh-142px)] w-full bg-halftone-warm py-12 px-4 sm:px-6 select-none">
+      <div className="max-w-6xl mx-auto">
+        {/* Page Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FACC15] text-black font-bungee text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] rotate-[-2deg] mb-3">
+            <BookOpen className="w-4 h-4" />
+            <span>KNOWLEDGE HUB</span>
           </div>
+          <h1 className="font-bungee text-3xl sm:text-5xl md:text-6xl text-black tracking-tight drop-shadow-[3px_3px_0px_#FACC15]">
+            FAMOUS & HELPFUL BLOGS
+          </h1>
+          <p className="font-space text-sm sm:text-base font-bold text-black/75 max-w-xl mx-auto mt-2">
+            Tactics, deep dives, and comparisons to supercharge your link marketing strategies.
+          </p>
+        </div>
+
+        {/* Article Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map((item, idx) => (
+            <article
+              key={idx}
+              className="group bg-white border-4 border-black shadow-[6px_6px_0px_#000] hover:shadow-[10px_10px_0px_#000] hover:-translate-y-1.5 transition-all duration-200 flex flex-col justify-between overflow-hidden"
+            >
+              <div>
+                {/* Image Container with Top Badge */}
+                <div className="relative border-b-3 border-black bg-black h-48 overflow-hidden">
+                  <Image
+                    alt={item.title}
+                    src={item.image}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <span
+                    className={`absolute top-3 left-3 px-2.5 py-0.5 text-[11px] font-black uppercase border-2 border-black shadow-[2px_2px_0px_#000] ${item.tagColor}`}
+                  >
+                    {item.tag}
+                  </span>
+                  <span className="absolute top-3 right-3 font-bungee text-sm px-2 py-0.5 bg-black text-[#FACC15] border-2 border-black shadow-[2px_2px_0px_#fff]">
+                    #{item.num}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <h2 className="font-bungee text-lg sm:text-xl text-black group-hover:text-[#EF4444] transition-colors leading-snug mb-2">
+                    <Link href={item.href} className="flex items-start justify-between gap-1">
+                      <span>{item.title}</span>
+                      <ArrowUpRight className="w-4 h-4 shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  </h2>
+                  <p className="font-space text-xs sm:text-sm font-bold text-black/70 leading-relaxed mb-4">
+                    {item.snippet}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="px-5 pb-5 pt-3 border-t-2 border-black/10 flex items-center justify-between text-xs font-bold text-black/60">
+                <span>By: <strong className="text-black font-black">{item.author}</strong></span>
+                <Link
+                  href={item.href}
+                  className="font-bungee text-xs text-black underline hover:text-[#EF4444]"
+                >
+                  READ ARTICLE →
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 
-export default page;
-
+export default BlogPage;

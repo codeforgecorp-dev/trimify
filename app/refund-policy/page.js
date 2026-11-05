@@ -29,8 +29,8 @@ export const metadata = {
     title: "Refund Policy | Trimify",
     description:
       "Official Refund Policy of Trimify. Refunds are only issued in verified cases of non-delivery.",
-    site: "@trimify",        // optional (remove if not registered)
-    creator: "@trimify",     // optional
+    site: "@trimify",
+    creator: "@trimify",
     images: ["/og-image.png"],
   },
   robots: {
@@ -39,10 +39,8 @@ export const metadata = {
   },
 };
 
-const page = () => {
-  
-  const getStructuredData = () => {
-  return {
+const RefundPolicyPage = () => {
+  const getStructuredData = () => ({
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Refund Policy",
@@ -55,184 +53,113 @@ const page = () => {
       url: "https://trimy.me",
     },
     inLanguage: "en",
-  };
-};
+  });
+
   return (
-    
-  <>
-    <Script
+    <>
+      <Script
+        id="refund-structured-data"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getStructuredData()) }}
       />
+      <div className="min-h-screen bg-halftone-warm text-black p-4 sm:p-8 md:p-12 select-none">
+        <div className="max-w-4xl mx-auto bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-10 md:p-12">
+          {/* Header Tag */}
+          <div className="flex items-center justify-between pb-4 border-b-3 border-black mb-6">
+            <span className="inline-block px-3 py-1 bg-[#FACC15] text-black font-bungee text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000] rotate-[-1deg]">
+              BILLING TERMS
+            </span>
+            <span className="text-xs font-black text-[#EF4444] uppercase tracking-wider">
+              ✦ FAIR & TRANSPARENT ✦
+            </span>
+          </div>
 
-    <div className="min-h-screen bg-gray-50 text-gray-900 p-6 md:p-12">
-      <div className="max-w-5xl mx-auto bg-white shadow-md rounded-xl p-8 md:p-12">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">Refund Policy</h1>
-        <p className="text-sm text-gray-500 mb-6">
-          Last updated: December 2025
-        </p>
+          <h1 className="font-bungee text-3xl md:text-5xl mb-2 text-center tracking-tight drop-shadow-[2px_2px_0px_#FACC15]">
+            REFUND POLICY
+          </h1>
+          <p className="text-xs font-black uppercase text-center text-black/60 mb-6">
+            Last updated: December 2025
+          </p>
 
-        <p className="mb-6">
-          At <strong>Trimify</strong>, we aim to provide transparent and fair
-          policies for our users. Please read this Refund Policy carefully before
-          purchasing any plan or service on our website.
-        </p>
+          <p className="font-space text-base sm:text-lg font-bold text-black/80 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
+            At <span className="font-black text-black underline decoration-[#FACC15] decoration-4">Trimify</span>, we believe in straightforward, clear policies. Please review our refund guidelines prior to acquiring any premium license or package.
+          </p>
 
-        <hr className="my-6" />
+          <div className="space-y-6 font-space text-sm sm:text-base font-bold text-black/85 leading-relaxed">
+            {/* 1 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-2 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#EF4444] text-white border-2 border-black text-xs font-black">01</span>
+                <span>NO REFUND AFTER SUCCESSFUL DELIVERY</span>
+              </h2>
+              <p className="mb-2">
+                Due to the instantaneous digital activation of our SaaS infrastructure, purchases on Trimify are <strong>final and non-refundable</strong> once service has been granted.
+              </p>
+              <ul className="list-disc ml-6 space-y-1 text-black/80">
+                <li>All lifetime license offerings.</li>
+                <li>Discounted early-bird promos.</li>
+                <li>Digital features already credited to the user account.</li>
+              </ul>
+            </section>
 
-        {/* Section 1 */}
-        <h2 className="text-xl font-semibold mb-2">
-          1. No Refund After Purchase
-        </h2>
-        <p className="mb-4">
-          All purchases made on Trimify are <strong>final and non-refundable</strong>.
-          Once a package or plan has been successfully purchased, the paid amount
-          will not be refunded under normal circumstances.
-        </p>
+            {/* 2 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-2 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#FACC15] border-2 border-black text-xs font-black">02</span>
+                <span>EXCEPTION: VERIFIED NON-DELIVERY</span>
+              </h2>
+              <p className="mb-2">A full refund is honored if:</p>
+              <ul className="list-disc ml-6 space-y-1 text-black/80">
+                <li>Payment was processed but premium features failed to activate within 24 hours.</li>
+                <li>Technical system failures on Trimify prevented product access despite valid proof.</li>
+                <li>Our engineering team was unable to resolve the delivery failure within 48 hours of notification.</li>
+              </ul>
+            </section>
 
-        <ul className="list-disc ml-6 mb-4">
-          <li>Basic plans</li>
-          <li>Premium or lifetime plans</li>
-          <li>Promotional or discounted offers</li>
-        </ul>
+            {/* 3 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-2 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#F97316] text-white border-2 border-black text-xs font-black">03</span>
+                <span>REFUND REQUEST WINDOW</span>
+              </h2>
+              <p>
+                Non-delivery claims must be submitted within <strong>7 days</strong> from the transaction date. Claims submitted after 7 days are ineligible for review.
+              </p>
+            </section>
 
-        <p className="mb-6">
-          By completing a purchase, you acknowledge and agree that refunds are not
-          guaranteed after payment confirmation.
-        </p>
+            {/* 4 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-2 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#FACC15] border-2 border-black text-xs font-black">04</span>
+                <span>HOW TO REQUEST A REFUND</span>
+              </h2>
+              <p className="mb-2">Send an email to <strong className="text-[#EF4444]">trimify4u@gmail.com</strong> with:</p>
+              <ul className="list-disc ml-6 space-y-1 text-black/80">
+                <li>Your registered Trimify account email.</li>
+                <li>Transaction or Order ID from Paddle / Payment Provider.</li>
+                <li>Screenshot showing feature non-activation on your dashboard.</li>
+              </ul>
+            </section>
 
-        {/* Section 2 */}
-        <h2 className="text-xl font-semibold mb-2">
-          2. Exception – Non-Delivery of Product
-        </h2>
-        <p className="mb-4">
-          A refund may only be considered in exceptional cases where:
-        </p>
+            {/* Contact */}
+            <div className="p-5 bg-[#FEF3C7] border-3 border-black shadow-[3px_3px_0px_#000] text-center">
+              <h2 className="font-bungee text-lg text-black mb-1">BILLING QUESTIONS?</h2>
+              <p className="font-space text-sm font-bold text-black/80">
+                Contact our customer support team directly at{" "}
+                <a href="mailto:trimify4u@gmail.com" className="font-bungee text-[#EF4444] underline hover:text-black">
+                  trimify4u@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
 
-        <ul className="list-disc ml-6 mb-4">
-          <li>
-            The payment has been successfully deducted from the user’s account,
-            and
-          </li>
-          <li>
-            The purchased product or service was not delivered or activated on the
-            user’s Trimify account.
-          </li>
-        </ul>
-
-        <p className="mb-6">
-          Refunds will only be processed after a proper investigation by our team.
-        </p>
-
-        {/* Section 3 */}
-        <h2 className="text-xl font-semibold mb-2">
-          3. Required Proof for Refund Requests
-        </h2>
-        <p className="mb-4">
-          To request a refund under the non-delivery exception, the user must
-          provide valid proof, including but not limited to:
-        </p>
-
-        <ul className="list-disc ml-6 mb-6">
-          <li>Clear screenshot (SS) of the transaction receipt</li>
-          <li>Payment reference ID or transaction number</li>
-          <li>Registered email address used on Trimify</li>
-          <li>Date and time of the transaction</li>
-        </ul>
-
-        <p className="mb-6 font-medium">
-          Requests without sufficient proof will not be entertained.
-        </p>
-
-        {/* Section 4 */}
-        <h2 className="text-xl font-semibold mb-2">
-          4. Investigation & Approval Process
-        </h2>
-        <ol className="list-decimal ml-6 mb-6">
-          <li>
-            Our team will verify the payment details with the payment gateway.
-          </li>
-          <li>
-            We will check delivery logs and account activation records.
-          </li>
-          <li>
-            If it is confirmed that the amount was deducted but the product was not
-            delivered, the refund will be approved.
-          </li>
-        </ol>
-
-        <p className="mb-6">
-          If the investigation shows that the product or service was delivered
-          successfully, no refund will be issued.
-        </p>
-
-        {/* Section 5 */}
-        <h2 className="text-xl font-semibold mb-2">
-          5. Refund Method & Timeline
-        </h2>
-        <ul className="list-disc ml-6 mb-6">
-          <li>
-            Approved refunds will be processed using the original payment method.
-          </li>
-          <li>
-            Refund processing typically takes 7–14 working days.
-          </li>
-          <li>
-            Trimify is not responsible for delays caused by banks or third-party
-            payment gateways.
-          </li>
-        </ul>
-
-        {/* Section 6 */}
-        <h2 className="text-xl font-semibold mb-2">
-          6. Chargebacks & Disputes
-        </h2>
-        <p className="mb-4">
-          Initiating a chargeback or payment dispute without contacting Trimify
-          support first may result in:
-        </p>
-
-        <ul className="list-disc ml-6 mb-6">
-          <li>Account suspension or termination</li>
-          <li>Permanent restriction from using our services</li>
-        </ul>
-
-        {/* Section 7 */}
-        <h2 className="text-xl font-semibold mb-2">
-          7. Policy Updates
-        </h2>
-        <p className="mb-6">
-          Trimify reserves the right to update or modify this Refund Policy at any
-          time without prior notice. Changes will be effective immediately upon
-          posting on this page.
-        </p>
-
-        {/* Section 8 */}
-        <h2 className="text-xl font-semibold mb-2">
-          8. Contact Us
-        </h2>
-        <p className="mb-2">
-          For refund-related queries, please contact us at:
-        </p>
-
-        <p className="font-medium">
-          Email:{" "}
-          <a
-            href="mailto:support@trimy.me"
-            className="text-blue-600 underline"
-          >
-            support@trimy.me
-          </a>
-        </p>
-
-        <p className="mt-6 text-sm text-gray-600">
-          By purchasing any service on Trimify, you agree to this Refund Policy in
-          full.
-        </p>
+          <p className="mt-8 text-xs font-bold text-black/60 text-center">
+            &copy; {new Date().getFullYear()} Trimify. All rights reserved.
+          </p>
+        </div>
       </div>
-   </div>
-   </>
+    </>
   );
 };
 
-export default page;
+export default RefundPolicyPage;

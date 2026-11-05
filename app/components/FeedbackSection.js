@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import Loader from "./Loader";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import e from "cors";
+import { MessageSquare, Send, Sparkles, User, Mail, MessageCircle } from "lucide-react";
+
 const FeedbackSection = ({ pageNo }) => {
   const [Feedbacks, setFeedbacks] = useState();
   const [email, setemail] = useState("");
@@ -16,12 +16,14 @@ const FeedbackSection = ({ pageNo }) => {
 
   useEffect(() => {
     async function getFeedback() {
-      let request = await fetch(`/api/blog?blogPageNo=${pageNo}`);
-      let result = await request.json();
-      if (result.success !== true) {
-        return;
-      } else {
-        setFeedbacks(result.Feedback);
+      try {
+        let request = await fetch(`/api/blog?blogPageNo=${pageNo}`);
+        let result = await request.json();
+        if (result.success === true) {
+          setFeedbacks(result.Feedback);
+        }
+      } catch (err) {
+        console.error("Feedback fetch error:", err);
       }
     }
     getFeedback();
@@ -29,24 +31,24 @@ const FeedbackSection = ({ pageNo }) => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (username.length < 4) {
-      toast.warn("Please enter your username. Minimum length is 4", {
+    if (username.trim().length < 4) {
+      toast.warn("Username must be at least 4 characters", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2500,
       });
       return;
     }
-    if (email.length < 8) {
-      toast.warn("Please enter a valid email", {
+    if (email.trim().length < 8) {
+      toast.warn("Please enter a valid email address", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2500,
       });
       return;
     }
-    if (feedback.length < 20) {
-      toast.warn("Minimum length of feedback is 20 characters", {
+    if (feedback.trim().length < 20) {
+      toast.warn("Feedback must be at least 20 characters", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2500,
       });
       return;
     }
@@ -60,167 +62,181 @@ const FeedbackSection = ({ pageNo }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          Username: username,
-          Email: email,
-          Feedback: feedback,
+          Username: username.trim(),
+          Email: email.trim(),
+          Feedback: feedback.trim(),
           blogPageNo: pageNo,
         }),
       });
 
       let response = await a.json();
 
-
-      if (response.status === 200) {
-        toast.success("Feedback submitted successfully.", {
+      if (response.status === 200 || response.success) {
+        toast.success("Feedback submitted successfully!", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 2500,
         });
 
-        // ✅ Add feedback to list instantly
         setFeedbacks((prev) => [
           {
-            Username: username,
-            Email: email,
-            Feedback: feedback,
+            Username: username.trim(),
+            Email: email.trim(),
+            Feedback: feedback.trim(),
             createdAt: new Date().toISOString(),
           },
-          ...prev,
+          ...(prev || []),
         ]);
 
-        // Clear form fields
         setemail("");
         setusername("");
         setfeedback("");
       } else {
-        toast.error("Failed to submit. Try Again", {
+        toast.error("Failed to submit. Try again", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 2500,
         });
       }
-    } catch (error) {
-
-      toast.error("Something went wrong!", {
+    } catch {
+      toast.error("Network error! Try again later", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2500,
       });
     }
 
     setloading(false);
   }
-  return (
-    <>
-      <ToastContainer />
-      <h2 className="bg-slate-800 bree-bold m-2 text-3xl text-white p-4 text-center">
-        User Feedback Section
-      </h2>
-      <div className="md:flex  p-4">
-        <div className=" flex bg-gray-100 flex-col gap-8 py-8 border-black border-3 md:w-[37%] max-h-fit">
-          <h2 className="mx-4 roboto-bold text-3xl">Give Your Feedback</h2>
 
-          <form>
-            <div className="flex flex-col gap-4 mx-4">
-              {/* Username Field */}
-              <div className="flex flex-col items-start gap-2 ">
-                <label htmlFor="username" className="text-2xl">
-                  Enter your Username:
-                </label>
+  return (
+    <section className="w-full my-12 select-none">
+      <ToastContainer className="pt-16" />
+
+      {/* Section Header */}
+      <div className="bg-[#0A0A0A] border-3 border-black text-[#FACC15] p-4 text-center mb-6 shadow-[4px_4px_0px_#EF4444]">
+        <h2 className="font-bungee text-2xl sm:text-3xl tracking-wide flex items-center justify-center gap-2">
+          <MessageCircle className="w-6 h-6 stroke-[2.5]" />
+          <span>COMMUNITY FEEDBACK</span>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Form Container (Col 1-5) */}
+        <div className="lg:col-span-5 bg-white border-4 border-black p-6 shadow-[6px_6px_0px_#000]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FACC15] border-2 border-black font-bungee text-xs uppercase mb-4 shadow-[2px_2px_0px_#000] rotate-[-1deg]">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>SHARE THOUGHTS</span>
+          </div>
+
+          <h3 className="font-bungee text-xl text-black mb-4">GIVE YOUR FEEDBACK</h3>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Username */}
+            <div>
+              <label htmlFor="username" className="block font-bungee text-xs text-black uppercase mb-1">
+                Your Username:
+              </label>
+              <div className="relative">
                 <input
                   value={username}
-                  onChange={(e) => {
-                    setusername(e.target.value);
-                  }}
+                  onChange={(e) => setusername(e.target.value)}
                   required
                   type="text"
                   id="username"
-                  className="border-black border-2 bg-white outline-none focus:scale-103 transition-all ease-in-out duration-300 px-3 py-2 w-full md:w-80 roboto-semi"
-                  placeholder="Enter your Username"
+                  className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+                  placeholder="e.g. AlexMorgan"
                 />
               </div>
-
-              {/* Email Field */}
-              <div className="flex flex-col items-start gap-2">
-                <label htmlFor="email" className="text-2xl">
-                  Enter your Email:
-                </label>
-                <input
-                  value={email}
-                  onChange={(e) => {
-                    setemail(e.target.value);
-                  }}
-                  required
-                  placeholder="Enter your Email"
-                  type="email"
-                  id="email"
-                  className="border-black border-2 bg-white outline-none focus:scale-103 transition-all ease-in-out duration-300 px-3 py-2 w-full md:w-80 roboto-semi"
-                />
-              </div>
-
-              {/* Feedback form */}
-
-              <div className="flex flex-col items-start gap-2">
-                <label htmlFor="email" className="text-2xl ">
-                  <h2> Your Feedback: </h2>
-                </label>
-                <textarea
-                  value={feedback}
-                  onChange={(e) => {
-                    setfeedback(e.target.value);
-                  }}
-                  required
-                  placeholder="Max Length is 400 character!"
-                  name="feedback"
-                  id="feedback"
-                  cols="60"
-                  rows={6}
-                  maxLength={400}
-                  className="bg-white border-black border-2 outline-none focus:scale-102 transition-all ease-in-out duration-300 resize-none p-2 roboto-semi max-w-full md:w-auto "
-                ></textarea>
-              </div>
-              {loading && <Loader />}
-              <button
-                onClick={handleSubmit}
-                title="Submit your Feedback"
-                className="bg-gray-900 text-white p-4 cursor-pointer rounded-[6px] roboto-bold text-xl  transition-all ease-in-out duration-300 hover:bg-white hover:text-black  hover:scale-102 "
-              >
-                Submit now
-              </button>
             </div>
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block font-bungee text-xs text-black uppercase mb-1">
+                Your Email:
+              </label>
+              <input
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                required
+                placeholder="alex@example.com"
+                type="email"
+                id="email"
+                className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+              />
+            </div>
+
+            {/* Feedback Content */}
+            <div>
+              <label htmlFor="feedback" className="block font-bungee text-xs text-black uppercase mb-1">
+                Your Feedback (min 20 chars):
+              </label>
+              <textarea
+                value={feedback}
+                onChange={(e) => setfeedback(e.target.value)}
+                required
+                placeholder="Write your honest comments or questions here..."
+                name="feedback"
+                id="feedback"
+                rows={4}
+                maxLength={400}
+                className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm focus:bg-white focus:outline-none resize-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+              />
+              <span className="text-[11px] font-bold text-black/50 block text-right mt-0.5">
+                {feedback.length}/400
+              </span>
+            </div>
+
+            {loading && <Loader />}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full brutal-btn brutal-btn-red py-3 font-bungee text-sm tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+            >
+              <span>{loading ? "SUBMITTING..." : "SUBMIT FEEDBACK"}</span>
+              <Send className="w-4 h-4 stroke-[3]" />
+            </button>
           </form>
         </div>
-        <div className="mt-4 md:mt-0 md:mx-4 bg-gray-100 flex flex-col gap-4 border-black border-3 py-8 px-4 overflow-y-auto max-h-[613px] w-full md:min-w-[62%] ">
-          <h2 className=" roboto-bold text-3xl ">Past User Feedback</h2>
-          <h2>Total Feedbacks ({Feedbacks?.length})</h2>
-          {Feedbacks?.length === 0 && (
-            <div className="flex justify-center item-center md:mt-40 underline text-xl roboto-bold ">
-              {" "}
-              <h2>No Feedback Found</h2>
+
+        {/* Feedback List Container (Col 6-12) */}
+        <div className="lg:col-span-7 bg-[#FFFBEB] border-4 border-black p-6 shadow-[6px_6px_0px_#000] flex flex-col gap-4 max-h-[640px] overflow-y-auto">
+          <div className="flex items-center justify-between pb-3 border-b-2 border-black/20">
+            <h3 className="font-bungee text-xl text-black">PAST COMMENTS</h3>
+            <span className="px-2.5 py-0.5 bg-[#FACC15] text-black font-black text-xs uppercase border-2 border-black shadow-[1px_1px_0px_#000]">
+              {Feedbacks?.length || 0} TOTAL
+            </span>
+          </div>
+
+          {(!Feedbacks || Feedbacks.length === 0) && (
+            <div className="py-12 text-center font-bungee text-black/50 text-base">
+              NO FEEDBACK YET. BE THE FIRST TO COMMENT!
             </div>
           )}
 
-          {Feedbacks?.map((items, index) => (
+          {Feedbacks?.map((item, index) => (
             <div
               key={index}
-              className="border border-gray-300 bg-white shadow-md rounded-xl p-5 transition-transform duration-300 hover:scale-[1.0] hover:shadow-lg"
+              className="bg-white border-2 border-black p-4 shadow-[3px_3px_0px_#000] flex flex-col gap-2"
             >
-              <div className="flex justify-between items-center mb-2">
-                <h2 className="text-lg font-semibold text-gray-800">
-                  {items.Username}
-                </h2>
-                <span className="text-sm text-gray-500">
-                  {dayjs(items.createdAt).fromNow()}
+              <div className="flex justify-between items-center">
+                <span className="font-bungee text-sm text-black flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5 text-[#EF4444]" />
+                  <span>{item.Username}</span>
+                </span>
+                <span className="font-space text-[11px] font-bold text-black/50">
+                  {dayjs(item.createdAt).fromNow()}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 mb-1">
-                <b>Email:</b> {items.Email}
+              <p className="font-space text-xs font-bold text-black/60 truncate">
+                {item.Email}
               </p>
-              <p className="text-gray-700 text-base italic">
-                “{items.Feedback}”
+              <p className="font-space text-sm font-bold text-black/85 leading-relaxed pt-1 border-t border-black/10">
+                "{item.Feedback}"
               </p>
             </div>
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

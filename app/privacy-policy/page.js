@@ -1,5 +1,3 @@
-
-
 export const metadata = {
   title: "Trimify Privacy Policy - Short Links with UTM building",
   description:
@@ -83,75 +81,129 @@ const PrivacyPolicy = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-    <div className="min-h-screen bg-gray-50 text-gray-900 p-6 md:p-12"> 
-  <div className="max-w-5xl mx-auto bg-white shadow-md rounded-xl p-8 md:p-12"> 
-    <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">Privacy Policy</h1> 
-    <p className="mb-4"> 
-      At <span className="font-semibold">Trimify</span>, your privacy is our priority. This Privacy Policy explains how we collect, use, and safeguard your personal information when you use our services. 
-    </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">1. Information We Collect</h2> 
-    <ul className="list-disc ml-6 space-y-2"> 
-      <li>Email addresses and account credentials when you sign up.</li> 
-      <li>URLs you create, including custom aliases and analytics data.</li> 
-      <li>Device, browser, and usage information to monitor performance and enhance user experience.</li> 
-      <li>Cookies and tracking technologies for authentication, personalization, and analytics.</li> 
-      <li>IP addresses and geolocation data for fraud detection and security purposes.</li> 
-    </ul> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">2. How We Use Your Data</h2> 
-    <ul className="list-disc ml-6 space-y-2"> 
-      <li>To provide and maintain Trimify services.</li> 
-      <li>To manage your account securely using JWT authentication.</li> 
-      <li>To personalize your experience and provide dashboard analytics.</li> 
-      <li>To communicate important updates and notifications.</li> 
-      <li>To analyze service usage and improve platform functionality.</li> 
-      <li>To comply with legal obligations and prevent fraud or abuse.</li> 
-    </ul> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">3. Cookies & Tracking</h2> 
-    <p className="mb-4"> Trimify uses cookies and similar technologies for multiple purposes: </p> 
-    <ul className="list-disc ml-6 space-y-2"> 
-      <li> <span className="font-semibold">Essential Cookies:</span> Required for authentication, secure JWT session management, and core functionality. </li> 
-      <li> <span className="font-semibold">Functional Cookies:</span> Remember preferences like theme, dashboard layout, or language settings. </li> 
-      <li> <span className="font-semibold">Analytics Cookies:</span> Collect usage information to monitor performance and improve services. </li> 
-      <li> <span className="font-semibold">Marketing Cookies:</span> Used only if you consent to promotional content or newsletters. </li> 
-    </ul> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">4. JWT Authentication</h2> 
-    <p className="mb-4"> We use JSON Web Tokens (JWT) to securely authenticate users. JWTs are stored in your browser (localStorage) and are used to verify identity for dashboard access, protected routes, and API requests. Tokens are encrypted and not shared with third parties. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">5. Data Sharing & Security</h2> 
-    <p className="mb-4"> Trimify does not sell your data. We may share your information only: </p> 
-    <ul className="list-disc ml-6 space-y-2"> 
-      <li>With trusted service providers (e.g., hosting, email, analytics) bound by confidentiality agreements.</li> 
-      <li>To comply with legal obligations or prevent fraudulent activity.</li> 
-      <li>To protect Trimify, its users, and public safety.</li> 
-    </ul> 
-    <p className="mb-4"> We implement strong security measures, including HTTPS, encryption, secure JWT handling, and access controls to protect your data. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">6. Data Retention</h2> 
-    <p className="mb-4"> We retain personal data only as long as necessary for the purposes outlined in this policy or as required by law. Users may request deletion of their account and associated data at any time. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">7. Children’s Privacy</h2> 
-    <p className="mb-4"> Trimify is not intended for children under 13 years old. We do not knowingly collect personal information from children. If we become aware of such data, we will delete it promptly. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">8. International Users & Data Transfers</h2> 
-    <p className="mb-4"> Your data may be stored or processed in countries outside your residence. We ensure that international data transfers comply with relevant laws and data protection standards. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">9. Automated Decision-Making & Profiling</h2> 
-    <p className="mb-4"> We do not use automated decision-making that affects users' rights. Data analysis is used solely for service improvements and performance monitoring. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">10. User Rights & Regulations</h2> 
-    <p className="mb-4"> In compliance with GDPR, CCPA, and other applicable regulations: </p> 
-    <ul className="list-disc ml-6 space-y-2"> 
-      <li>Access, correct, or delete your personal data.</li> 
-      <li>Download all your data collected by Trimify.</li> 
-      <li>Withdraw consent for marketing communications.</li> 
-      <li>Object to processing in specific circumstances.</li> 
-    </ul> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">11. Third-Party Services</h2> 
-    <p className="mb-4"> We use third-party services for analytics, email, and cloud hosting. These services may collect and process your data as per their privacy policies. We ensure they comply with privacy standards. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">12. Changes to This Policy</h2> 
-    <p className="mb-4"> We may update this Privacy Policy periodically. The latest version is always available on our website. Continued use of Trimify after changes indicates consent to the updated policy. </p> 
-    <h2 className="text-2xl font-semibold mt-8 mb-4">13. Contact Us</h2> 
-    <p> For questions or concerns regarding this Privacy Policy or your data, contact us at{" "} 
-      <a href="mailto:trimify4u@gmail.com" className="text-blue-600 underline"> trimify4u@gmail.com </a>. 
-    </p> 
-    <p className="mt-8 text-sm text-gray-500 text-center"> &copy; {new Date().getFullYear()} Trimify. All rights reserved. </p> 
-  </div> 
-</div>
+      <div className="min-h-screen bg-halftone-warm text-black p-4 sm:p-8 md:p-12 select-none">
+        <div className="max-w-4xl mx-auto bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-10 md:p-12">
+          {/* Header Tag */}
+          <div className="flex items-center justify-between pb-4 border-b-3 border-black mb-6">
+            <span className="inline-block px-3 py-1 bg-[#FACC15] text-black font-bungee text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000] rotate-[-1deg]">
+              LEGAL DOCUMENT
+            </span>
+            <span className="text-xs font-black text-[#EF4444] uppercase tracking-wider">
+              ✦ GDPR & CCPA COMPLIANT ✦
+            </span>
+          </div>
 
+          <h1 className="font-bungee text-3xl md:text-5xl mb-4 text-center tracking-tight drop-shadow-[2px_2px_0px_#FACC15]">
+            PRIVACY POLICY
+          </h1>
+          <p className="font-space text-base sm:text-lg font-bold text-black/80 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
+            At <span className="font-black text-black underline decoration-[#FACC15] decoration-4">Trimify</span>, your privacy is our absolute priority. This Privacy Policy explains how we collect, use, and safeguard your data when using our URL shortener and analytics tools.
+          </p>
+
+          <div className="space-y-8 font-space text-sm sm:text-base font-bold text-black/85 leading-relaxed">
+            {/* 1 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-3 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#FACC15] border-2 border-black text-xs font-black">01</span>
+                <span>INFORMATION WE COLLECT</span>
+              </h2>
+              <ul className="list-disc ml-6 space-y-2 text-black/80 font-bold">
+                <li>Email addresses and account credentials during account creation.</li>
+                <li>URLs you generate, including custom slugs, tags, and analytics histories.</li>
+                <li>Device, browser type, and interaction metrics to optimize redirect speeds.</li>
+                <li>Cookies and authentication tokens for secure JWT session management.</li>
+                <li>Hashed IP addresses and country geolocation for abuse prevention.</li>
+              </ul>
+            </section>
+
+            {/* 2 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-3 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#EF4444] text-white border-2 border-black text-xs font-black">02</span>
+                <span>HOW WE USE YOUR DATA</span>
+              </h2>
+              <ul className="list-disc ml-6 space-y-2 text-black/80 font-bold">
+                <li>To route and serve instantaneous URL redirects.</li>
+                <li>To power your personal link management dashboard.</li>
+                <li>To secure sessions with verified JWT cryptographic tokens.</li>
+                <li>To prevent fraud, malware, spam, and phishing campaigns.</li>
+                <li>To comply with regulatory standards and legal obligations.</li>
+              </ul>
+            </section>
+
+            {/* 3 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-3 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#F97316] text-white border-2 border-black text-xs font-black">03</span>
+                <span>COOKIES & TRACKING</span>
+              </h2>
+              <p className="mb-3">Trimify utilizes minimal cookies solely to power core features:</p>
+              <ul className="list-disc ml-6 space-y-2 text-black/80 font-bold">
+                <li><strong>Essential Cookies:</strong> Required for secure JWT login verification.</li>
+                <li><strong>Functional Cookies:</strong> Retain layout choices and cookie consent state.</li>
+                <li><strong>Analytics Cookies:</strong> Aggregated, non-identifying performance measurements.</li>
+                <li><strong>Marketing Cookies:</strong> Only applied if explicitly opted into.</li>
+              </ul>
+            </section>
+
+            {/* 4 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-3 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#FACC15] border-2 border-black text-xs font-black">04</span>
+                <span>JWT AUTHENTICATION</span>
+              </h2>
+              <p>
+                We leverage JSON Web Tokens (JWT) stored locally on your device for fast, cryptographically signed authentication. Tokens are never sold or shared with any advertising brokers.
+              </p>
+            </section>
+
+            {/* 5 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000]">
+              <h2 className="font-bungee text-xl text-black mb-3 flex items-center gap-2">
+                <span className="px-2 py-0.5 bg-[#EF4444] text-white border-2 border-black text-xs font-black">05</span>
+                <span>DATA SHARING & SECURITY</span>
+              </h2>
+              <p className="mb-2">We never sell personal information. Disclosures only occur:</p>
+              <ul className="list-disc ml-6 space-y-2 text-black/80 font-bold">
+                <li>With vetted infrastructure providers under strict non-disclosure terms.</li>
+                <li>When required by enforceable legal process or court mandate.</li>
+                <li>To safeguard Trimify users and defend against security exploits.</li>
+              </ul>
+            </section>
+
+            {/* 6 to 12 */}
+            <section className="p-5 bg-[#FFFDF0] border-3 border-black shadow-[3px_3px_0px_#000] space-y-4">
+              <div>
+                <h2 className="font-bungee text-lg text-black mb-1">06. DATA RETENTION & DELETION</h2>
+                <p>We preserve records solely as needed for operational integrity. Users may delete their links or entire account data at any moment from the dashboard.</p>
+              </div>
+              <div className="pt-3 border-t-2 border-black/15">
+                <h2 className="font-bungee text-lg text-black mb-1">07. YOUR RIGHTS (GDPR & CCPA)</h2>
+                <p>You have full rights to inspect, download, modify, or permanently purge all personal information held in Trimify systems.</p>
+              </div>
+              <div className="pt-3 border-t-2 border-black/15">
+                <h2 className="font-bungee text-lg text-black mb-1">08. POLICY UPDATES</h2>
+                <p>Any updates to this policy are posted directly to this URL with modified timestamps.</p>
+              </div>
+            </section>
+
+            {/* Contact */}
+            <div className="p-5 bg-[#FEF3C7] border-3 border-black shadow-[3px_3px_0px_#000] text-center">
+              <h2 className="font-bungee text-lg text-black mb-2">PRIVACY INQUIRIES</h2>
+              <p className="font-space text-sm font-bold text-black/80">
+                Contact our privacy compliance desk directly at{" "}
+                <a href="mailto:trimify4u@gmail.com" className="font-bungee text-[#EF4444] underline hover:text-black">
+                  trimify4u@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-8 text-xs font-bold text-black/60 text-center">
+            &copy; {new Date().getFullYear()} Trimify. All rights reserved.
+          </p>
+        </div>
+      </div>
     </>
   );
 };
