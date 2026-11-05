@@ -1,7 +1,6 @@
-"use client"
-import React from "react"
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/cards"
+"use client";
+import React from "react";
+import Link from "next/link";
 import {
   Check,
   Star,
@@ -9,132 +8,160 @@ import {
   Lock,
   Link as LinkIcon,
   QrCode,
-  Users,
   Globe,
   Clock,
   ShieldCheck,
-} from "lucide-react"
+  Flame,
+  Zap,
+  Sparkles,
+} from "lucide-react";
 
 export const PricingSection = () => {
   const plans = [
     {
-      name: "Free",
+      name: "FREE STARTER",
       price: "$0",
-      description: "Perfect for personal use",
+      cadence: "FOREVER FREE",
+      badge: "ESSENTIAL",
+      badgeColor: "bg-[#FACC15] text-black",
+      cardBg: "bg-white",
+      description: "Ideal for quick sharing, social bios, and personal projects.",
       features: [
         { label: "Unlimited Short Links", icon: LinkIcon },
-        { label: "Basic Analytics", icon: BarChart3 },
-        { label: "Custom Aliases", icon: Globe },
-        { label: "QR Code Generation", icon: QrCode },
+        { label: "Real-time Click Counters", icon: BarChart3 },
+        { label: "Standard QR Code Generator", icon: QrCode },
+        { label: "Instant Redirection Speed", icon: Zap },
       ],
-      button: "Get Started",
+      button: "START FOR FREE",
+      buttonStyle: "bg-white text-black hover:bg-[#FFFBEB]",
       highlight: false,
     },
     {
-      name: "Premium",
-      price: "$0 Lifetime",
+      name: "PREMIUM PRO",
+      price: "$0",
       originalPrice: "$30",
-      description: "Best for creators & marketers",
+      cadence: "LIFETIME PASS",
+      badge: "🔥 100% FREE LIFETIME",
+      badgeColor: "bg-[#EF4444] text-white animate-wiggle",
+      cardBg: "bg-[#FFFBEB]",
+      description: "Everything you need for serious growth, creators & power link managers.",
       features: [
-        { label: "Advanced Analytics", icon: BarChart3 },
-        { label: "Password Protected Links", icon: Lock },
-        { label: "Link Expiry Control", icon: Clock },
-        { label: "UTM Tracking", icon: Globe },
-        { label: "Custom Aliases", icon: Globe },
-        { label: "QR Code Generation", icon: QrCode },
-        { label: "Priority Support", icon: ShieldCheck },
+        { label: "Everything in Free Starter", icon: Check },
+        { label: "Custom Branded Aliases / Slugs", icon: Globe },
+        { label: "Password-Protected Secret Links", icon: Lock },
+        { label: "Link Expiration Date & Click Limits", icon: Clock },
+        { label: "UTM Campaign Source & Medium Builder", icon: Sparkles },
+        { label: "Full Geo & Device Analytics", icon: BarChart3 },
+        { label: "Priority Fast-Track Support", icon: ShieldCheck },
       ],
-      button: "Sign up Now",
+      button: "CLAIM FREE LIFETIME PRO",
+      buttonStyle: "bg-[#EF4444] text-white hover:bg-[#DC2626]",
       highlight: true,
-    }
-
-  ]
+    },
+  ];
 
   return (
-    <section className="w-full max-w-5xl px-4 py-20 md:mx-auto  ">
-      {/* Header */}
+    <section className="w-full max-w-6xl mx-auto px-4 py-16 md:py-24 relative select-none">
+      {/* Decorative Floating Stickers */}
+      <div className="hidden lg:block absolute -top-4 right-8 rotate-12 z-10 pointer-events-none">
+        <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#F97316] text-white font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000]">
+          <Star className="w-4 h-4 fill-[#FACC15] text-black" /> NO HIDDEN UPSELLS
+        </span>
+      </div>
+
+      {/* Section Header */}
       <div className="text-center mb-14">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
-          Simple & Transparent Pricing
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FACC15] border-2 border-black shadow-[3px_3px_0px_#000] rotate-[-1.5deg] mb-3">
+          <Flame className="w-4 h-4 fill-[#EF4444] text-[#EF4444]" />
+          <span className="text-xs font-black uppercase tracking-wider text-black">
+            UNBEATABLE PRICING
+          </span>
+        </div>
+        <h2 className="font-bungee text-3xl md:text-5xl text-black tracking-tight drop-shadow-[2px_2px_0px_#FACC15]">
+          SIMPLE & TRANSPARENT PRICING
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Choose a plan that fits your needs. Sign Up for Premium.
+        <p className="font-space text-base md:text-lg font-bold text-black/75 max-w-xl mx-auto mt-2">
+          Pick your plan, start trimming URLs in 3 seconds. Our Premium plan is currently <span className="underline decoration-[#EF4444] decoration-4 font-black text-black">100% Free ($0)</span> for early adopters!
         </p>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-stretch">
+      {/* Pricing Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         {plans.map((plan, index) => (
-          <Card
+          <div
             key={index}
-            className={`relative w-full bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700 transition-all duration-300
-              ${plan.highlight
-                ? "md:scale-105 scale-102 border-cyan-500 shadow-2xl shadow-cyan-500/20"
-                : "hover:border-gray-600 hover:-translate-y-2"
-              }
-            `}
+            className={`relative flex flex-col justify-between border-4 border-black p-6 md:p-8 ${plan.cardBg} transition-all duration-200 ${
+              plan.highlight
+                ? "shadow-[8px_8px_0px_#000] md:-translate-y-2 ring-2 ring-[#EF4444]"
+                : "shadow-[5px_5px_0px_#000] hover:shadow-[7px_7px_0px_#000] hover:-translate-y-1"
+            }`}
           >
-            {/* Badge */}
-            {/* Badge */}
-            {plan.highlight && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm rounded-full flex items-center gap-1 animate-pulse">
-                🔥 100% Free – Lifetime Offer
-              </div>
-            )}
+            {/* Top Badge Sticker */}
+            <div className="absolute -top-4 left-6 z-10">
+              <span
+                className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_#000] ${plan.badgeColor}`}
+              >
+                {plan.badge}
+              </span>
+            </div>
 
+            <div>
+              {/* Card Header */}
+              <div className="pt-2 pb-4 border-b-3 border-black">
+                <h3 className="font-bungee text-2xl md:text-3xl text-black tracking-wide">
+                  {plan.name}
+                </h3>
+                <p className="text-xs md:text-sm font-bold text-black/70 mt-1">
+                  {plan.description}
+                </p>
 
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-gray-100">
-                {plan.name}
-              </CardTitle>
-              <div className="mt-3 flex flex-col items-center">
-                {plan.originalPrice && (
-                  <span className="text-sm text-gray-400 line-through">
-                    {plan.originalPrice}
+                {/* Price Display */}
+                <div className="mt-4 flex items-baseline gap-3">
+                  {plan.originalPrice && (
+                    <span className="font-bungee text-xl text-black/40 line-through">
+                      {plan.originalPrice}
+                    </span>
+                  )}
+                  <span className="font-bungee text-4xl md:text-5xl text-black drop-shadow-[2px_2px_0px_#FACC15]">
+                    {plan.price}
                   </span>
-                )}
-                <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                  {plan.price}
+                  <span className="px-2 py-0.5 text-xs font-black uppercase bg-[#FACC15] text-black border-2 border-black shadow-[1px_1px_0px_#000] rotate-[-2deg]">
+                    {plan.cadence}
+                  </span>
                 </div>
-                {plan.highlight && (
-                  <p className="text-xs text-gray-400 mt-1">
-                    Premium Plan for Free ($0)
-                  </p>
-                )}
               </div>
-              <p className="text-gray-400 mt-2">{plan.description}</p>
-            </CardHeader>
 
-            <CardContent>
-              <ul className="space-y-3 mb-6">
+              {/* Feature List */}
+              <ul className="py-6 space-y-3.5">
                 {plan.features.map((feature, i) => {
-                  const Icon = feature.icon
+                  const Icon = feature.icon;
                   return (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 text-gray-300"
-                    >
-                      <Icon className="text-cyan-400 w-5 h-5" />
-                      <span>{feature.label}</span>
+                    <li key={i} className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-none bg-[#FACC15] border-2 border-black flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#000]">
+                        <Icon className="w-3.5 h-3.5 text-black stroke-[3]" />
+                      </div>
+                      <span className="font-bold text-sm md:text-base text-black">
+                        {feature.label}
+                      </span>
                     </li>
-                  )
+                  );
                 })}
               </ul>
+            </div>
 
-              <button
-                className={`w-full py-3 rounded-lg font-semibold transition-all duration-300
-                  ${plan.highlight
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/40  cursor-pointer"
-                    : "bg-gray-800 text-gray-200 hover:bg-gray-700 cursor-pointer mt-8"
-                  }
-                `}
-              ><Link href={plan.highlight ? "/sign-up-to-trimify" : "/sign-up-to-trimify"}>
-                  {plan.button}</Link>
-              </button>
-            </CardContent>
-          </Card>
+            {/* Bottom CTA Button */}
+            <div className="pt-4 border-t-2 border-black/15">
+              <Link
+                href="/sign-up-to-trimify"
+                className={`w-full brutal-btn py-3.5 px-6 font-bungee text-sm md:text-base tracking-wider ${plan.buttonStyle}`}
+              >
+                <span>{plan.button}</span>
+                <span className="ml-2">⚡</span>
+              </Link>
+            </div>
+          </div>
         ))}
       </div>
     </section>
-  )
-}
+  );
+};

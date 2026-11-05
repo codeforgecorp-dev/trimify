@@ -1,164 +1,230 @@
-"use client"
-import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './/ui/cards';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './/ui/accordion';
-import { Shield, Zap, Users, Link as LinkIcon, BarChart3, Lock } from 'lucide-react';
+"use client";
+import React from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import { Shield, Zap, Users, Star, Flame, Sparkles, ArrowUp, Globe, Clock, BarChart3, CheckCircle2 } from "lucide-react";
 
 export const FeatureCards = () => {
   const features = [
     {
       icon: Shield,
-      title: 'Enterprise Security',
-      description: 'End-to-end encryption with SSL certificates. Your links are protected with industry-standard security protocols.',
-      color: 'from-blue-500 to-cyan-500',
-      stats: '256-bit SSL'
+      title: "ENTERPRISE SECURITY",
+      description: "End-to-end encryption with 256-bit SSL certificates. Password-protect links and restrict access anytime.",
+      badge: "256-BIT SSL",
+      badgeColor: "bg-[#FACC15] text-black",
+      iconBg: "bg-[#FACC15]",
+      rotation: "hover:-rotate-1",
     },
     {
       icon: Zap,
-      title: 'Lightning Fast',
-      description: '99.9% uptime guarantee with instant redirects. Our global CDN ensures your links work everywhere, anytime.',
-      color: 'from-purple-500 to-pink-500',
-      stats: '<100ms redirect'
+      title: "LIGHTNING FAST SPEED",
+      description: "Instantaneous sub-100ms global redirects backed by top-tier edge CDN networks worldwide.",
+      badge: "<100MS REDIRECT",
+      badgeColor: "bg-[#EF4444] text-white",
+      iconBg: "bg-[#EF4444]",
+      rotation: "hover:rotate-1",
     },
     {
       icon: Users,
-      title: 'Trusted by Thousands',
-      description: 'Join 1,000+ users who trust Trimify for their link management. Scale from startup to enterprise.',
-      color: 'from-orange-500 to-red-500',
-      stats: '1,000+ Users'
-    }
+      title: "TRUSTED BY CREATORS",
+      description: "Join over 1,000+ creators, marketers, and power users who depend on Trimify for clean link delivery.",
+      badge: "1,000+ USERS",
+      badgeColor: "bg-[#F97316] text-white",
+      iconBg: "bg-[#F97316]",
+      rotation: "hover:-rotate-1",
+    },
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16 md:py-24">
+    <section className="w-full max-w-7xl mx-auto px-4 py-16 md:py-24 select-none">
       {/* Section Header */}
-      <div className="text-center mb-12 animate-[fadeIn_0.6s_ease_forwards]">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
-          Why Choose Trimify?
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#EF4444] text-white border-2 border-black shadow-[3px_3px_0px_#000] rotate-[-2deg] mb-3 font-black text-xs uppercase tracking-wider animate-wiggle">
+          <Sparkles className="w-4 h-4 fill-white" />
+          <span>SUPERCHARGED CAPABILITIES</span>
+        </div>
+        <h2 className="font-bungee text-3xl md:text-5xl text-black tracking-tight drop-shadow-[2px_2px_0px_#FACC15]">
+          WHY CHOOSE TRIMIFY?
         </h2>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          Powerful features that make link shortening simple, secure, and scalable
+        <p className="font-space text-base md:text-lg font-bold text-black/75 max-w-2xl mx-auto mt-2">
+          High-performance URL infrastructure packaged inside an unapologetically bold, ultra-reliable tool.
         </p>
       </div>
 
       {/* Feature Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
             <div
               key={index}
-              className="group animate-[slideUp_0.6s_ease_forwards]"
-              style={{ animationDelay: `${index * 0.2}s`,  }}
               data-testid={`feature-card-${index}`}
+              className={`relative bg-white border-4 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:shadow-[10px_10px_0px_#000] hover:-translate-y-1.5 transition-all duration-200 flex flex-col justify-between ${feature.rotation}`}
             >
-              <Card className="h-full bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700 hover:border-gray-600 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-2">
-                <CardHeader>
-                  {/* Icon with gradient background */}
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} p-4 mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-full h-full text-white" />
+              {/* Header with Icon + Badge */}
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div
+                    className={`w-14 h-14 ${feature.iconBg} border-3 border-black flex items-center justify-center shadow-[3px_3px_0px_#000]`}
+                  >
+                    <Icon className="w-7 h-7 text-black stroke-[2.5]" />
                   </div>
-                  <CardTitle className="text-2xl text-gray-100 mb-2">
-                    {feature.title}
-                  </CardTitle>
-                  <div className="inline-block px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300 font-semibold">
-                    {feature.stats}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-400 text-base leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                  <span
+                    className={`px-3 py-1 text-xs font-black uppercase border-2 border-black shadow-[2px_2px_0px_#000] ${feature.badgeColor}`}
+                  >
+                    {feature.badge}
+                  </span>
+                </div>
+
+                <h3 className="font-bungee text-xl md:text-2xl text-black mb-3">
+                  {feature.title}
+                </h3>
+
+                <p className="font-space text-sm md:text-base font-bold text-black/75 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+
+              {/* Bottom Decorative Pill */}
+              <div className="mt-6 pt-4 border-t-2 border-black/10 flex items-center gap-2 text-xs font-black uppercase text-black/60">
+                <CheckCircle2 className="w-4 h-4 text-[#EF4444]" />
+                <span>INCLUDED ON ALL PLANS</span>
+              </div>
             </div>
           );
         })}
       </div>
 
-      {/* Additional Stats Bar */}
-      <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-[fadeIn_0.8s_ease_forwards_0.6s] ">
-        <div className="text-center p-6 rounded-xl bg-gray-800/50 border border-gray-700" data-testid="stat-links-shortened">
-          <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-            10K+
-          </div>
-          <div className="text-gray-400 mt-2">Links Shortened</div>
+      {/* ============================================================ */}
+      {/* STATS COUNTER BAR: 10K+ links, 50K+ clicks, 99.9% uptime, 120+ countries */}
+      {/* ============================================================ */}
+      <div className="mt-16 md:mt-24">
+        {/* Section Mini Banner */}
+        <div className="text-center mb-8">
+          <span className="inline-block px-4 py-1.5 bg-black text-[#FACC15] font-black text-xs md:text-sm uppercase tracking-widest border-2 border-black shadow-[3px_3px_0px_#EF4444] rotate-[1deg]">
+            ⚡ PROVEN SCALE IN NUMBERS ⚡
+          </span>
         </div>
-        <div className="text-center p-6 rounded-xl bg-gray-800/50 border border-gray-700" data-testid="stat-clicks-tracked">
-          <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-            50K+
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {/* Stat 1: Links Shortened */}
+          <div
+            data-testid="stat-links-shortened"
+            className="relative bg-[#FFFBEB] border-3 border-black p-5 md:p-6 shadow-[5px_5px_0px_#000] hover:-translate-y-1 transition-transform flex flex-col items-center text-center group"
+          >
+            <div className="absolute -top-3 -right-2 bg-[#FACC15] border-2 border-black px-2 py-0.5 text-[10px] font-black uppercase rotate-6 shadow-[1px_1px_0px_#000]">
+              LINKS
+            </div>
+            <div className="font-bungee text-3xl sm:text-4xl md:text-5xl text-black drop-shadow-[2px_2px_0px_#FACC15] group-hover:scale-105 transition-transform">
+              10K+
+            </div>
+            <div className="font-space text-xs sm:text-sm font-black uppercase tracking-wider text-black/80 mt-1">
+              Links Shortened
+            </div>
           </div>
-          <div className="text-gray-400 mt-2">Clicks Tracked</div>
-        </div>
-        <div className="text-center p-6 rounded-xl bg-gray-800/50 border border-gray-700" data-testid="stat-uptime">
-          <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-            99.9%
+
+          {/* Stat 2: Clicks Tracked */}
+          <div
+            data-testid="stat-clicks-tracked"
+            className="relative bg-[#FFFBEB] border-3 border-black p-5 md:p-6 shadow-[5px_5px_0px_#000] hover:-translate-y-1 transition-transform flex flex-col items-center text-center group"
+          >
+            <div className="absolute -top-3 -right-2 bg-[#EF4444] text-white border-2 border-black px-2 py-0.5 text-[10px] font-black uppercase -rotate-6 shadow-[1px_1px_0px_#000]">
+              ENGAGEMENT
+            </div>
+            <div className="font-bungee text-3xl sm:text-4xl md:text-5xl text-[#EF4444] drop-shadow-[2px_2px_0px_#000] group-hover:scale-105 transition-transform">
+              50K+
+            </div>
+            <div className="font-space text-xs sm:text-sm font-black uppercase tracking-wider text-black/80 mt-1">
+              Clicks Tracked
+            </div>
           </div>
-          <div className="text-gray-400 mt-2">Uptime</div>
-        </div>
-        <div className="text-center p-6 rounded-xl bg-gray-800/50 border border-gray-700" data-testid="stat-countries">
-          <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-            120+
+
+          {/* Stat 3: Uptime */}
+          <div
+            data-testid="stat-uptime"
+            className="relative bg-[#FFFBEB] border-3 border-black p-5 md:p-6 shadow-[5px_5px_0px_#000] hover:-translate-y-1 transition-transform flex flex-col items-center text-center group"
+          >
+            <div className="absolute -top-3 -right-2 bg-[#F97316] text-white border-2 border-black px-2 py-0.5 text-[10px] font-black uppercase rotate-3 shadow-[1px_1px_0px_#000]">
+              RELIABLE
+            </div>
+            <div className="font-bungee text-3xl sm:text-4xl md:text-5xl text-[#F97316] drop-shadow-[2px_2px_0px_#000] group-hover:scale-105 transition-transform">
+              99.9%
+            </div>
+            <div className="font-space text-xs sm:text-sm font-black uppercase tracking-wider text-black/80 mt-1">
+              Guaranteed Uptime
+            </div>
           </div>
-          <div className="text-gray-400 mt-2">Countries</div>
+
+          {/* Stat 4: Countries */}
+          <div
+            data-testid="stat-countries"
+            className="relative bg-[#FFFBEB] border-3 border-black p-5 md:p-6 shadow-[5px_5px_0px_#000] hover:-translate-y-1 transition-transform flex flex-col items-center text-center group"
+          >
+            <div className="absolute -top-3 -right-2 bg-[#FACC15] text-black border-2 border-black px-2 py-0.5 text-[10px] font-black uppercase -rotate-3 shadow-[1px_1px_0px_#000]">
+              GLOBAL
+            </div>
+            <div className="font-bungee text-3xl sm:text-4xl md:text-5xl text-black drop-shadow-[2px_2px_0px_#F97316] group-hover:scale-105 transition-transform">
+              120+
+            </div>
+            <div className="font-space text-xs sm:text-sm font-black uppercase tracking-wider text-black/80 mt-1">
+              Countries Reached
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-/**
- * FAQ Section with Accordion
- */
-
-
 export const FAQSection = () => {
   const faqs = [
-      {
+    {
       question: "How does Trimify work?",
       answer:
-        "Trimify converts long, complicated URLs into short, memorable links that are easy to share anywhere. Each short link redirects instantly to the original URL. Trimify also tracks real-time analytics for each link, including total clicks, countries of origin, and device usage. You can even protect links with passwords or set custom expiry conditions for extra control."
+        "Trimify converts long, messy URLs into short, punchy links that redirect instantly. Every click is logged with geo-location, referrer, device, and browser analytics. You can also protect links with passwords or set custom expiry limits.",
     },
     {
       question: "Is Trimify free to use?",
       answer:
-        "Yes! Trimify is completely free and provides all essential features without any hidden costs. You can create unlimited short links, track analytics in real-time, generate QR codes, customize short aliases, and use UTM tracking—all but with Premium Package which also does not cost much. Our goal is to make professional link management accessible to everyone."
+        "Yes! Trimify is 100% free with no hidden charges. You can generate unlimited short links, monitor real-time click counts, download custom QR codes, and create branded aliases. Our Lifetime Pro package is also currently free for early adopters.",
     },
     {
       question: "How long do shortened links last?",
       answer:
-        "Trimify links are highly flexible. By default, links last indefinitely. However, you can set links to expire either after a certain date or once they reach a maximum number of clicks. This ensures that your links remain under your control and are only accessible for the intended duration or audience."
+        "Trimify links stay active indefinitely by default. However, you can configure expiry dates or maximum click limits so links automatically self-deactivate whenever you desire.",
     },
     {
       question: "Can I track my link analytics?",
       answer:
-        "Absolutely! Trimify provides a real-time analytics dashboard where you can monitor clicks, geographical location of visitors, device types, referrers, and more. Each short link gives detailed insights, helping you understand performance, optimize campaigns, and make data-driven decisions."
+        "Yes! Our real-time dashboard breaks down total clicks, geographic country origins with flags, browser types, and device categories so you can monitor campaign performance with laser accuracy.",
     },
     {
       question: "Is my data secure?",
       answer:
-        "Security is a top priority at Trimify. All links and analytics are served over HTTPS with end-to-end encryption. Links can be protected with passwords for restricted access. We never share your data with third parties, and our systems are designed to keep all your URLs and analytics completely secure."
+        "Security is non-negotiable. Every link is served via HTTPS with 256-bit encryption. You can add password walls to sensitive URLs, and we never sell your click data to advertisers.",
     },
     {
       question: "Can I customize my short links?",
       answer:
-        "Yes! Trimify allows you to create custom short aliases, so your links are branded and memorable. You can also generate QR codes with customized designs, making them suitable for campaigns or printed media. Combined with UTM tracking and optional password protection, you have full control over how your links are shared and accessed."
-    }
-  
+        "Absolutely! You can choose custom aliases (e.g. trimy.me/my-brand) instead of random characters. You can also generate high-resolution QR codes to put on print cards, posters, or packaging.",
+    },
   ];
 
   return (
     <section
-      className="w-full max-w-4xl mx-auto px-4 py-16 md:py-24"
+      className="w-full max-w-4xl mx-auto px-4 py-16 md:py-24 select-none"
       data-testid="faq-section"
     >
       {/* Section Header */}
-      <div className="text-center mb-12 cursor-pointer">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
-          Frequently Asked Questions
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FACC15] text-black border-2 border-black shadow-[3px_3px_0px_#000] rotate-[1.5deg] mb-3 text-xs font-black uppercase tracking-wider">
+          <Star className="w-3.5 h-3.5 fill-black" />
+          <span>GOT QUESTIONS?</span>
+        </div>
+        <h2 className="font-bungee text-3xl md:text-5xl text-black tracking-tight drop-shadow-[2px_2px_0px_#FACC15]">
+          FREQUENTLY ASKED QUESTIONS
         </h2>
-        <p className="text-lg text-gray-400">
-          Got questions? We've got answers
+        <p className="font-space text-base md:text-lg font-bold text-black/75 mt-2">
+          Everything you need to know about Trimify and URL superpowers.
         </p>
       </div>
 
@@ -168,40 +234,53 @@ export const FAQSection = () => {
           <AccordionItem
             key={index}
             value={`item-${index}`}
-            className="bg-gray-900/50 border border-gray-800 rounded-xl px-6 hover:border-gray-700 transition-colors cursor-pointer"
+            className="bg-white border-3 border-black shadow-[4px_4px_0px_#000] hover:shadow-[6px_6px_0px_#000] px-5 py-1 transition-all duration-150 data-[state=open]:bg-[#FFFBEB]"
             data-testid={`faq-item-${index}`}
           >
-            <AccordionTrigger className="text-lg font-semibold text-gray-100 hover:text-cyan-400 transition-colors cursor-pointer">
-              {faq.question}
+            <AccordionTrigger className="font-bungee text-base md:text-lg text-black hover:text-[#EF4444] transition-colors py-4 no-underline hover:no-underline">
+              <span>{faq.question}</span>
             </AccordionTrigger>
-            <AccordionContent className="text-gray-400 text-base leading-relaxed overflow-hidden">
+            <AccordionContent className="font-space text-sm md:text-base font-bold text-black/80 leading-relaxed pb-4 border-t-2 border-black/10 pt-3">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
 
-      {/* CTA after FAQ */}
-      <div className="mt-12 text-center p-8 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-2xl border border-gray-800 cursor-pointer">
-        <h3 className="text-2xl font-bold text-gray-100 mb-3">
-          Still have questions?
+      {/* ============================================================ */}
+      {/* FINAL CTA: Loud, high-energy maximalist banner */}
+      {/* ============================================================ */}
+      <div className="mt-16 text-center p-8 md:p-12 bg-gradient-to-r from-[#FACC15] via-[#FB923C] to-[#EF4444] border-4 border-black shadow-[8px_8px_0px_#000] relative overflow-hidden">
+        {/* Floating pop stickers */}
+        <div className="absolute -top-3 left-6 -rotate-6">
+          <span className="px-3 py-1 bg-black text-[#FACC15] font-black text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#fff]">
+            ⚡ INSTANT REDIRECTS
+          </span>
+        </div>
+        <div className="absolute -bottom-3 right-6 rotate-6">
+          <span className="px-3 py-1 bg-white text-black font-black text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000]">
+            🔥 100% FREE
+          </span>
+        </div>
+
+        <h3 className="font-bungee text-2xl md:text-4xl text-black drop-shadow-[2px_2px_0px_#fff] mb-3 leading-tight">
+          READY TO TRIM YOUR FIRST LINK?
         </h3>
-        <p className="text-gray-400 mb-6">
-          We're here to help! Try Trimify now and experience the simplest way
-          to shorten links.
+        <p className="font-space text-sm md:text-base font-black text-black/90 max-w-xl mx-auto mb-6">
+          No sign-up mandatory to start. Paste your link at the top, hit Shorten, and share with the world!
         </p>
+
         <button
-          className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 cursor-pointer"
+          className="brutal-btn bg-black text-[#FACC15] hover:bg-white hover:text-black py-3.5 px-8 font-bungee text-sm md:text-base tracking-wider shadow-[4px_4px_0px_#fff] hover:shadow-[6px_6px_0px_#fff]"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           data-testid="scroll-to-top-button"
         >
-          Start Shortening Now
+          <span className="flex items-center gap-2">
+            <span>START SHORTENING NOW</span>
+            <ArrowUp className="w-5 h-5 stroke-[3]" />
+          </span>
         </button>
       </div>
     </section>
   );
 };
-
-
-
-
