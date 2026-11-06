@@ -1,381 +1,417 @@
-"use client"
-import React from 'react'
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { KeyRound, ShieldCheck, Mail, CheckCircle2, AlertTriangle, ArrowRight } from "lucide-react";
+
 const ResetPassword = () => {
-    const [cooldown, setCooldown] = useState(0)
-    const [disabled, setDisabled] = useState(false)
-    const [userEmail, setuserEmail] = useState("")
-    const [userName, setuserName] = useState("")
-    const [showError, setShowError] = useState(false)
-    const [emailError, setemailError] = useState("")
-    const [showSuccess, setshowSuccess] = useState(false)
-    const [OTPError, setOTPError] = useState("")
-    const [emailBox, setemailBox] = useState(true)
-    const [loading, setloading] = useState(false)
-    const [otpVerificationBox, setotpVerificationBox] = useState(false)
-    const [userOTP, setuserOTP] = useState("")
-    const [showOTPError, setShowOTPError] = useState(false)
-    const [passChangeBox, setpassChangeBox] = useState(false)
-    const [newPass, setnewPass] = useState("")
-    const [confirmPass, setconfirmPass] = useState("")
-    const [showPassError, setshowPassError] = useState(false)
-    const [passMsg, setpassMsg] = useState("")
-    const [showSuccessBox, setshowSuccessBox] = useState(false)
-    const [emailBtnDisabled, setemailBtnDisabled] = useState(false)
-    const [otpBtnDisabled, setotpBtnDisabled] = useState(false)
-    const [passBtnDisabled, setpassBtnDisabled] = useState(false)
+  const [cooldown, setCooldown] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+  const [userEmail, setuserEmail] = useState("");
+  const [userName, setuserName] = useState("");
+  const [showError, setShowError] = useState(false);
+  const [emailError, setemailError] = useState("");
+  const [showSuccess, setshowSuccess] = useState(false);
+  const [OTPError, setOTPError] = useState("");
+  const [emailBox, setemailBox] = useState(true);
+  const [loading, setloading] = useState(false);
+  const [otpVerificationBox, setotpVerificationBox] = useState(false);
+  const [userOTP, setuserOTP] = useState("");
+  const [showOTPError, setShowOTPError] = useState(false);
+  const [passChangeBox, setpassChangeBox] = useState(false);
+  const [newPass, setnewPass] = useState("");
+  const [confirmPass, setconfirmPass] = useState("");
+  const [showPassError, setshowPassError] = useState(false);
+  const [passMsg, setpassMsg] = useState("");
+  const [showSuccessBox, setshowSuccessBox] = useState(false);
+  const [emailBtnDisabled, setemailBtnDisabled] = useState(false);
+  const [otpBtnDisabled, setotpBtnDisabled] = useState(false);
+  const [passBtnDisabled, setpassBtnDisabled] = useState(false);
 
-    async function handleGenerateOTP() {
-        if (!userEmail) {
-            setShowError(true)
-            setemailError("Please input your email")
-            return
-        }
-
-        // Clear previous messages
-        setShowError(false)
-        setemailError("")
-        setshowSuccess(false)
-        setOTPError("")
-        setShowOTPError(false)
-
-        try {
-            setloading(true)
-            setemailBtnDisabled(true)
-
-            const res = await fetch("/api/forget-password", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ Emailid: userEmail })
-            })
-
-            const data = await res.json()
-            console.log(data)
-
-            if (data.success) {
-                setemailBox(false)
-                setotpVerificationBox(true)
-                setCooldown(60)
-                setDisabled(true)
-                setuserName(data.username)
-            } else {
-                setemailBtnDisabled(false)
-                setShowError(true)
-                setemailError(data.msg || "Something went wrong")
-            }
-
-        } catch (err) {
-            console.log(err)
-            setShowError(true)
-            setemailBtnDisabled(false)
-            setemailError("Something went wrong")
-        } finally {
-            setloading(false)
-        }
+  async function handleGenerateOTP() {
+    if (!userEmail.trim()) {
+      setShowError(true);
+      setemailError("Please input your account email");
+      return;
     }
 
-    useEffect(() => {
-        if (cooldown <= 0) return
-        const timeout = setTimeout(() => setCooldown(cooldown - 1), 1000)
-        return () => clearTimeout(timeout)
-    }, [cooldown])
+    setShowError(false);
+    setemailError("");
+    setshowSuccess(false);
+    setOTPError("");
+    setShowOTPError(false);
 
-    async function handleOTPVerification() {
-        if (userOTP.length !== 6) {
-            setShowOTPError(true)
-            setOTPError("OTP must be exactly 6 digits")
-            setshowSuccess(false)
-            return
-        }
+    try {
+      setloading(true);
+      setemailBtnDisabled(true);
 
-        // Clear previous messages
-        setShowOTPError(false)
-        setOTPError("")
-        setshowSuccess(false)
+      const res = await fetch("/api/forget-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Emailid: userEmail.trim() }),
+      });
 
-        try {
-            setloading(true)
-            setotpBtnDisabled(true)
-            const verifyOTP = await fetch("/api/forget-password?validation=true", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ Emailid: userEmail, OTP: userOTP.trim() })
-            })
-            const response = await verifyOTP.json()
-            console.log(response)
+      const data = await res.json();
 
-            if (response.success) {
-                setotpVerificationBox(false)
-                setpassChangeBox(true)
-                setshowSuccess(true)
-                setShowOTPError(false)
-                setOTPError("")
-                setCooldown(0)
-                setDisabled(false)
-                
-              
-                setuserOTP("")
-            } else {
-                setShowOTPError(true)
-                setOTPError(response.msg)
-                setshowSuccess(false)
-                setotpBtnDisabled(false)
-            }
-        } catch (err) {
-            console.log(err)
-            setShowOTPError(true)
-            setotpBtnDisabled(false)
-            setOTPError("Something went wrong")
-            setshowSuccess(false)
-        } finally {
-            setloading(false)
-        }
+      if (data.success) {
+        setemailBox(false);
+        setotpVerificationBox(true);
+        setCooldown(60);
+        setDisabled(true);
+        setuserName(data.username);
+      } else {
+        setemailBtnDisabled(false);
+        setShowError(true);
+        setemailError(data.msg || "Could not locate this email");
+      }
+    } catch {
+      setShowError(true);
+      setemailBtnDisabled(false);
+      setemailError("Network error. Please try again.");
+    } finally {
+      setloading(false);
     }
-    function validatePassword(password) {
-        if (password.includes(" ")) {
-            return "Password must be 8+ characters and include letters, numbers, and special characters";
-        }
+  }
 
-        if (password.length < 8) {
-            return "Password must be 8+ characters and include letters, numbers, and special characters";
-        }
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const timeout = setTimeout(() => setCooldown(cooldown - 1), 1000);
+    return () => clearTimeout(timeout);
+  }, [cooldown]);
 
-
-        if (!/[0-9]/.test(password)) {
-            return "Password must be 8+ characters and include letters, numbers, and special characters";
-        }
-
-        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-            return "Password must be 8+ characters and include letters, numbers, and special characters";
-        }
-
-        return null; // ✅ valid password
+  async function handleOTPVerification() {
+    if (userOTP.trim().length !== 6) {
+      setShowOTPError(true);
+      setOTPError("OTP must be exactly 6 digits");
+      setshowSuccess(false);
+      return;
     }
 
-    async function handlepassChange(params) {
-        setshowPassError(false)
-        if (newPass !== confirmPass) {
-            setshowPassError(true)
-            setpassMsg("Both Password must be same")
-            return
-        }
+    setShowOTPError(false);
+    setOTPError("");
+    setshowSuccess(false);
 
-        const error = validatePassword(newPass)
-        if (error) {
-            setshowPassError(true)
-            setpassMsg(error)
-            return
-        }
-        try {
-            setloading(true)
-            setpassBtnDisabled(true)
-            let changePass = await fetch("/api/forget-password?changePass=true", {
-                method: "POST",
-                headers: {
-                    contentType: "application/json",
-                },
-                body: JSON.stringify({ Emailid: userEmail, newpass: newPass })
-            })
-            let response = await changePass.json()
-            if (response.success) {
-                setpassChangeBox(false)
-                setshowSuccessBox(true)
-                setuserEmail("")
-                setShowError(false)
-                setuserOTP("")
-                setDisabled(false)
+    try {
+      setloading(true);
+      setotpBtnDisabled(true);
+      const verifyOTP = await fetch("/api/forget-password?validation=true", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Emailid: userEmail.trim(), OTP: userOTP.trim() }),
+      });
+      const response = await verifyOTP.json();
 
+      if (response.success) {
+        setotpVerificationBox(false);
+        setpassChangeBox(true);
+        setshowSuccess(true);
+        setShowOTPError(false);
+        setOTPError("");
+        setCooldown(0);
+        setDisabled(false);
+        setuserOTP("");
+      } else {
+        setShowOTPError(true);
+        setOTPError(response.msg || "Invalid OTP code");
+        setshowSuccess(false);
+        setotpBtnDisabled(false);
+      }
+    } catch {
+      setShowOTPError(true);
+      setotpBtnDisabled(false);
+      setOTPError("Verification failed");
+      setshowSuccess(false);
+    } finally {
+      setloading(false);
+    }
+  }
 
-            } else {
-                setshowPassError(true)
-                setpassMsg(response.msg)
-                setpassBtnDisabled(false)
-                return
-            }
+  function validatePassword(password) {
+    if (password.includes(" ")) {
+      return "Password cannot contain spaces";
+    }
+    if (password.length < 8) {
+      return "Password must be at least 8 characters long";
+    }
+    if (!/[0-9]/.test(password)) {
+      return "Password must include at least one number";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return "Password must include at least one special symbol";
+    }
+    return null;
+  }
 
-        } catch {
-            setshowPassError(true)
-            setpassBtnDisabled(false)
-            setpassMsg("Try Again Later")
-        } finally {
-            setloading(false)
-        }
+  async function handlepassChange() {
+    setshowPassError(false);
+    if (newPass !== confirmPass) {
+      setshowPassError(true);
+      setpassMsg("Both passwords must match");
+      return;
     }
 
-    return (
-        <div className='hero w-full min-h-[83vh] h-full  md:min-h-[80.5vh] flex justify-center p-5 md:p-8'>
-            {emailBox && (
-                <div className='min-h-[71vh] w-full md:w-[60vh] bg-gray-50 mx-auto rounded-2xl flex flex-col p-4 gap-12 border-2 relative z-10'>
-                    <div>
-                        <h1 className='bree-bold text-[28px] text-center mt-4'>You Forgot your Password 😢</h1>
-                        <h2 className='pt-4 text-xl roboto-bold text-center px-2'>
-                            But don't worry, you can recover your account in only 2 steps
-                        </h2>
-                    </div>
-                    <div className='flex flex-col gap-2'>
-                        <h2 className='inter-semi'>Enter Your Account Email:</h2>
-                        <input
-                            type="text"
-                            value={userEmail}
-                            onChange={(e) => setuserEmail(e.target.value)}
-                            className='p-2 border-b-2 border-green-400 bg-white outline-none'
-                            placeholder='Enter Your Email to find your Username'
-                        />
-                    </div>
-                    {disabled && <p className='text-red-700 inter-bold mt-[-38px]'>Resend in {cooldown}s</p>}
-                    {showError && <p className='text-red-700 inter-bold mt-[-38px]'>{emailError}</p>}
-                    <button
-                        disabled={emailBtnDisabled || loading}
-                        className={`p-2 text-lg ${loading ? "bg-green-300" : "bg-green-400"} hover:bg-green-300 transition-all ease-in-out duration-300 rounded-md shadow-sm cursor-pointer poppins-semi mt-8`}
-                        onClick={handleGenerateOTP}
+    const error = validatePassword(newPass);
+    if (error) {
+      setshowPassError(true);
+      setpassMsg(error);
+      return;
+    }
 
-                    >
-                        {loading ? (
-                            <div className='flex gap-1 items-center justify-center'>
-                                <h3>Sending OTP</h3>
-                                <span className="flex gap-1 ml-1">
-                                    <span className='text-3xl rounded-full animate-bounce delay-0'>.</span>
-                                    <span className='text-3xl rounded-full animate-bounce [animation-delay:0.15s]'>.</span>
-                                    <span className='text-3xl rounded-full animate-bounce [animation-delay:0.3s]'>.</span>
-                                </span>
-                            </div>
-                        ) : "Proceed For Recovery"}
-                    </button>
-                    <span className='text-sm text-gray-500 absolute bottom-8 right-2'>
-                        Trimify Account Recovery Portal
-                    </span>
-                </div>
-            )}
+    try {
+      setloading(true);
+      setpassBtnDisabled(true);
+      let changePass = await fetch("/api/forget-password?changePass=true", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ Emailid: userEmail.trim(), newpass: newPass }),
+      });
+      let response = await changePass.json();
+      if (response.success) {
+        setpassChangeBox(false);
+        setshowSuccessBox(true);
+        setuserEmail("");
+        setShowError(false);
+        setuserOTP("");
+        setDisabled(false);
+      } else {
+        setshowPassError(true);
+        setpassMsg(response.msg || "Error resetting password");
+        setpassBtnDisabled(false);
+      }
+    } catch {
+      setshowPassError(true);
+      setpassBtnDisabled(false);
+      setpassMsg("Try again later");
+    } finally {
+      setloading(false);
+    }
+  }
 
-            {/* OTP Verification */}
-            {otpVerificationBox && (
-                <div className='min-h-[70vh] w-[60vh] bg-gray-50 mx-auto rounded-2xl flex flex-col p-4 gap-12 border-2 relative z-10'>
-                    <div>
-                        <h1 className='bree-bold text-[28px] text-center mt-4'>OTP Verification</h1>
-                        <h2 className='pt-2 text-xl roboto-bold text-center px-2'>
-                            We have sent you an OTP on your email id {userEmail}. Please put it in the field given below
-                        </h2>
-                    </div>
-                    <div className='flex flex-col gap-2'>
-                        <h2 className='mt-[-20px]'> <b>Account Username:</b> {userName}</h2>
-                        <h2 className='inter-semi'>Put the OTP Sent to the Email:</h2>
-                        <input
-                            type="text"
-                            value={userOTP}
-                            onChange={(e) => setuserOTP(e.target.value)}
-                            className='p-2 border-b-2 border-green-400 bg-white outline-none'
-                            placeholder='Input the OTP'
-                        />
-                    </div>
-                    <div className='mt-[-38px] text-end'>
-                        {cooldown > 0 ? (
-                            <p className='text-red-700 inter-bold underline'>
-                                Resend in {cooldown}s
-                            </p>
-                        ) : (
-                            <p
-                                className='text-blue-600 inter-bold underline cursor-pointer hover:text-blue-400'
-                                onClick={handleGenerateOTP}
-                                disabled={emailBtnDisabled || loading}
-                            >
-                                Resend OTP
-                            </p>
-                        )}
-                    </div>
+  return (
+    <div className="min-h-[calc(100vh-142px)] w-full bg-halftone-warm flex justify-center items-center p-4 sm:p-6 select-none">
+      {/* STEP 1: Email Box */}
+      {emailBox && (
+        <div className="w-full max-w-md bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-8 flex flex-col gap-5">
+          <div className="flex items-center justify-between pb-3 border-b-2 border-black/20">
+            <span className="px-3 py-1 bg-[#FACC15] text-black font-bungee text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000] rotate-[-2deg]">
+              STEP 1 OF 3
+            </span>
+            <span className="text-xs font-black text-black/50 uppercase">RECOVERY</span>
+          </div>
 
-                    {showSuccess && <p className='text-green-700 inter-bold mt-[-38px]'>OTP Verified Successfully</p>}
-                    {showOTPError && <p className='text-red-700 inter-bold mt-[-38px]'>{OTPError}</p>}
-                    <button
-                        disabled={otpBtnDisabled || loading}
-                        className={`p-2 text-lg ${loading ? "bg-green-300" : "bg-green-400"} hover:bg-green-300 transition-all ease-in-out duration-300 rounded-md shadow-sm cursor-pointer poppins-semi mt-2`}
-                        onClick={handleOTPVerification}
-                    >
-                        {loading ? (
-                            <div className='flex gap-1 items-center justify-center'>
-                                <h3>Verifying OTP</h3>
-                                <span className="flex gap-1 ml-1">
-                                    <span className='text-3xl rounded-full animate-bounce delay-0'>.</span>
-                                    <span className='text-3xl rounded-full animate-bounce [animation-delay:0.15s]'>.</span>
-                                    <span className='text-3xl rounded-full animate-bounce [animation-delay:0.3s]'>.</span>
-                                </span>
-                            </div>
-                        ) : "Verify the OTP"}
-                    </button>
-                    <span className='text-sm text-gray-500 absolute bottom-4 right-2'>
-                        Trimify Account Recovery Portal
-                    </span>
-                </div>
-            )}
-            {passChangeBox && (
-                <div className='min-h-[70vh] w-[60vh] bg-gray-50 mx-auto rounded-2xl flex flex-col p-4 gap-12 border-2 relative z-10'>
-                    <div>
-                        <h1 className='bree-bold text-[28px] text-center mt-4'>Change Your Password 😃</h1>
-                        <h2 className='pt-4 text-xl roboto-bold text-center px-2'>
-                            As OTP Verified, so you can finally change your account password whose email is <b>{userEmail}</b>
-                        </h2>
-                    </div>
-                    <div className='flex flex-col gap-2'>
-                        <h2 className='inter-semi'>Enter your New Password:</h2>
-                        <input
-                            type="text"
-                            value={newPass}
-                            onChange={(e) => setnewPass(e.target.value)}
-                            className='p-2 border-b-2 border-green-400 bg-white outline-none'
-                            placeholder='Enter new Password'
-                        />
-                        <h2 className='inter-semi'>Confirm your Password:</h2>
-                        <input
-                            type="text"
-                            value={confirmPass}
-                            onChange={(e) => setconfirmPass(e.target.value)}
-                            className='p-2 border-b-2 border-green-400 bg-white outline-none'
-                            placeholder='Re-enter the Password'
-                        />
-                    </div>
+          <div className="text-center">
+            <h1 className="font-bungee text-2xl sm:text-3xl text-black leading-tight drop-shadow-[2px_2px_0px_#FACC15]">
+              RECOVER ACCOUNT
+            </h1>
+            <p className="font-space text-xs sm:text-sm font-bold text-black/70 mt-1">
+              Enter your registered email and we'll send a 6-digit security code.
+            </p>
+          </div>
 
-                    {showPassError && <p className='text-red-800 inter-bold mt-[-38px]'>{passMsg}</p>}
+          <div className="space-y-1">
+            <label className="block font-bungee text-xs text-black uppercase mb-1">
+              Account Email:
+            </label>
+            <input
+              type="email"
+              value={userEmail}
+              onChange={(e) => setuserEmail(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleGenerateOTP()}
+              className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+              placeholder="alex@example.com"
+            />
+          </div>
 
-                    <button
-                        disabled={passBtnDisabled || loading}
-                        className={`p-2 mt-[-10px] text-lg ${loading ? "bg-green-300" : "bg-green-400"} hover:bg-green-300 transition-all ease-in-out duration-300 rounded-md shadow-sm cursor-pointer poppins-semi mt-8`}
-                        onClick={handlepassChange}
-                    >
-                        {loading ? (
-                            <div className='flex gap-1 items-center justify-center'>
-                                <h3>Changing Password</h3>
-                                <span className="flex gap-1 ml-1">
-                                    <span className='text-3xl rounded-full animate-bounce delay-0'>.</span>
-                                    <span className='text-3xl rounded-full animate-bounce [animation-delay:0.15s]'>.</span>
-                                    <span className='text-3xl rounded-full animate-bounce [animation-delay:0.3s]'>.</span>
-                                </span>
-                            </div>
-                        ) : "Change Password"}
-                    </button>
-                    <span className={`text-sm text-gray-500 absolute ${showPassError ? "bottom-4" : "bottom-8"} right-2`}>
-                        Trimify Account Recovery Portal
-                    </span>
-                </div>
-            )}
-            {showSuccessBox && (
-                <div className='my-auto h-[44vh] w-[60vh] bg-gray-50 mx-auto rounded-2xl flex flex-col p-4 gap-12 items-center border-2 relative z-10'>
-                    <div>
-                        <h1 className='bree-bold text-[28px] text-center mt-4 text-teal-800'>Your Password has been Changed Successfully 🍦</h1>
-                        <h2 className='pt-4 text-xl roboto-bold text-center px-2 poppins-semi'>
-                            Now you can easily re-login your account through your new password <b>{userEmail}</b>
-                        </h2>
-                    </div>
-                    <button className='bg-green-500 w-[160px] p-2 rounded-lg text-xl inter-bold mt-[-15px]'><Link href={"/login"}>
-                        Login Now
-                    </Link></button>
+          {showError && (
+            <div className="p-3 bg-[#FEE2E2] border-2 border-[#DC2626] text-[#DC2626] font-bold text-xs flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 shrink-0" />
+              <span>{emailError}</span>
+            </div>
+          )}
 
-                    <span className={`text-sm text-gray-500 absolute   bottom-4 right-2`}>
-                        Trimify Account Recovery Portal
-                    </span>
-                </div>
-            )}
+          <button
+            disabled={emailBtnDisabled || loading}
+            className="w-full brutal-btn brutal-btn-yellow py-3.5 font-bungee text-sm sm:text-base tracking-wider disabled:opacity-50 cursor-pointer"
+            onClick={handleGenerateOTP}
+          >
+            {loading ? "SENDING OTP..." : "SEND VERIFICATION CODE ⚡"}
+          </button>
+
+          <div className="text-center pt-2 font-space text-xs font-bold text-black/70">
+            Remembered your password?{" "}
+            <Link href="/login" className="font-bungee text-[#EF4444] underline hover:text-black ml-1">
+              BACK TO LOGIN
+            </Link>
+          </div>
         </div>
-    )
-}
+      )}
 
-export default ResetPassword  
+      {/* STEP 2: OTP Verification */}
+      {otpVerificationBox && (
+        <div className="w-full max-w-md bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-8 flex flex-col gap-5">
+          <div className="flex items-center justify-between pb-3 border-b-2 border-black/20">
+            <span className="px-3 py-1 bg-[#EF4444] text-white font-bungee text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000] rotate-[-2deg]">
+              STEP 2 OF 3
+            </span>
+            <span className="text-xs font-black text-black/50 uppercase">VERIFY CODE</span>
+          </div>
+
+          <div className="text-center">
+            <h1 className="font-bungee text-2xl sm:text-3xl text-black leading-tight drop-shadow-[2px_2px_0px_#EF4444]">
+              CHECK YOUR INBOX
+            </h1>
+            <p className="font-space text-xs sm:text-sm font-bold text-black/70 mt-1">
+              We dispatched a 6-digit code to <strong className="text-black">{userEmail}</strong>.
+            </p>
+          </div>
+
+          {userName && (
+            <div className="p-3 bg-[#FEF3C7] border-2 border-black text-xs font-bold flex items-center justify-between">
+              <span>Account Username:</span>
+              <span className="font-bungee text-sm text-black">@{userName}</span>
+            </div>
+          )}
+
+          <div className="space-y-1">
+            <label className="block font-bungee text-xs text-black uppercase mb-1">
+              6-Digit OTP Code:
+            </label>
+            <input
+              type="text"
+              maxLength={6}
+              value={userOTP}
+              onChange={(e) => setuserOTP(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleOTPVerification()}
+              className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bungee text-center tracking-widest text-xl text-black focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+              placeholder="123456"
+            />
+          </div>
+
+          <div className="text-right text-xs font-bold">
+            {cooldown > 0 ? (
+              <span className="text-black/60 font-bungee">RESEND IN {cooldown}S</span>
+            ) : (
+              <button
+                type="button"
+                onClick={handleGenerateOTP}
+                disabled={emailBtnDisabled || loading}
+                className="font-bungee text-[#EF4444] underline hover:text-black cursor-pointer"
+              >
+                RESEND OTP CODE
+              </button>
+            )}
+          </div>
+
+          {showOTPError && (
+            <div className="p-3 bg-[#FEE2E2] border-2 border-[#DC2626] text-[#DC2626] font-bold text-xs flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 shrink-0" />
+              <span>{OTPError}</span>
+            </div>
+          )}
+
+          <button
+            disabled={otpBtnDisabled || loading}
+            className="w-full brutal-btn brutal-btn-yellow py-3.5 font-bungee text-sm sm:text-base tracking-wider disabled:opacity-50 cursor-pointer"
+            onClick={handleOTPVerification}
+          >
+            {loading ? "VERIFYING..." : "VERIFY CODE & CONTINUE ⚡"}
+          </button>
+        </div>
+      )}
+
+      {/* STEP 3: Change Password */}
+      {passChangeBox && (
+        <div className="w-full max-w-md bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-8 flex flex-col gap-5">
+          <div className="flex items-center justify-between pb-3 border-b-2 border-black/20">
+            <span className="px-3 py-1 bg-[#F97316] text-white font-bungee text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000] rotate-[-2deg]">
+              STEP 3 OF 3
+            </span>
+            <span className="text-xs font-black text-black/50 uppercase">NEW PASSWORD</span>
+          </div>
+
+          <div className="text-center">
+            <h1 className="font-bungee text-2xl sm:text-3xl text-black leading-tight drop-shadow-[2px_2px_0px_#F97316]">
+              SET NEW PASSWORD
+            </h1>
+            <p className="font-space text-xs sm:text-sm font-bold text-black/70 mt-1">
+              Choose a strong password with at least 8 characters and symbols.
+            </p>
+          </div>
+
+          <div className="space-y-3 font-space">
+            <div>
+              <label className="block font-bungee text-xs text-black uppercase mb-1">
+                New Password:
+              </label>
+              <input
+                type="password"
+                value={newPass}
+                onChange={(e) => setnewPass(e.target.value)}
+                className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+                placeholder="New password"
+              />
+            </div>
+
+            <div>
+              <label className="block font-bungee text-xs text-black uppercase mb-1">
+                Confirm Password:
+              </label>
+              <input
+                type="password"
+                value={confirmPass}
+                onChange={(e) => setconfirmPass(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handlepassChange()}
+                className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+                placeholder="Confirm password"
+              />
+            </div>
+          </div>
+
+          {showPassError && (
+            <div className="p-3 bg-[#FEE2E2] border-2 border-[#DC2626] text-[#DC2626] font-bold text-xs flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 shrink-0" />
+              <span>{passMsg}</span>
+            </div>
+          )}
+
+          <button
+            disabled={passBtnDisabled || loading}
+            className="w-full brutal-btn brutal-btn-yellow py-3.5 font-bungee text-sm sm:text-base tracking-wider disabled:opacity-50 cursor-pointer"
+            onClick={handlepassChange}
+          >
+            {loading ? "CHANGING..." : "UPDATE PASSWORD 🔒"}
+          </button>
+        </div>
+      )}
+
+      {/* STEP 4: Success */}
+      {showSuccessBox && (
+        <div className="w-full max-w-md bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-10 flex flex-col items-center text-center gap-5">
+          <div className="w-16 h-16 bg-[#22C55E] border-3 border-black shadow-[3px_3px_0px_#000] flex items-center justify-center">
+            <CheckCircle2 className="w-8 h-8 text-black stroke-[3]" />
+          </div>
+
+          <div>
+            <h1 className="font-bungee text-2xl sm:text-3xl text-black leading-tight drop-shadow-[2px_2px_0px_#FACC15]">
+              PASSWORD CHANGED!
+            </h1>
+            <p className="font-space text-xs sm:text-sm font-bold text-black/75 mt-2">
+              Your credentials have been securely updated. You can now log into your Trimify dashboard.
+            </p>
+          </div>
+
+          <Link
+            href="/login"
+            className="w-full brutal-btn brutal-btn-yellow py-3.5 font-bungee text-sm sm:text-base tracking-wider inline-flex items-center justify-center gap-2"
+          >
+            <span>PROCEED TO LOGIN</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ResetPassword;

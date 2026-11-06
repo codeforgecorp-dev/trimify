@@ -1,23 +1,21 @@
-"use client"; // Indicates this is a client-side component
-import React from "react"; // Import React for JSX
-import { useRouter } from "next/navigation"; // Import useRouter for navigation
-import Link from "next/link"; // Import Link for navigation
-import GoogleLoginButton from "../components/GoogleButton"; // Import Google login button component
-import Image from "next/image"; // Import Image for optimized image rendering
-import { useState, useEffect } from "react"; // Import useState hook for state management
-import { toast, ToastContainer } from "react-toastify"; // Import ToastContainer and toast for notifications
-import Loader from "../components/Loader"; // Import custom Loader component
-import { useSession } from "next-auth/react"; // Importing useSession from next-auth
+"use client";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import GoogleLoginButton from "../components/GoogleButton";
+import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify";
+import Loader from "../components/Loader";
+import { useSession } from "next-auth/react";
+import { Lock, User, ArrowRight, Eye, EyeOff, Sparkles } from "lucide-react";
 
-// Define the Login component
 const Login = () => {
-  // State variables for managing input fields, password visibility, and loading state
-  const [showPassword, setshowPassword] = useState(false); // State to toggle password visibility
-  const [username, setusername] = useState(""); // State for the username input
-  const [password, setpassword] = useState(""); // State for the password input
-  const [loading, setLoading] = useState(false); // State to manage the loading spinner
-  const router = useRouter(); // Initialize the router for navigation
-  const { data: session, status } = useSession(); //Taking data from useSession and renaming it to session
+  const [showPassword, setshowPassword] = useState(false);
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const { data: session, status } = useSession();
   const [hasRedirected, setHasRedirected] = useState(false);
 
   useEffect(() => {
@@ -25,9 +23,9 @@ const Login = () => {
       const email = session?.user?.email;
       if (email) {
         const username = email.split("@")[0].toLowerCase();
-        setHasRedirected(true); // prevent double trigger
+        setHasRedirected(true);
         toast.success(
-          "Successfully logged in through google. Redirecting your Dashboard",
+          "Successfully logged in via Google! Redirecting to Dashboard...",
           {
             position: "top-right",
             autoClose: 1000,
@@ -36,205 +34,196 @@ const Login = () => {
         router.push(`/user/${username}/dashboard`);
       }
     }
-  }, [status, session, hasRedirected, router]); // Dependency array for useEffect
+  }, [status, session, hasRedirected, router]);
 
-  // Function to handle form submission
   async function handleSubmit(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-    setLoading(true); // Set loading state to true
+    event.preventDefault();
+    setLoading(true);
 
-    // Validate username input
-    if (username.length === 0) {
+    if (username.trim().length === 0) {
       setLoading(false);
       toast.error("Please enter your username", {
-        position: "top-right", // Position of the toast
-        autoClose: 1000, // Auto close after 5 seconds
+        position: "top-right",
+        autoClose: 1500,
       });
-
-      return; // Exit the function
+      return;
     }
 
-    // Validate password input
     if (password.length === 0) {
       toast.error("Please enter your password", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 1500,
       });
       setLoading(false);
-      return; // Exit the function
+      return;
     }
 
     try {
-      // Call your API for login
       const response = await fetch("/api/login", {
-        method: "POST", // HTTP method
+        method: "POST",
         body: JSON.stringify({
-          Username: username, // Send username
-          Password: password, // Send password
+          Username: username.trim(),
+          Password: password,
         }),
         headers: {
-          "Content-Type": "application/json", // Specify JSON content type
+          "Content-Type": "application/json",
         },
       });
 
-      const result = await response.json(); // Parse the JSON response
-      console.log(result)
+      const result = await response.json();
+
       if (result.success && result.admin) {
-        toast.success("Admin Logged in Successfully", {
+        toast.success("Admin Logged In Successfully", {
           position: "top-right",
-          autoClose: 1000
-        })
-        router.push("/admin")
-        return
+          autoClose: 1000,
+        });
+        router.push("/admin");
+        return;
       }
-      await localStorage.setItem("Token", result.token);
+
+      if (result.token) {
+        localStorage.setItem("Token", result.token);
+      }
+
       if (result.success) {
-        // If login is successful, show success toast
-        toast.success("Login successful", {
+        toast.success("Login successful!", {
           position: "top-right",
           autoClose: 1000,
         });
-        // Redirect to the user dashboard
-        router.push(`/user/${username}/dashboard`);
+        router.push(`/user/${username.trim()}/dashboard`);
       } else {
-        // Handle login error
-        toast.error(result.error, {
+        toast.error(result.error || "Login failed. Please check credentials.", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 2000,
         });
-        setloading(false);
       }
-    } catch (error) {
-      // Show error toast if an exception occurs
-      toast.error(error, {
+    } catch {
+      toast.error("Network error! Please try again later.", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 2000,
       });
-      setLoading(false);
     } finally {
-      // Once the process is complete, set loading to false
       setLoading(false);
     }
   }
 
-  // Render the component
   return (
     <>
-      {/* Toast container for notifications */}
-      <ToastContainer className={"mt-12"} />
-      <div
-        className="hero relative min-h-[80.8vh] w-full  flex flex-col justify-center items-center px-4 h-full"
-        
-      >
-        {/* Main container for the login form */}
-        <div className="bg-white rounded-2xl  p-4 max-w-[70vh] w-full h-auto  flex flex-col gap-3 items-center justify-center ">
-          {/* Title of the login page */}
-          <h1 className="text-3xl bree-bold text-gray-800 font-bold mb-3 mt-3">
-            Login to TRIMIFY now
-          </h1>
-          {/* Login form */}
-          <form
-            action="Submit"
-            className="flex flex-col items-center gap-4 w-full max-w-[70vh]"
-          >
-            {/* Username input field */}
-            <label htmlFor="username" className="sr-only">
-              Username
-            </label>
-            <input
-              title="Enter your username"
-              required // Make the field required
-              onChange={(e) => setusername(e.target.value)} // Update state on change
-              value={username} // Bind state to input
-              autoComplete="username" // Enable autocomplete for username
-              id="username"
-              type="text"
-              placeholder="Enter your username"
-              data-testid='login-email'
-              className="text-gray-800 bg-white border border-gray-300  rounded-md py-3 p-2 focus:scale-101 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 ease-in-out  w-full"
-            />
+      <ToastContainer className="pt-16" />
+      <div className="min-h-[calc(100vh-142px)] w-full bg-halftone-warm flex flex-col justify-center items-center p-4 sm:p-6 select-none">
+        <div className="relative w-full max-w-md bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 sm:p-8 flex flex-col items-center gap-5">
+          {/* Top Tag Sticker */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FACC15] text-black font-bungee text-xs uppercase border-2 border-black shadow-[2px_2px_0px_#000] rotate-[-2deg]">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>MEMBER ACCESS</span>
+          </div>
 
-            {/* Password input field */}
-            <div className="relative w-full">
-              <input
-                required // Make the field required
-                title="Enter your password"
-                onChange={(e) => setpassword(e.target.value)} // Update state on change
-                value={password} // Bind state to input
-                id="password"
-                type={showPassword ? "text" : "password"} // Toggle password visibility
-                autoComplete="current-password" // Enable autocomplete for password
-                placeholder="Enter your password"
-                data-testid='login-password'
-                className=" text-gray-800 bg-white border border-gray-300  rounded-md py-3 p-2 focus:scale-101 focus:outline-none focus:ring-2 focus:ring-blue-400
-                transition-all duration-300 ease-in-out   w-full"
-              />
-              {/* Toggle password visibility */}
-              <Image
-                priority={false} // Do not prioritize loading
-                title={showPassword ? "Hide password" : "Show password"} // Tooltip for the icon
-                onClick={() => setshowPassword(!showPassword)} // Toggle visibility state
-                alt="toggle visibility"
-                className="absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer"
-                width={28}
-                height={28}
-                src={showPassword ? "/hide.png" : "/show.png"} // Show appropriate icon
-              />
+          {/* Heading */}
+          <div className="text-center">
+            <h1 className="font-bungee text-2xl sm:text-3xl text-black tracking-tight drop-shadow-[2px_2px_0px_#FACC15]">
+              WELCOME BACK
+            </h1>
+            <p className="font-space text-xs sm:text-sm font-bold text-black/70 mt-1">
+              Sign in to manage your branded links and analytics.
+            </p>
+          </div>
+
+          {/* Login Form */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+            {/* Username */}
+            <div>
+              <label htmlFor="username" className="block font-bungee text-xs text-black uppercase mb-1">
+                Username:
+              </label>
+              <div className="relative">
+                <input
+                  required
+                  onChange={(e) => setusername(e.target.value)}
+                  value={username}
+                  autoComplete="username"
+                  id="username"
+                  type="text"
+                  placeholder="Enter your username"
+                  data-testid="login-email"
+                  className="w-full p-3 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm placeholder:text-black/40 focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+                />
+              </div>
             </div>
 
-            {/* Forgot password link */}
-            <p
-              title="Recover your account"
-              className="underline text-red-800 mt-[-10px] mb-2 w-full cursor-pointer text-end"
-            > <Link href={"/reset_password"}>
-                Forgot password ?
-              </Link>
-            </p>
+            {/* Password */}
+            <div>
+              <label htmlFor="password" className="block font-bungee text-xs text-black uppercase mb-1">
+                Password:
+              </label>
+              <div className="relative">
+                <input
+                  required
+                  onChange={(e) => setpassword(e.target.value)}
+                  value={password}
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
+                  placeholder="Enter your password"
+                  data-testid="login-password"
+                  className="w-full p-3 pr-10 bg-[#FFFDF0] border-2 border-black font-bold text-black text-sm placeholder:text-black/40 focus:bg-white focus:outline-none shadow-[inset_1px_1px_0px_rgba(0,0,0,0.08)]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setshowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-black/60 hover:text-black cursor-pointer"
+                  title={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4 stroke-[2.5]" /> : <Eye className="w-4 h-4 stroke-[2.5]" />}
+                </button>
+              </div>
+            </div>
 
-            {/* Login button */}
+            {/* Forgot Password Link */}
+            <div className="text-right -mt-1">
+              <Link
+                href="/reset_password"
+                className="font-bungee text-xs text-[#EF4444] hover:text-black underline tracking-wide"
+              >
+                FORGOT PASSWORD?
+              </Link>
+            </div>
+
+            {/* Submit Button */}
             <button
-              data-testid='login-submit-btn'
-              title="Login to your account"
-              onClick={handleSubmit} // Call handleSubmit on click
+              data-testid="login-submit-btn"
               type="submit"
-              
-              className={
-                loading
-                  ? " transition-all ease-in-out duration-300 font-bold bg-green-400 text-black w-full p-4 hover:scale-100 rounded-[3px] cursor-not-allowed roboto-bold"
-                  : "cursor-pointer transition-all ease-in-out duration-300 font-bold hover:bg-green-400 hover:text-black w-full p-4 bg-green-500 text-white rounded-[3px] hover:scale-101 inter-bold "
-              }
-              disabled={loading} // Disable button when loading
+              disabled={loading}
+              className="w-full brutal-btn brutal-btn-yellow py-3.5 font-bungee text-sm sm:text-base tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
-              {loading ? "Logging in..." : "Login now"}{" "}
-              {/* Show loading text */}
+              <span>{loading ? "LOGGING IN..." : "LOGIN NOW ⚡"}</span>
             </button>
           </form>
 
-          {/* Show loader when the page is loading */}
           {loading && <Loader />}
 
-          {/* Sign-up link */}
-          <div className="flex gap-[3px] items-center justify-center w-full">
-            <p className="text-gray-800 mt-4 md:ml-[25.5vh]">
-              Don't have an account?
-            </p>
-            <span
-              title="Sign up if you don't have account"
-              className="underline mt-3 text-green-500"
-            >
-              <Link href="/sign-up-to-trimify">Sign Up</Link>
+          {/* Divider */}
+          <div className="w-full flex items-center gap-3 my-1">
+            <div className="flex-1 h-0.5 bg-black/20" />
+            <span className="font-bungee text-xs text-black/50 px-2 py-0.5 bg-[#FFFBEB] border border-black/30 rotate-[-1deg]">
+              OR
             </span>
+            <div className="flex-1 h-0.5 bg-black/20" />
           </div>
 
-          {/* Divider */}
-          <p className="text-xl font-bold text-white">or</p>
+          {/* Google Login */}
+          <div className="w-full">
+            <GoogleLoginButton width={380} />
+          </div>
 
-          {/* Google Sign-in button */}
-          <div
-            title="Login using your google account"
-            className="max-w-[75vh] w-full flex items-center justify-center gap-2 bg-gray-100 rounded-lg"
-          >
-            <GoogleLoginButton width={300} />
+          {/* Sign up prompt */}
+          <div className="text-center pt-2 font-space text-xs sm:text-sm font-bold text-black/80">
+            Don't have an account yet?{" "}
+            <Link
+              href="/sign-up-to-trimify"
+              className="font-bungee text-[#EF4444] underline hover:text-black ml-1"
+            >
+              SIGN UP FOR FREE →
+            </Link>
           </div>
         </div>
       </div>
@@ -242,5 +231,4 @@ const Login = () => {
   );
 };
 
-// Export the Login component as default
 export default Login;

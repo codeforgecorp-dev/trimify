@@ -67,37 +67,17 @@ Redesign the Trimify URL shortener UI with a **Warm Maximalist** theme (Neo-brut
 
 ---
 
-## 4. Phase 4: Full Plan & Files to Touch
-
-Phase 4 covers **Auth Pages** and the **User Dashboard**.
-
-### Files to Redesign in Phase 4:
-1. **`app/components/login.js` & `app/login/page.js`**
-   - Redesign login form card (`border-4 border-black shadow-[8px_8px_0px_#000] bg-white`).
-   - Replace purple `.hero` background with `bg-halftone-warm`.
-   - Update inputs, password visibility toggle, error displays, and submit button (`brutal-btn brutal-btn-yellow`).
-   - Preserve `handleSubmit`, credentials login, and NextAuth Google sign-in.
-2. **`app/components/Signup.js` & `app/sign-up-to-trimify/page.js`**
-   - Redesign signup form card with warm maximalist tokens.
-   - Keep `react-hook-form` validation, terms checkbox, and Google sign-up.
-3. **`app/components/GoogleButton.js`**
-   - Convert inline styles to neo-brutalist classes (`border-2 border-black shadow-[3px_3px_0px_#000] bg-white font-bold`).
-4. **`app/components/ResetPassword.js` & `app/reset_password/page.js`**
-   - Redesign 4-step wizard (Email → OTP → New Password → Success) with brutalist step pills and inputs.
-5. **`app/user/[user]/dashboard/page.js`** (Largest file, ~1526 lines)
-   - Replace purple/gray backgrounds with warm halftone background (`bg-halftone-warm` / `#FFFDF0`).
-   - Redesign link creation form (Long URL, custom slug input, UTM builder accordion/toggles, expiry controls, password toggle).
-   - Redesign the Links List table / cards (copy button, QR trigger, edit modal, delete modal, click counter badge).
-   - Redesign modals: Edit Link modal, QR code modal, and Delete confirmation modal with brutalist borders and shadows.
-   - Preserve ALL state, handlers, fetch calls, localStorage tokens, and toast notifications.
-6. **`app/user/[user]/analytics/[analytics]/page.js`**
-   - Re-theme Recharts charts with warm colors (warm yellow, orange, and red bars instead of cool purples/blues).
-   - Style summary KPI metric cards (Total Clicks, Unique Visitors) with `border-3 border-black shadow-[4px_4px_0px_#000]`.
-   - Style the visitor analytics table (Date, Time, Device, Browser, City, Country flag) with high-contrast brutalist borders.
-7. **`app/components/Logout.js`**
-   - Restyle the dashboard header/user menu bar with brand yellow `#FACC15`, user avatar badge, and brutalist dropdown.
-8. **`app/components/Upgrade2premium.js`**
-   - Restyle the premium upgrade modal to match warm maximalist style.
+### Phase 4: Auth Pages & User Dashboard (COMPLETED & VERIFIED)
+- `app/components/GoogleButton.js` — Neo-brutalist Google SSO button with black border, hard offset shadow, and hover translation.
+- `app/components/login.js` — Warm halftone card, brutalist inputs, password visibility toggle, member access sticker, and `brutal-btn-yellow` submit button.
+- `app/components/Signup.js` — Neo-brutalist registration card with warm tokens, react-hook-form validation, custom terms checkbox, and `brutal-btn-yellow`.
+- `app/components/ResetPassword.js` — 3-step password recovery flow (Request OTP → Enter OTP & New Password → Success) with brutalist step indicator badges and tactile buttons.
+- `app/components/Logout.js` — Top navigation bar for the authenticated user with brand yellow `#FACC15` badge, brutalist avatar dropdown, and responsive menu.
+- `app/components/QRCodeGenerator.js` — Neo-brutalist QR code modal with preview frame, format picker, download action, and toast triggers.
+- `app/components/Upgrade2premium.js` — Warm brutalist upgrade modal with Pro features showcase and tactile CTA.
+- `app/components/Loader2.js` — High-contrast warm brutalist loading indicator for auth verification.
+- `app/user/[user]/analytics/[analytics]/page.js` — Full analytics dashboard featuring warm red/yellow Recharts bar chart, KPI metric card for total engagements, and responsive 30-click visitor table with geographic details.
+- `app/user/[user]/dashboard/page.js` — Comprehensive dashboard redesign (~1,290 lines): brutalist URL shortening form, UTM builder parameters, link expiration date/click rules, link password protection modal, managed links list with inline actions (Copy, Edit modal, QR modal, Delete confirmation modal), and user profile info modal. All state management and backend contracts 100% preserved.
 9. **`app/components/QRCodeGenerator.js`**
    - Update download buttons and canvas container to brutalist styling.
 10. **`app/components/Loader2.js`**

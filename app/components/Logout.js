@@ -1,10 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { toast } from "react-toastify";
+import { ChevronDown, User, Trash2, LogOut, Link as LinkIcon, Sparkles } from "lucide-react";
 
-const Logout = ({ username, setshowDeleteConfirmation, setshowPersonalDetails ,shortName ,analyticsPage }) => {
+const Logout = ({
+  username,
+  setshowDeleteConfirmation,
+  setshowPersonalDetails,
+  shortName,
+  analyticsPage,
+}) => {
   const { data: session } = useSession();
   const [dropDown, setDropDown] = useState(false);
 
@@ -15,7 +23,7 @@ const Logout = ({ username, setshowDeleteConfirmation, setshowPersonalDetails ,s
       window.google.accounts.id.disableAutoSelect();
     }
 
-    toast.success("Successfully Logged Out", {
+    toast.success("Successfully logged out", {
       position: "top-right",
       autoClose: 1000,
     });
@@ -29,100 +37,105 @@ const Logout = ({ username, setshowDeleteConfirmation, setshowPersonalDetails ,s
   };
 
   return (
-    <>
-      
-      <div className="nav bg-gray-800 md:border-b md:border-gray-300 text-gray-800">
-        <div className="flex justify-between items-center px-4 py-3 h-[62px] relative ml-2 md:ml-8">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Image src="/brandLogo2.png" className="md:w-[50px] md:h-[50px] h-[40px] w-[40px] rounded-full" width={50} height={50} alt="logo" />
-          </div>
+    <header className="sticky top-0 z-40 w-full select-none bg-[#FACC15] border-b-4 border-black shadow-[0px_4px_0px_#000]">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-2.5 h-[64px]">
+        {/* Brand */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <Image
+            src="/brandLogo2.png"
+            className="w-9 h-9 border-2 border-black shadow-[2px_2px_0px_#000] rounded-none group-hover:rotate-6 transition-transform"
+            width={36}
+            height={36}
+            alt="logo"
+          />
+          <span className="font-bungee text-xl sm:text-2xl text-black tracking-wider drop-shadow-[2px_2px_0px_#fff]">
+            TRIMIFY
+          </span>
+          <span className="hidden sm:inline-block px-2 py-0.5 bg-black text-[#FACC15] text-[10px] font-black uppercase border border-black rotate-[-2deg]">
+            DASHBOARD
+          </span>
+        </Link>
 
-          {/* Dropdown */}
-          <div className="relative">
-            <div
-              className="flex items-center gap-2 cursor-pointer px-3 py-2 rounded-md bg-gray-100 transition-all duration-300 hover:bg-gray-200"
-              onClick={() => setDropDown(!dropDown)}
-            >
-              {analyticsPage ?<> <Image
-                src="/link.png"
-                className="w-[28px] h-[28px]"
-                width={32}
-                height={32}
-                alt="user"
-                
-              />
-              <span className="font-medium text-gray-800">{shortName}</span></> : <><Image
-                src="/user.png"
-                width={32}
-                height={32}
-                alt="user"
-                className="rounded-full"
-              />
-              <span className="font-medium text-gray-800">{username}</span></> }
-              
-              {/* Arrow Icon */}
-              {analyticsPage ? null: (
-              <svg
-                className={`w-4 h-4 transform transition-transform duration-200 ${
-                  dropDown ? "rotate-180" : "rotate-0"
-                }`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
+        {/* User Pill & Dropdown */}
+        <div className="relative">
+          <button
+            type="button"
+            className="flex items-center gap-2 px-3 py-1.5 bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:-translate-y-0.5 active:translate-y-0.5 transition-all cursor-pointer"
+            onClick={() => setDropDown(!dropDown)}
+          >
+            {analyticsPage ? (
+              <>
+                <LinkIcon className="w-4 h-4 text-[#EF4444] stroke-[3]" />
+                <span className="font-bungee text-xs sm:text-sm text-black truncate max-w-[140px]">
+                  /{shortName}
+                </span>
+              </>
+            ) : (
+              <>
+                <div className="w-6 h-6 bg-[#EF4444] text-white border border-black flex items-center justify-center font-bungee text-xs">
+                  {username ? username.charAt(0).toUpperCase() : "U"}
+                </div>
+                <span className="font-bungee text-xs sm:text-sm text-black truncate max-w-[120px]">
+                  {username}
+                </span>
+                <ChevronDown
+                  className={`w-4 h-4 text-black stroke-[3] transition-transform duration-200 ${
+                    dropDown ? "rotate-180" : "rotate-0"
+                  }`}
                 />
-              </svg>)}
-            </div>
+              </>
+            )}
+          </button>
 
-            {/* Dropdown Menu */}
-            {analyticsPage ? null: ( 
-            <ul
-              className={`absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50 border border-gray-200 transform origin-top transition-all duration-200 ${
-                dropDown
-                  ? "scale-y-100 opacity-100"
-                  : "scale-y-0 opacity-0 pointer-events-none"
-              }`}
-              style={{
-                transformOrigin: "top",
-                transitionTimingFunction: "ease-in-out",
-              }}
-            >
-              <li className="px-4 py-2 hover:bg-gray-100 text-sm text-gray-700 cursor-pointer transition"
-                onClick={()=>setshowPersonalDetails((prev)=>{
-                  
-                  return !prev
-                  
-                })}
-              >
-                Personal Details
+          {/* Dropdown Menu */}
+          {!analyticsPage && dropDown && (
+            <ul className="absolute right-0 mt-2 w-52 bg-white border-3 border-black shadow-[5px_5px_0px_#000] p-1.5 flex flex-col gap-1 z-50 animate-slideDown">
+              <li>
+                <button
+                  type="button"
+                  className="w-full text-left px-3 py-2 font-space text-xs sm:text-sm font-bold text-black hover:bg-[#FEF3C7] flex items-center gap-2 border-b border-black/10 cursor-pointer"
+                  onClick={() => {
+                    setDropDown(false);
+                    setshowPersonalDetails((prev) => !prev);
+                  }}
+                >
+                  <User className="w-4 h-4 text-black stroke-[2.5]" />
+                  <span>Personal Details</span>
+                </button>
               </li>
-              <li
-                className="px-4 py-2 hover:bg-gray-100 text-sm text-gray-700 cursor-pointer transition"
-                onClick={() => {
-                  setshowDeleteConfirmation((prev) => {
-                    return !prev;
-                  });
-                }}
-              >
-                Delete All
+
+              <li>
+                <button
+                  type="button"
+                  className="w-full text-left px-3 py-2 font-space text-xs sm:text-sm font-bold text-[#DC2626] hover:bg-[#FEE2E2] flex items-center gap-2 border-b border-black/10 cursor-pointer"
+                  onClick={() => {
+                    setDropDown(false);
+                    setshowDeleteConfirmation((prev) => !prev);
+                  }}
+                >
+                  <Trash2 className="w-4 h-4 stroke-[2.5]" />
+                  <span>Delete All Links</span>
+                </button>
               </li>
-              <li
-                onClick={handleLogout}
-                className="px-4 py-2 hover:bg-red-100 text-sm text-red-600 cursor-pointer transition font-semibold"
-              >
-                Logout
+
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDropDown(false);
+                    handleLogout();
+                  }}
+                  className="w-full text-left px-3 py-2 font-bungee text-xs text-black hover:bg-[#FACC15] flex items-center gap-2 cursor-pointer"
+                >
+                  <LogOut className="w-4 h-4 stroke-[2.5]" />
+                  <span>LOGOUT</span>
+                </button>
               </li>
-            </ul>)}
-          </div>
+            </ul>
+          )}
         </div>
       </div>
-    </>
+    </header>
   );
 };
 

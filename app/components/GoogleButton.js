@@ -1,37 +1,19 @@
 "use client";
-import { useEffect } from "react";
-import Script from "next/script";
+import React from "react";
 import { signIn } from "next-auth/react";
-import { jwtDecode } from "jwt-decode"; 
-import { useRouter, } from "next/navigation";
 import Image from "next/image";
-export default function GoogleLoginButton({ width = 300 }) {
 
-  
+export default function GoogleLoginButton({ width = 300 }) {
   return (
- <>
     <button
       id="google-signin-button"
-      onClick={() => signIn("google")}  // 👈 This triggers Google login
-      style={{
-        width: width,
-        padding: "10px",
-        backgroundColor: "#fffff",
-        color: "black",
-        borderRadius: "5px",
-        fontWeight: "bold",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "10px",
-        cursor: "pointer",
-        border: "1px solid #ccc", 
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
+      type="button"
+      onClick={() => signIn("google")}
+      style={{ maxWidth: width }}
+      className="w-full mx-auto brutal-btn bg-white hover:bg-[#FFFDF0] text-black py-3 px-4 font-bungee text-xs sm:text-sm tracking-wider flex items-center justify-center gap-2.5 cursor-pointer shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] transition-all"
     >
-      <Image src="/google.svg" alt="Google" width={20} height={20} />
-      Continue with Google
-    </button></>
+      <Image src="/google.svg" alt="Google" width={20} height={20} className="shrink-0" />
+      <span>CONTINUE WITH GOOGLE</span>
+    </button>
   );
 }
