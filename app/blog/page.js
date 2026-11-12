@@ -48,16 +48,6 @@ export const metadata = {
 const articles = [
   {
     num: "01",
-    title: "Capcut Pro Download For Free",
-    snippet: "Comprehensive guide to unlocking creative editing tools and resources for your video workflows.",
-    href: "/blog/capcut-premium-for-free_06",
-    image: "/Capcut-pro.png",
-    author: "Trimify Owner",
-    tag: "TUTORIAL",
-    tagColor: "bg-[#FACC15] text-black",
-  },
-  {
-    num: "02",
     title: "Top 5 Best URL Shorteners 2025",
     snippet: "In this breakdown, compare top URL Shorteners with their pros, cons, and performance metrics.",
     href: "/blog/01",
@@ -67,7 +57,7 @@ const articles = [
     tagColor: "bg-[#EF4444] text-white",
   },
   {
-    num: "03",
+    num: "02",
     title: "How to Use URL Shorteners?",
     snippet: "Step-by-step masterclass on how to shorten, brand, and track links across campaigns.",
     href: "/blog/02",
@@ -77,7 +67,7 @@ const articles = [
     tagColor: "bg-[#F97316] text-white",
   },
   {
-    num: "04",
+    num: "03",
     title: "Why Use Short Links?",
     snippet: "Short links add clean aesthetic to social media bios, boost CTR, and protect tracking integrity.",
     href: "/blog/03",
@@ -87,7 +77,7 @@ const articles = [
     tagColor: "bg-[#FACC15] text-black",
   },
   {
-    num: "05",
+    num: "04",
     title: "Free vs Premium URL Shorteners",
     snippet: "Which one is right for your workflow? Discover the key differences in analytics and limits.",
     href: "/blog/04",

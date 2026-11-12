@@ -12,6 +12,15 @@ const nextConfig = {
       "www.google.com",
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/blog/capcut-premium-for-free_06",
+        destination: "/blog",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withPWA({
