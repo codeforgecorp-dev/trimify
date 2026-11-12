@@ -13,13 +13,13 @@ export const metadata = {
     "digital services refund policy",
   ],
   alternates: {
-    canonical: "https://trimy.me/refund-policy",
+    canonical: "https://www.trimy.me/refund-policy",
   },
   openGraph: {
     title: "Refund Policy | Trimify",
     description:
       "Official Refund Policy of Trimify. Refunds are only issued in verified cases of non-delivery.",
-    url: "https://trimy.me/refund-policy",
+    url: "https://www.trimy.me/refund-policy",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Trimify logo" }],
     siteName: "Trimify",
     type: "website",
@@ -46,11 +46,11 @@ const RefundPolicyPage = () => {
     name: "Refund Policy",
     description:
       "Refund Policy for Trimify. Purchases are non-refundable except in verified cases of non-delivery.",
-    url: "https://trimy.me/refund-policy",
+    url: "https://www.trimy.me/refund-policy",
     publisher: {
       "@type": "Organization",
       name: "Trimify",
-      url: "https://trimy.me",
+      url: "https://www.trimy.me",
     },
     inLanguage: "en",
   });

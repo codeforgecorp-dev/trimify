@@ -11,13 +11,13 @@ export const metadata = {
         "Trimify account recovery",
     ],
     alternates: {
-        canonical: "https://trimy.me/reset_password",
+        canonical: "https://www.trimy.me/reset_password",
     },
     openGraph: {
         title: "Forgot Password | Trimify",
         description:
             "Reset your Trimify account password securely. Enter your registered email to receive a password recovery link and regain access to your dashboard.",
-        url: "https://trimy.me/reset_password",
+        url: "https://www.trimy.me/reset_password",
         siteName: "Trimify",
         type: "website",
     },
@@ -40,22 +40,22 @@ const page = () => {
         name: "Forgot Password",
         description:
             "Reset your Trimify account password securely. Enter your registered email to receive a password recovery link and regain access to your dashboard.",
-        url: "https://trimy.me/reset_password",
+        url: "https://www.trimy.me/reset_password",
         publisher: {
             "@type": "Organization",
             name: "Trimify",
-            url: "https://trimy.me",
+            url: "https://www.trimy.me",
         },
         inLanguage: "en",
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://trimy.me/reset_password",
+            "@id": "https://www.trimy.me/reset_password",
         },
         potentialAction: {
             "@type": "RecoverAction",
             target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://trimy.me/reset_password",
+                urlTemplate: "https://www.trimy.me/reset_password",
             },
             name: "Reset Trimify Password",
         },

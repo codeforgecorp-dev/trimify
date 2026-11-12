@@ -23,7 +23,7 @@ export const metadata = {
     title: "Use Case of URL Shorteners | Trimify-Blog",
     description:
       "Discover various use cases of URL shorteners across marketing, social media, analytics, and more. Learn how Trimify enhances link management and tracking for users.",
-    url: "https://trimy.me/blog/05",
+    url: "https://www.trimy.me/blog/05",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
       {

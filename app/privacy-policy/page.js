@@ -10,12 +10,12 @@ export const metadata = {
     "user data protection",
     "URL shortener privacy",
   ],
-  alternates: { canonical: "https://trimy.me/privacy-policy" },
+  alternates: { canonical: "https://www.trimy.me/privacy-policy" },
   openGraph: {
     title: "Trimify Privacy Policy - Short Links with UTM building",
     description:
       "Trimify Privacy Policy explains how we collect, use, and protect your data, including GDPR and CCPA compliance, cookies, JWT authentication, and user rights.",
-    url: "https://trimy.me/privacy-policy",
+    url: "https://www.trimy.me/privacy-policy",
     siteName: "Trimify - The Ultimate URL Shortener",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Trimify logo" }],
     locale: "en-US",
@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Trimify Privacy Policy",
-    url: "https://trimy.me/privacy-policy",
+    url: "https://www.trimy.me/privacy-policy",
     description:
       "Trimify Privacy Policy explains how we collect, use, and protect your personal information including cookies, JWT authentication, and user rights. Compliant with GDPR and CCPA.",
     publisher: {
@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
       name: "Trimify",
       logo: {
         "@type": "ImageObject",
-        url: "https://trimy.me/og-image.png",
+        url: "https://www.trimy.me/og-image.png",
       },
     },
     mainEntity: [

@@ -14,13 +14,13 @@ export const metadata = {
     "contact link shortener",
   ],
   alternates: {
-    canonical: "https://trimy.me/contact",
+    canonical: "https://www.trimy.me/contact",
   },
   openGraph: {
     title: "Contact Trimify Support",
     description:
       "Get in touch with Trimify for feedback and technical support. Direct channels for email, phone, and WhatsApp.",
-    url: "/contact",
+    url: "https://www.trimy.me/contact",
     siteName: "Trimify",
     images: [
       {

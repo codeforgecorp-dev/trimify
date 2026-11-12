@@ -91,7 +91,7 @@ const page = () => {
               </li>
               <li>
                 <span className="font-bold">Shortened URL:</span>{" "}
-                https://trimy.me/mkt2025
+                https://www.trimy.me/mkt2025
               </li>
             </ul>
 
@@ -130,7 +130,7 @@ const page = () => {
               ✅ Advanced Features:
             </h3>
             <ul className="list-disc list-inside mb-4 font-semibold">
-              <li>Custom aliases (e.g., trimy.me/your-brand)</li>
+              <li>Custom aliases (e.g., www.trimy.me/your-brand)</li>
               <li>Branded domains support</li>
               <li>Detailed analytics: geo, devices, referrers, etc.</li>
               <li>Team collaboration and roles</li>
@@ -244,7 +244,7 @@ const page = () => {
                   </span>{" "}
                   Generate random short links instantly (no login required).
                   Want control? Sign up once to unlock the ability to create
-                  custom URLs (e.g., <code>trimy.me/my-brand</code>).
+                  custom URLs (e.g., <code>www.trimy.me/my-brand</code>).
                 </li>
                 <li>
                   <span className="font-bold">
@@ -303,10 +303,10 @@ const page = () => {
               <p className="text-lg font-bold">
                 👉 Get started today at{" "}
                 <a
-                  href="https://trimy.me"
+                  href="https://www.trimy.me"
                   className="underline text-blue-700"
                 >
-                  trimy.me
+                  www.trimy.me
                 </a>{" "}
                 and unlock your link’s full potential — for free.
               </p>
@@ -324,7 +324,7 @@ const page = () => {
 
             <p className="mb-4 font-semibold">
               💡 <strong>Tip:</strong> Start with a free plan (like{" "}
-              <a href="https://trimy.me" className="underline">
+              <a href="https://www.trimy.me" className="underline">
                 Trimify
               </a>
               ) and upgrade later as your needs grow.

@@ -44,7 +44,7 @@ const getLoginStructuredData = () => ({
   name: "Login to Trimify - Free URL Shortener with Advanced Analytics and Password Protection ",
   description:
     "Log in to your Trimify account to access your dashboard and create custom short links. If you have not created your account yet, please sign up first.",
-  url: "https://trimy.me/login",
+  url: "https://www.trimy.me/login",
   publisher: {
     "@type": "Organization",
     name: "Trimify",

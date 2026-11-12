@@ -205,7 +205,7 @@ export const FAQSection = () => {
     {
       question: "Can I customize my short links?",
       answer:
-        "Absolutely! You can choose custom aliases (e.g. trimy.me/my-brand) instead of random characters. You can also generate high-resolution QR codes to put on print cards, posters, or packaging.",
+        "Absolutely! You can choose custom aliases (e.g. www.trimy.me/my-brand) instead of random characters. You can also generate high-resolution QR codes to put on print cards, posters, or packaging.",
     },
   ];
 

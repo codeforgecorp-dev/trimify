@@ -272,7 +272,7 @@ const page = () => {
                       </span>{" "}
                       becomes:{" "}
                       <span className="text-red-300">
-                        https://trimy.me/Abxy
+                        https://www.trimy.me/Abxy
                       </span>
                     </p>
                   </p>
@@ -298,7 +298,7 @@ const page = () => {
                     <p>
                       <strong>For Example: </strong>
                       <span className="text-red-300">
-                        https://trimy.me/yourcustomname
+                        https://www.trimy.me/yourcustomname
                       </span>{" "}
                       looks more trustworthy and professional than generic short
                       links.

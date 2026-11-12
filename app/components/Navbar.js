@@ -55,7 +55,7 @@ const Navbar = () => {
       {/* Main Navbar Bar */}
       <nav className="bg-[#FACC15] border-b-4 border-black px-3 md:px-6 py-2.5 shadow-[0px_4px_0px_#000]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo & Playful Badges */}
+          {/* Logo */}
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/"
@@ -72,17 +72,6 @@ const Navbar = () => {
                 </span>
               </div>
             </Link>
-
-            {/* Rotated Sticker Badge */}
-            <div className="hidden sm:inline-flex items-center gap-1 bg-[#EF4444] text-white text-[11px] font-black uppercase px-2.5 py-0.5 border-2 border-black rotate-[-2deg] shadow-[2px_2px_0px_#000] animate-wiggle">
-              <Flame className="w-3 h-3 fill-white" />
-              HOT & LOUD!
-            </div>
-
-            {/* Mini Slogan Pill */}
-            <div className="hidden lg:inline-flex items-center text-[11px] font-bold uppercase tracking-tight bg-white text-black px-2 py-0.5 border-2 border-black rotate-[1.5deg] shadow-[2px_2px_0px_#000]">
-              SHORTEN SMART · SHARE FAST
-            </div>
           </div>
 
           {/* Desktop Navigation Links */}

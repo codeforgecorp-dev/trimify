@@ -26,7 +26,7 @@ const Pricing = () => {
       settings: {
         displayMode: "overlay",
         theme: "dark",
-        successUrl: "https://trimy.me/sign-up-to-trimify",
+        successUrl: "https://www.trimy.me/sign-up-to-trimify",
         closeCallback() {
           console.log("Checkout Close");
         },

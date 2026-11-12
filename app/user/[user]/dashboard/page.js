@@ -863,7 +863,7 @@ export default function Page() {
             <div className="flex flex-col gap-4">
               {data?.length > 0 &&
                 data.map((items, index) => {
-                  let domain = "trimy.me";
+                  let domain = "www.trimy.me";
                   try {
                     domain = new URL(items.LongUrl).hostname.replace("www.", "").trim();
                   } catch {}

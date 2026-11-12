@@ -14,13 +14,13 @@ export const metadata = {
     "Trimify developer",
   ],
   alternates: {
-    canonical: "/about",
+    canonical: "https://www.trimy.me/about",
   },
   openGraph: {
     title: "About Trimify – The Maximalist URL Shortener",
     description:
       "Learn more about Trimify, a modern URL shortener built with Next.js and MongoDB.",
-    url: "/about",
+    url: "https://www.trimy.me/about",
     siteName: "Trimify",
     images: [
       {

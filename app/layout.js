@@ -54,6 +54,7 @@ export const viewport = {
 };
 
 export const metadata = {
+  metadataBase: new URL("https://www.trimy.me"),
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
