@@ -11,14 +11,22 @@ export async function POST(req) {
 
     const fullShortUrl = `${process.env.NEXT_PUBLIC_HOST_URL}/${data.ShortName}`;
 
-    const { username, LongUrl, ShortName, time, date, passwordSet, utm, expirydate, maxClicks  } = data;
-    const expiry = expirydate ? new Date(expirydate) : null;
+    const { username, LongUrl, ShortName, time, date, passwordSet, utm, expirydate, maxClicks } = data;
+    const finalPassword = passwordSet || data.password || null;
+    const finalExpiry = expirydate || data.expiryDate || null;
+    const finalMaxClicks = maxClicks ?? data.maxClick ?? null;
+
+    const utmSource = utm?.utm_Source || utm?.source || data.utmSource || null;
+    const utmMedium = utm?.utm_Medium || utm?.medium || data.utmMedium || null;
+    const utmCampaign = utm?.utm_Campaign || utm?.campaign || data.utmCampaign || null;
+
+    const expiry = finalExpiry ? new Date(finalExpiry) : null;
     // Validate the input data
     const existing = await Url.findOne({ ShortName });
  
     if (existing) {
       return NextResponse.json(
-        { error: "Short URL already taken!" },
+        { success: false, conflict: true, error: "Short URL already taken!" },
         { status: 409 }
       );
     }
@@ -30,20 +38,20 @@ export async function POST(req) {
       fullShortUrl: fullShortUrl,
       time: time,
       date: date,
-      Password:passwordSet ? bcrypt.hashSync(passwordSet ,10) : null,
-      passwordProtected: passwordSet ? true : false,
+      Password: finalPassword ? bcrypt.hashSync(finalPassword, 10) : null,
+      passwordProtected: Boolean(finalPassword),
       clicks: 0,
       analytics: [],
-      utm:{
-        source:utm?.utm_Source.toLowerCase() || null,
-        source_raw:utm?.utm_Source || null,
-        medium:utm?.utm_Medium.toLowerCase() || null,
-        medium_raw:utm?.utm_Medium || null,
-        campaign:utm?.utm_Campaign || null,
-        campaign_raw:utm?.utm_Campaign.toLowerCase() || null,
+      utm: {
+        source: utmSource ? utmSource.toLowerCase() : null,
+        source_raw: utmSource,
+        medium: utmMedium ? utmMedium.toLowerCase() : null,
+        medium_raw: utmMedium,
+        campaign: utmCampaign,
+        campaign_raw: utmCampaign ? utmCampaign.toLowerCase() : null,
       },
-      expireAt:expiry ,
-      maxClicks:maxClicks
+      expireAt: expiry,
+      maxClicks: finalMaxClicks ? Number(finalMaxClicks) : null,
     });
     if(username){
       await Data.findOneAndUpdate({Username:username},{
@@ -53,8 +61,11 @@ export async function POST(req) {
     await newUrl.save();
 
     return NextResponse.json({
+      success: true,
+      _id: newUrl._id,
+      ShortName: ShortName,
       message: "Short URL created successfully",
-      fullShortUrl: `${process.env.NEXT_PUBLIC_HOST_URL}/${ShortName}`,
+      fullShortUrl: `${process.env.NEXT_PUBLIC_HOST_URL || ""}/${ShortName}`,
     });
   } catch (error) {
     console.error("Error creating short URL:", error);

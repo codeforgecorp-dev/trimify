@@ -104,8 +104,9 @@ export default function Page() {
     try {
       let a = await fetch(`/api/userdata/${username}`);
       let user = await a.json();
-      setdata(user.data || []);
-      setisPremium(user.isPremium);
+      // API returns both `urls` and `data`, and both `Verification` and `isPremium`
+      setdata(user.urls || user.data || []);
+      setisPremium(Boolean(user.isPremium ?? user.Verification));
     } catch {
       toast.error("Failed to load your URLs", {
         position: "top-right",
@@ -199,10 +200,11 @@ export default function Page() {
       let time = new Date(Time).toLocaleTimeString();
       let date = new Date(Time).toLocaleDateString();
 
-      const response = await fetch(`/api/userdata/${username}`, {
+      const response = await fetch(`/api/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          username: username,
           LongUrl: formattedUrl,
           ShortName: ShortName,
           time: time,
@@ -211,7 +213,7 @@ export default function Page() {
           utmMedium: utmMedium,
           utmCampaign: utmCampaign,
           expiryDate: expiryDate,
-          maxClicks: maxClick,
+          maxClick: maxClick,
           password: password,
         }),
       });
@@ -243,11 +245,12 @@ export default function Page() {
         setshowMoreFeature(false);
 
         const newUrl = {
-          LongUrl: LongUrl,
+          LongUrl: formattedUrl,
           ShortName: ShortName,
-          fullShortUrl: `${process.env.NEXT_PUBLIC_HOST_URL}/${ShortName}`,
+          fullShortUrl: result.fullShortUrl || `${process.env.NEXT_PUBLIC_HOST_URL || ""}/${ShortName}`,
           date: date,
           time: time,
+          clicks: 0,
           createdAt: new Date().toISOString(),
         };
         setdata((prevData) => [newUrl, ...prevData]);
@@ -255,12 +258,17 @@ export default function Page() {
         setOn(false);
         setMsg("");
         setTimeout(() => {
-          setMsg(result.fullShortUrl);
+          setMsg(result.fullShortUrl || `${process.env.NEXT_PUBLIC_HOST_URL || ""}/${ShortName}`);
           setOn(true);
         }, 0);
 
         setLongUrl("");
         setShortName("");
+      } else if (!result.conflict) {
+        toast.error(result.error || "Failed to create link. Try again.", {
+          position: "top-right",
+          autoClose: 1500,
+        });
       }
     } catch {
       toast.warn("Server error. Try again later.", {

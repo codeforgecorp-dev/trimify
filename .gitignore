@@ -3,7 +3,7 @@ node_modules/
 
 # Environment variables file (for sensitive data like DB URLs)
 .env
-
+.env.local
 # Next.js build folder (not needed on GitHub)
 .next/
 

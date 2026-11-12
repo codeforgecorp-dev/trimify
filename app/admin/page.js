@@ -82,6 +82,28 @@ const Page = () => {
             getUserData(); // reload users ✅
       }
 
+      async function handleAssignPremium(Username, currentStatus) {
+            try {
+                  const req = await fetch("/api/admin/", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ username: Username, isPremium: !currentStatus }),
+                  });
+                  const res = await req.json();
+                  if (res.success) {
+                        toast.success(
+                              !currentStatus ? `✅ Premium granted to ${Username}` : `🔁 Premium removed from ${Username}`,
+                              { position: "top-right", autoClose: 1500 }
+                        );
+                        getUserData();
+                  } else {
+                        toast.error("Failed to update premium status", { position: "top-right", autoClose: 1500 });
+                  }
+            } catch {
+                  toast.error("Server error", { position: "top-right", autoClose: 1500 });
+            }
+      }
+
       return (
             <>
                   {Loading && <Loader2 />}
@@ -122,7 +144,11 @@ const Page = () => {
                                                                         className='float-right text-center mr-6 cursor-pointer mt-2  font-extrabold text-2xl  pb-3 h-[30px]'>. . .</button>
                                                                   {openDropdownId === item._id && <div className='bg-black  z-10 text-yellow-400 w-[150px]  absolute right-2 top-12'>
 
-                                                                        <button className='border-b-1 cursor-pointer border-white w-full'>Assign Premium</button>
+                                                                        <button
+                                                                              onClick={() => { handleAssignPremium(item.Username, item.isPremium); setOpenDropdownId(null); }}
+                                                                              className={`border-b-1 cursor-pointer border-white w-full ${item.isPremium ? 'text-red-400' : 'text-yellow-400'}`}>
+                                                                              {item.isPremium ? '🔁 Remove Premium' : '⭐ Assign Premium'}
+                                                                        </button>
                                                                         <button
                                                                               onClick={() => handleDelete(item.Username)}
                                                                               className='border-b-1 border-white cursor-pointer w-full'>Delete User</button>
