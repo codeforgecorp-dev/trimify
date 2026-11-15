@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /user
-Disallow: /user/
-Disallow:/admin
-
-Sitemap: https://www.trimy.me/sitemap.xml

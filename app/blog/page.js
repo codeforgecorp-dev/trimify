@@ -13,7 +13,7 @@ export const metadata = {
     "Trimify blogs",
     "use cases",
   ],
-  title: "Famous and Helpful BLOGS | Trimify-Blog",
+  title: "URL Shortener Blog & Insights",
   description: "Explore top articles related to URL shortening and link optimization with Trimify.",
   icons: {
     icon: "/favicon.ico",
@@ -23,8 +23,9 @@ export const metadata = {
     canonical: "https://www.trimy.me/blog",
   },
   openGraph: {
-    title: "Famous and Helpful BLOGS | Trimify-Blog",
+    title: "URL Shortener Blog & Insights | Trimify",
     description: "Explore top articles related to URL shortening and link optimization with Trimify.",
+    url: "https://www.trimy.me/blog",
     siteName: "Trimify - The Ultimate URL Shortener",
     images: [
       {

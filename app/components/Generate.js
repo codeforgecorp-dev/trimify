@@ -7,8 +7,14 @@ import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer
 import Loader from "../components/Loader"; // Import a custom Loader component
 import { motion } from "framer-motion"; // Import motion for animations
 import { nanoid } from "nanoid";
-import Head from "next/head";
-import Script from "next/script"
+import { Montserrat } from "next/font/google";
+import Script from "next/script";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 // Define the Generate component
 const Generate = () => {
   // State variables for managing input fields, messages, and loading state
@@ -127,29 +133,13 @@ const Generate = () => {
   // Render the component
   return (
     <>
-      <Head>
-        <title>Generate Short URL</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Generate Short URL" />
-        <meta
-          name="keywords"
-          content="URL Shortener, Short URL, Generate Short URL"
-        />
-        <meta name="author" content="Your Name" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <Script
         src="https://cdn.lordicon.com/lordicon.js"
         strategy="lazyOnload" // loads script during idle time after page load
       />
       {/* Toast container for notifications */}
       <ToastContainer className={"pt-12"} />
-      <div className="relative w-full bg-slate-900 flex justify-center items-center p-4" style={{ minHeight: "calc(100vh - 142px)", height:"full"}}>
+      <div className={`relative w-full bg-slate-900 flex justify-center items-center p-4 ${montserrat.variable}`} style={{ minHeight: "calc(100vh - 142px)", height:"full"}}>
         {/* Main container for the form */}
         <div
           className="flex flex-col z-10 bg-slate-700  sm:max-w-[50vh] md:max-w-[90vh] justify-center items-center min-h-[70vh] p-3   w-full text-white

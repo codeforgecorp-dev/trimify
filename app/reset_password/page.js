@@ -28,8 +28,8 @@ export const metadata = {
             "Reset your Trimify account password securely. Enter your registered email to receive a password recovery link and regain access to your dashboard.",
     },
     robots: {
-        index: true,
-        follow: true,
+        index: false,
+        follow: false,
     },
 };
 

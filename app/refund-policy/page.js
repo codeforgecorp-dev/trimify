@@ -3,7 +3,7 @@ import Script from "next/script";
 export const metadata = {
   title: "Refund Policy | Trimify",
   description:
-    "Read Trimify's Refund Policy. All purchases are non-refundable except in verified cases of non-delivery. Learn about refund eligibility, proof requirements, and timelines.",
+    "Read Trimify's Refund Policy. Understand refund eligibility, verification requirements, dispute handling, and service delivery guarantees.",
   keywords: [
     "Trimify refund policy",
     "refund policy",

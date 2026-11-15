@@ -3,9 +3,9 @@ import HeroSection from "./components/HeroSection";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Link shortener with Custom aliases & Analytics | Trimify",
+  title: "Free URL Shortener, Branded Links & QR Codes",
   description:
-    "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
+    "Shorten long URLs into custom branded links with real-time click tracking, dynamic QR codes, and UTM tags. 100% free with enterprise reliability.",
   keywords: [
     "free url shortener",
     "trim urls",
@@ -68,30 +68,50 @@ export default function Home() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://www.trimy.me/#software",
+        "@type": "WebSite",
+        "@id": "https://www.trimy.me/#website",
         "name": "Trimify",
+        "url": "https://www.trimy.me",
+        "description": "Free URL shortener with custom short links, click tracking, QR codes, and UTM builder.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.trimy.me/blog?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.trimy.me/#organization",
+        "name": "Trimify",
+        "url": "https://www.trimy.me",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.trimy.me/og-image.png",
+          "width": 1200,
+          "height": 630
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "url": "https://www.trimy.me/contact"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://www.trimy.me/#webapplication",
+        "name": "Trimify",
+        "url": "https://www.trimy.me",
         "operatingSystem": "All",
-        "applicationCategory": "BusinessApplication",
-        "description": "Professional URL shortener with UTM tracking and analytics.",
+        "applicationCategory": "UtilitiesApplication",
+        "description": "Free URL shortener with custom short links, click tracking, QR codes, and UTM builder.",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
         }
-      }, // Fixed: Added missing closing brace and comma
-      {
-        "@type": "Service",
-        "@id": "https://www.trimy.me/#service",
-        "name": "Free URL Shortener with Custom aliases, UTM Building & Analytics | Trimify",
-        "provider": {
-          "@type": "Organization",
-          "name": "Trimify",
-          "url": "https://www.trimy.me/"
-        },
-        "description": "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
-        "serviceType": "URL Shortening",
-        "url": "https://www.trimy.me/"
       },
       {
         "@type": "BreadcrumbList",
@@ -118,7 +138,7 @@ export default function Home() {
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Blogs",
+            "name": "Blog",
             "item": "https://www.trimy.me/blog"
           },
           {

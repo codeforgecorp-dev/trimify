@@ -37,7 +37,11 @@ export const metadata = {
     description: "Log in to your Trimify account to access your dashboard and to create custom short links.If you have not created your account till now then first go and create your account.",
     images: ["/og-image.png"],
   },
-}
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 const getLoginStructuredData = () => ({
   "@context": "https://schema.org",
   "@type": "WebPage",

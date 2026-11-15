@@ -55,6 +55,12 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL("https://www.trimy.me"),
+  title: {
+    default: "Trimify | Free URL Shortener, Branded Links & QR Codes",
+    template: "%s | Trimify",
+  },
+  description:
+    "Free URL shortener to create custom branded links, generate dynamic QR codes, and track real-time click analytics. Fast, reliable, and secure.",
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
@@ -73,8 +79,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.png" type="image/png" />
 
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-JYDGEXZ9ZD"
+          strategy="afterInteractive"
         />
 
         <Script id="google-analytics" strategy="afterInteractive">

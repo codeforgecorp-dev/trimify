@@ -36,6 +36,10 @@ export const metadata = {
     description: "Create your Trimify account to shorten and manage links with analytics.Also get a seperate dashboard for url management.Create password protected links add utm tracking to links.",
     images: ["/og-image.png"],
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 const page = () => {
   const getSignUpStructuredData = () => ({

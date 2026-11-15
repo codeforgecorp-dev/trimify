@@ -13,6 +13,12 @@ export const metadata = {
     siteName: "Trimify",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pricing Plans – Free & Lifetime Pro | Trimify",
+    description: "Explore Trimify pricing plans. Start for free with unlimited link shortening, or upgrade to Lifetime Pro for advanced analytics and custom aliases.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function PricingPage() {

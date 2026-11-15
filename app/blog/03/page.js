@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import FeedbackSection from "@/app/components/FeedbackSection";
 export const metadata = {
   keywords: [
@@ -13,9 +14,9 @@ export const metadata = {
     "short URL advantages",
     "URL shortening reasons",
   ],
-  title: "Why Use Short Links? Benefits of URL Shortening | Trimify-Blog",
+  title: "Why Use Short Links? Key Benefits & Use Cases",
   description:
-      "Discover the advantages of using short links for marketing, social media, and better user experience. Learn why URL shortening is essential in today’s digital world.",
+      "Discover the advantages of short links for marketing and social media. Learn why link shortening boosts click-through rates and brand trust.",
   icons: {
     icon: "/favicon.ico", // favicon
   },
@@ -24,9 +25,9 @@ export const metadata = {
     canonical: "https://www.trimy.me/blog/03",
   },
   openGraph: {
-    title: "Why Use Short Links? Benefits of URL Shortening | Trimify-Blog",
+    title: "Why Use Short Links? Key Benefits & Use Cases",
     description:
-      "Discover the advantages of using short links for marketing, social media, and better user experience. Learn why URL shortening is essential in today’s digital world.",
+      "Discover the advantages of short links for marketing and social media. Learn why link shortening boosts click-through rates and brand trust.",
     url: "https://www.trimy.me/blog/03",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
@@ -42,15 +43,54 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Why Use Short Links? Benefits of URL Shortening | Trimify-Blog",
+    title: "Why Use Short Links? Key Benefits & Use Cases",
     description:
-      "Discover the advantages of using short links for marketing, social media, and better user experience. Learn why URL shortening is essential in today’s digital world.",
+      "Discover the advantages of short links for marketing and social media. Learn why link shortening boosts click-through rates and brand trust.",
     images: ["/og-image.png"],
   },
 };
 const page = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Why to Use Short Links?",
+    "description": "Discover the advantages of short links for marketing and social media. Learn why link shortening boosts click-through rates and brand trust.",
+    "datePublished": "2025-07-01",
+    "dateModified": "2025-07-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.trimy.me/blog/03"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "DevZain"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Trimify",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.trimy.me/og-image.png"
+      }
+    },
+    "image": "https://www.trimy.me/WTUSL.png"
+  };
+
   return (
     <>
+      <Script
+        id="blog-schema-03"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="max-w-7xl mx-auto px-4 pt-4">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm font-bold text-gray-600">
+          <Link href="/" className="hover:text-black transition-colors">← Home</Link>
+          <span>/</span>
+          <Link href="/blog" className="hover:text-black transition-colors">← All Blog Posts</Link>
+        </nav>
+      </div>
       <div className="md:flex md:justify-end md:m-8   md:float-right gap-4">
         <article className="article  md:w-[60%] flex flex-col gap-6 bg-gray-50 p-4 mt-8 md:mt-0">
           <h1 className="text-4xl font-bold bree-bold text-center">

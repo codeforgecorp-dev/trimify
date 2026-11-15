@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import FeedbackSection from "@/app/components/FeedbackSection";
 export const metadata = {
   keywords: [
@@ -12,9 +13,9 @@ export const metadata = {
     "Trimify free url shortener",
     "url shortening options",
   ],
-  title: "Free vs Premium URL Shorteners | Trimify-Blog",
+  title: "Free vs Premium URL Shorteners | Trimify",
     description:
-      "Explore the differences between free and premium URL shorteners. Learn which features matter and why Trimify offers the best value with premium features at no cost.",
+      "Explore differences between free and premium URL shorteners. Learn which features matter most and compare analytics, custom slugs, and pricing.",
   icons: {
     icon: "/favicon.ico", // favicon
   },
@@ -23,9 +24,9 @@ export const metadata = {
     canonical: "https://www.trimy.me/blog/04",
   },
   openGraph: {
-    title: "Free vs Premium URL Shorteners | Trimify-Blog",
+    title: "Free vs Premium URL Shorteners | Trimify",
     description:
-      "Explore the differences between free and premium URL shorteners. Learn which features matter and why Trimify offers the best value with premium features at no cost.",
+      "Explore differences between free and premium URL shorteners. Learn which features matter most and compare analytics, custom slugs, and pricing.",
     url: "https://www.trimy.me/blog/04",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
     images: [
@@ -41,15 +42,54 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free vs Premium URL Shorteners | Trimify-Blog",
+    title: "Free vs Premium URL Shorteners | Trimify",
     description:
-      "Explore the differences between free and premium URL shorteners. Learn which features matter and why Trimify offers the best value with premium features at no cost.",
+      "Explore differences between free and premium URL shorteners. Learn which features matter most and compare analytics, custom slugs, and pricing.",
     images: ["/og-image.png"],
   },
 };
 const page = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Free vs Premium URL Shortener",
+    "description": "Explore differences between free and premium URL shorteners. Learn which features matter most and compare analytics, custom slugs, and pricing.",
+    "datePublished": "2025-07-15",
+    "dateModified": "2025-07-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.trimy.me/blog/04"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "DevZain"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Trimify",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.trimy.me/og-image.png"
+      }
+    },
+    "image": "https://www.trimy.me/FVPUS.png"
+  };
+
   return (
     <>
+      <Script
+        id="blog-schema-04"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="max-w-7xl mx-auto px-4 pt-4">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm font-bold text-gray-600">
+          <Link href="/" className="hover:text-black transition-colors">← Home</Link>
+          <span>/</span>
+          <Link href="/blog" className="hover:text-black transition-colors">← All Blog Posts</Link>
+        </nav>
+      </div>
       <div className="md:flex md:justify-end md:m-8   md:float-right gap-4">
         <article className="article  md:w-[60%] flex flex-col gap-6 bg-gray-50 p-4 mt-8 md:mt-0">
           <h1 className="text-4xl font-bold bree-bold text-center">

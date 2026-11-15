@@ -393,6 +393,20 @@ export default function HeroSection() {
       </section>
 
       {/* ===================================================== */}
+      {/* WHAT IS TRIMIFY (PLAIN-TEXT SEO EXPLANATION) */}
+      {/* ===================================================== */}
+      <section className="w-full max-w-4xl mx-auto px-4 pb-12 select-none" aria-label="About Trimify URL Shortener">
+        <div className="bg-white border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000]">
+          <h2 className="font-bungee text-xl sm:text-2xl text-black mb-3">
+            SMARTER LINK MANAGEMENT MADE SIMPLE
+          </h2>
+          <p className="font-space text-sm sm:text-base font-medium text-black/85 leading-relaxed">
+            Trimify is a modern, <strong>free URL shortener</strong> designed for creators, marketers, and businesses. Turn messy, long web addresses into branded <strong>custom short links</strong> in seconds. Monitor audience engagement with real-time <strong>click tracking</strong>, geographic insights, and device analytics. Need offline sharing? Instantly generate high-resolution dynamic <strong>QR codes</strong> for print materials, packaging, and digital campaigns—with zero hidden fees.
+          </p>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
       {/* WHY CHOOSE TRIMIFY + STATS SECTION */}
       {/* ===================================================== */}
       <FeatureCards />

@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import FeedbackSection from "@/app/components/FeedbackSection";
 export const metadata = {
-title: "How to Use URL Shorteners: A Complete Guide | Trimify-Blog",
-description: "Learn how to use URL shorteners to create clean, shareable links. Step-by-step guide on shortening, customizing, and tracking URLs using popular tools like Trimify.",
+title: "How to Use URL Shorteners: Complete Guide",
+description: "Learn how to use URL shorteners to create clean, shareable links. Step-by-step guide on shortening, customizing, and tracking URLs with Trimify.",
 keywords: [
   "URL shortener guide",
   "how to shorten URLs",
@@ -24,8 +25,8 @@ keywords: [
     canonical: "https://www.trimy.me/blog/02",
   },
   openGraph: {
-    title: "How to Use URL Shorteners: A Complete Guide | Trimify-Blog",
-description: "Learn how to use URL shorteners to create clean, shareable links. Step-by-step guide on shortening, customizing, and tracking URLs using popular tools like Trimify.",
+    title: "How to Use URL Shorteners: Complete Guide",
+description: "Learn how to use URL shorteners to create clean, shareable links. Step-by-step guide on shortening, customizing, and tracking URLs with Trimify.",
 
     url: "https://www.trimy.me/blog/02",
     siteName: "Trimify - The Ultimate and Free URL Shortener",
@@ -49,8 +50,47 @@ description: "Learn how to use URL shorteners to create clean, shareable links. 
   },
 };
 const page = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Use URL Shorteners: Complete Guide",
+    "description": "Learn how to use URL shorteners to create clean, shareable links. Step-by-step guide on shortening, customizing, and tracking URLs with Trimify.",
+    "datePublished": "2025-06-15",
+    "dateModified": "2025-06-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.trimy.me/blog/02"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "DevZain"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Trimify",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.trimy.me/og-image.png"
+      }
+    },
+    "image": "https://www.trimy.me/HTUUS.png"
+  };
+
   return (
     <>
+      <Script
+        id="blog-schema-02"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="max-w-7xl mx-auto px-4 pt-4">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm font-bold text-gray-600">
+          <Link href="/" className="hover:text-black transition-colors">← Home</Link>
+          <span>/</span>
+          <Link href="/blog" className="hover:text-black transition-colors">← All Blog Posts</Link>
+        </nav>
+      </div>
       <div className="md:flex md:justify-end md:m-8   md:float-right gap-4">
         <article className="article  md:w-[60%] flex flex-col gap-6 bg-gray-50 p-4 mt-8 md:mt-0 roboto-semi">
           <h1 className="text-4xl font-bold bree-bold text-center">

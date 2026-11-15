@@ -66,9 +66,9 @@ const Counter = () => {
 
           {/* Heading */}
           <div className="text-center">
-            <h1 className="font-bungee text-2xl sm:text-4xl text-black tracking-tight leading-tight">
+            <h2 className="font-bungee text-2xl sm:text-4xl text-black tracking-tight leading-tight">
               TRACK YOUR LINK CLICKS
-            </h1>
+            </h2>
             <p className="font-space text-xs sm:text-sm font-bold text-black/70 mt-1">
               Enter your short link code or alias below to check total engagements.
             </p>
