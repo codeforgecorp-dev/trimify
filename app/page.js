@@ -8,7 +8,7 @@ export const metadata = {
     "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
   keywords: [
     "free url shortener",
-    "free url shortener trimrly"
+    "free url shortener trimrly",
     "trim url",
     "qr code generator",
     "short link generator",
