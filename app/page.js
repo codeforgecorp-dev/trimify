@@ -8,18 +8,20 @@ export const metadata = {
     "Trimify is a powerful free URL shortener that lets you create custom short links,add password protection to Links,build UTM,track clicks with real‑time analytics, generate QR codes, and manage links easily. Trusted by marketers and businesses for branding and performance.",
   keywords: [
     "free url shortener",
-    "trim urls",
+    "free url shortener trimrly"
+    "trim url",
     "qr code generator",
     "short link generator",
     "add UTM tracking to Links",
     "password protected links",
     "free link shortener with custom name",
     "trackable short links",
-    "dropbox ",
+    "tiny url creator ",
     "bitly alternative",
     "brandable short links",
     "barcode generator",
-    "UTM builder",
+  "trimrly",
+    "create a short url",
     "link management tool",
   ],
   icons: {
